@@ -52,7 +52,7 @@
 -  Hi guys I'm Ali, a CS student. For fun I like to play games, hangout with friends, and go on walks outside.
 - **GitHub Page:** [@ai-aurum](https://ai-aurum.github.io/Pages/)
 
-### Aditya Ilagan
+### Aditya Dutt
 ![Aditya Photo](https://i.gyazo.com/01f004ef5b3b53a778120473a0f3dc32.jpg)
 -  My name is Aditya Dutt. I am a junior and I love playing chess and pickleball.
 - **GitHub:** [@adutt1010](http://github.com/adutt1010)
