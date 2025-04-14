@@ -1,11 +1,14 @@
-# [Team Name]
-
+# Nerdy Thirty
+![Logo Photo](./branding/cse_110_logo.jpg)
 
 
 ## Important Values
-1. 
-2. 
-3. 
+1. Effort: Always strive to complete your tasks to the best of your ability and in a timely manner.
+2. Communicate Early: If you’re unable to meet a deadline or need more time, let the team know as soon as possible. Transparency helps us all succeed.
+3. Ask for Help: Don’t be afraid to speak up if you're unsure or stuck. We’re here to support each other.
+4. Support One Another: If a teammate needs help and you’re able to assist, step up and offer support whenever possible.
+5. Respect All Ideas: No idea is a bad idea. Be inclusive and respectful of everyone’s contributions.
+6. Foster Collaboration: Create an environment where everyone feels comfortable sharing, learning, and growing together.
 
 
 ## Roster 👤
