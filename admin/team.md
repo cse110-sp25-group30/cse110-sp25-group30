@@ -43,7 +43,7 @@
 ### Mei Man Teng Lam
 ![Mei Photo](https://i.gyazo.com/8f71f39d60c4e8084ac5086976e42e52.jpg
 )
-- Mei’s brief overview: Hello nerdies I’m a junior majoring in Math CS and originally from Mexico. Some of my hobbies are playing squash and cooking!
+- Hello nerdies I’m a junior majoring in Math CS and originally from Mexico. Some of my hobbies are playing squash and cooking!
 - **GitHub Page:** [@meimanteng](https://meimanteng.github.io/CSE110/)
 
 
@@ -64,7 +64,7 @@
 
 ### Richard Nie
 ![Richard Photo](https://i.gyazo.com/a6eff03430477e6e911bf2f303245796.png)
--  Hi I'm Jonathan, a third year CS major. I like gaming, drawing, and playing tennis in my free time.
+-  Hi, I’m Richard, a first year computer science major in Seventh College. I am interested in AI, algorithms and computer systems.
 - **GitHub Page:** [@nie-chenhao](https://nie-chenhao.github.io/CSE110-Lab1/)
 
 ### Kevin Sun
