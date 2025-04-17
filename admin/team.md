@@ -49,7 +49,7 @@
 
 ### Aldrin Ilagan
 ![Aldrin Photo](https://i.gyazo.com/984ddb83eca74e979a4a1a458e194f9d.png)
--  Hi guys I'm Ali, a CS student. For fun I like to play games, hangout with friends, and go on walks outside.
+-  Hi guys I'm Aldrin, a CS student. For fun I like to play games, hangout with friends, and go on walks outside.
 - **GitHub Page:** [@ai-aurum](https://ai-aurum.github.io/Pages/)
 
 ### Aditya Dutt
