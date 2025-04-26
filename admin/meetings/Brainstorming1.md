@@ -18,9 +18,11 @@
 
 ## Resources Used
 
-### Miro: [Link to whiteboard](https://miro.com/app/board/uXjVI9843UY=/?share_link_id=896702531163)
+### Miro 
+[Link to whiteboard](https://miro.com/app/board/uXjVI9843UY=/?share_link_id=896702531163)
 
-### Google Docs: Used as a template for the notes and ideas in the meeting that will be written for Markdown
+### Google Docs 
+Used as a template for the notes and ideas in the meeting that will be written for Markdown
 [Link to doc](https://docs.google.com/document/d/1SKcrNYk3fquT3n92xKi909bWGYk7OItviDr61khg3pw/edit?usp=sharing)
 
 ## Goals
