@@ -7,7 +7,7 @@
 
 ## Individual Strengths/Weaknesses
 ### Strengths: 
-1. Persistent
+1. Persistent and always willing to learn
 2. Exprience with Github issues/pull requests 
 3. Am highly used to being a leader and a team member for anything that requires a group.
 4. Mediating and keeping morale high
