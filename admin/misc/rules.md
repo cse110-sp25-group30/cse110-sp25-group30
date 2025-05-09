@@ -31,8 +31,8 @@ Our team aims to develop a successful software project while learning and workin
 
 ## 3. Strengths and Weaknesses
 
-**Team Strenghts:**
-- Having a variety of members originatin from a diversity of backgrounds, providing their own hard and soft skills into the equation, increasing our problem-solving capabilities.
+**Team Strengths:**
+- Having a variety of members originating from a diversity of backgrounds, providing their own hard and soft skills into the equation, increasing our problem-solving capabilities.
 - Varying levels of expertise can allow us to provide peer teaching and pairing development opportunities.
 
 **Team Weaknesses:**
