@@ -104,5 +104,4 @@ Roles may rotate based on the availability, interest, and/or emergencies.
 ---
 
 If you have read the rules and agree to the following terms, sign below:
-Cody Lee
 
