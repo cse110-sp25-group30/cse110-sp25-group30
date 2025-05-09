@@ -15,3 +15,5 @@
 1. busy schedule  
 2. Little exprience with writing documentation
 3. Don't have any familiarity with Web-design languages, but willing to learn
+
+Signed: Cody Lee
