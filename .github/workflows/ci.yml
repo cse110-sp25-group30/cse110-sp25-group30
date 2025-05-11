@@ -3,7 +3,7 @@ name: Codacy Analysis CLI
 on: ["push"]
 
 jobs:
-  build:
+  codacy-analysis:
     name: Codacy Analysis CLI
     runs-on: ubuntu-latest
     steps:
