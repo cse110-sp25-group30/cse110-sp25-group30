@@ -23,7 +23,7 @@ Our team aims to develop a successful software project while learning and workin
 
 **Common Goals:**
 - Learning how to effecient collaborate and work in a team-based SWE environment.
-- Delivering a working, and efficient product within an academic deadline
+- Delivering a working, and efficient product within an academic deadline.
 - Practicing clear and frequent communication between each other.
 - Reflecting regularly and adjusting our team dynamics as needed.
 
@@ -41,8 +41,8 @@ Our team aims to develop a successful software project while learning and workin
 
 **Mitigation Strategies:**
 - Using tools like When2Meet or LettuceMeet to schedule weekly meetings.
-- Defining and staying to general meeting hours where most team members are able to attend
-- Setting clear weekly sprint goals and documenting for those unable to attend
+- Defining and staying to general meeting hours where most team members are able to attend.
+- Setting clear weekly sprint goals and documenting for those unable to attend.
 - Setting regular retrospectives to evaluate progress or an obstacles in our project.
 
 ---
@@ -72,11 +72,11 @@ Roles may rotate based on the availability, interest, and/or emergencies.
 
 **Collaboration Expectations:**
 - Contacting or letting the team know if you are unable to meet a deadline due to personal conflict.
-- Submitting pull requeests with detailed commit messages and request reviews.
+- Submitting pull requests with detailed commit messages and request reviews.
 - Arriving on time and participating in the meetings.
 
 **Time Commitment Considerations:**
-- Weekly meetings are necessary, if you are unable to attend for a reason let the team know.
+- Weekly meetings are necessary, if you are unable to attend for a reason, let the team know.
 
 **Conflict Resolution Process:**
 1. Address the issue, not the individual - Raise concerns without targeting a team member or putting the blame on someone.
