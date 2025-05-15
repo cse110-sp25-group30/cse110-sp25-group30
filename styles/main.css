@@ -1,0 +1,86 @@
+@font-face {
+  font-family: 'Wizard World';
+  src: url('../fonts/WizardWorldSimplified.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  /* Primary Theme Colors */
+  --background-color: #1c1c1c;            /* Deep castle stone */
+  --card-background-color:rgb(34, 35, 80);      /* Darker stone for cards */
+  --secondary-background-color: #2a2a2a;  /* Slightly lighter for sections/cards */
+  --modal-background-color: #2e2e2e;      /* For modals or popups */
+  --font-body: 'Wizard World', serif;
+  /* Text Colors */
+  --text-color: #f2e8c9;                  /* Aged parchment */
+  --secondary-text-color: #cfae6d;        /* Gold-accented text */
+
+  /* Button Colors */
+  --button-color: #7b2e2e;                /* Gryffindor-style maroon */
+  --button-text-color: #f2e8c9;           /* Light parchment on dark button */
+
+  /* Secondary Button */
+  --secondary-button-color: #4b382a;      /* Warm, subdued brown */
+  --secondary-button-text-color: #cfae6d; /* Muted gold */
+
+  /* Accent / Decorative */
+  --border-color: #cfae6d;                /* Antique gold for borders */
+  --hover-accent: #a47149;                /* Bronze hover effects */
+  --link-color: #8aa6d9;                  /* Dusty blue for links */
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Garamond', serif; /* A classic, elegant font */
+    line-height: 1.6;
+    font-family: var(--font-body);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hidden {
+    display: none;
+}
+
+button{
+    background-color: var(--button-color);
+    color: var(--button-text-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+#card_buttons{
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+}
+
+#card_shuffler{
+    display:flex; justify-content: space-between; align-items: center; padding: 10px;
+}
+
+@media (max-width: 768px) {
+    #card_buttons{
+        flex-direction: row; 
+        justify-content: center;
+    }
+    #card_shuffler{
+        flex-direction: column; 
+        align-items: center;
+    }
+    #next{
+        margin-bottom: 0px !important;
+        margin-right: 10px !important;
+    }
+}
+
+
+button[disabled] {
+    background-color: var(--secondary-button-color);
+    color: var(--secondary-button-text-color);
+    cursor: not-allowed;
+}
