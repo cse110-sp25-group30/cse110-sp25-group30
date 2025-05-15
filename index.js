@@ -51,6 +51,12 @@ async function fetch_data(path){
   const parsed_data = JSON.parse(data);
   return parsed_data;
 }
+/**
+ * Saves data to local storage.
+ * @param {Object} data - The data to save to local storage.
+ * @param {string} key - The key under which to save the data.
+ * @returns {void}
+ * */
 function save_to_local(data, key){
   if (!key){
     return

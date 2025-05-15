@@ -1,0 +1,9 @@
+{
+  "source": {
+    "include": ["components","index.js"],
+    "includePattern": ".+\\.(js|jsx|ts|tsx)$"
+  },
+  "opts": {
+    "destination": "./docs"
+  }
+}
