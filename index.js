@@ -83,7 +83,9 @@ function card_button_click(){
     selected_card++;
     next_button.disabled = selected_card + 1 > card_data.length - 1;
     prev_button.disabled = false;
+    if (selected_card >= 0 && selected_card < card_data.length) {
     createCard(card_data[selected_card]);
+    }
   });
   prev_button.addEventListener("click", function() {
     if (selected_card-1 < 0) {

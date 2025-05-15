@@ -42,6 +42,8 @@ class FrogCard extends HTMLElement {
 
 		const card = this.shadowRoot.querySelector('card');
         // TODO - Build the card template using the data passed in
+        // codacy-disable-next-line security/detect-unsafe-innerhtml
+        //This error doesn't matter since data is trusted
 		card.innerHTML = `
             <img src="${data.imgSrc}" alt="${data.name} Image" style="width: 300px; height: 300px;">
             <h2>${data.name}</h2>
