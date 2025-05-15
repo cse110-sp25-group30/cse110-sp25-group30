@@ -3,10 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/styles/main.css">
+     <script type="module" src="/components/site-header.js"></script>
+    <script type="module" src="/components/frog-card.js"></script>
+    <script type="module" src="/components/card-deck.js"></script>
     <title>Nerdy Thirty Prof Collector</title>
+    <script src="index.js" type="module"></script>
 </head>
 <body>
-    <h1>Nerdy Thirty</h1>
-    <h2>Prof Collector</h2>
+    <site-header></site-header> 
+    <div id="card_shuffler" style="background-color:var(--secondary-background-color)"  >
+        <card-deck></card-deck>
+         <div id="frog-card"></div>
+         <div id ="card_buttons">
+            <button id="next" style="margin-bottom: 30px; width: 100%">
+                Next
+            </button> 
+            <button id="prev" >
+                Previous
+            </button>
+     
+         </div>
+    </div>
 </body>
 </html>
