@@ -1,14 +1,45 @@
 [
-    {
+{
         "name": "Thomas A. Powell",
-        "bio": "Cool Guy",
+        "bio": "Long time internet and web focused software engineer. Collector of retro games, Star Wars nerd, soccer fan, occasional joker. Fun Fact: Early Internet Semi-Famous and met Hollywood Stars. Mission Statement: Guiding students in becoming more well rounded software engineers equipped with the technical skills as well as soft skills.",
         "course": "CSE 110",
         "imgSrc": "assests/prof-images/powell.jpg"
     },
     {
+        "name": "Niema Moshiri",
+        "bio": "I grew up in Chula Vista and have a Bioengineering degree. Fun fact: I have 2000+ games on steam. Mission Statement: we want you to be able to consider different data structures critically to choose the most efficient ones for the problem you're trying to solve ",
+        "course": "CSE 100",
+        "imgSrc": "assests/prof-images/niema.jpg"
+    },
+    {
+        "name": "Sicun Gao",
+        "bio": "Planned to be a physicist, and then philosopher, and then mathematician, and then ended up here. Fun fact: I'm a small language model. Mission Statement: Exponential space: the final frontier.",
+        "course": "CSE 150B",
+        "imgSrc": "assests/prof-images/sicun_gao.jpg"
+    },
+    {
+        "name": "John Eldon",
+        "bio": "Got a Doctorate to UCLA, with 40+ years experience. Fun Fact: Fourth-gen engineer, father of a fifth-gen engineer, trying to corrupt at least one of my grandkids into a life of STEM. Mission Statement: seek out opportunities in life, take advantage of the good ones when they come along",
+        "course": "CSE 140",
+        "imgSrc": "assests/prof-images/eldon.jpg"
+    }
+    ,{
+        "name": "Julian McAuley",
+        "bio": "In my spare I like triathlon, baroque keyboard, and being a girl dad. Fun fact: I wear running clothes at all times; like an Oblivion character. Mission Statement: I hope students learn that machine learning can still be used to do something fun!",
+        "course": "CSE 153",
+        "imgSrc": "assests/prof-images/mculey.jpg"
+    }
+    ,{
+        "name": "Nadia Polikarpova",
+        "bio": "Completed my PhD in 2014 at ETH Zurich (Switzerland). Fun Fact: I was born in a city and a country that don't exist anymore. (Leningrad, USSR). Mission Statement: Don't repeat yourself! (Also, Pattern matching :))",
+        "course": "CSE 130",
+        "imgSrc": "assests/prof-images/polik.jpg"
+    }
+    ,{
         "name": "Test Professor",
         "bio": "Cool Guy",
         "course": "CSE 110",
         "imgSrc": "https://media.istockphoto.com/id/916306960/photo/faceless-man-in-hoodie-standing-isolated-on-black.jpg?s=612x612&w=0&k=20&c=pMeGd1UuJgvdZ2gV2VQC2Jn3VwMNeW6TF3cG9RIo1tY="
     }
+    
 ]
