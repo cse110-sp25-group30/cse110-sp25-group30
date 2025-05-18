@@ -51,23 +51,12 @@ class FrogCard extends HTMLElement {
 			transform: rotateY(180deg);
 		}
 
-		.card-bg {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			object-fit: contain;
-			pointer-events: none;
-			z-index: 1;
-		}
-
 		.face {
-			width: 50%;
+			width: 53%;
 			height: auto;
 			margin-top: 30%;
 			position: relative;
-			z-index: 2;
+			z-index: 1;
 		}
 
 		.card-fg {
@@ -78,13 +67,13 @@ class FrogCard extends HTMLElement {
 			height: 100%;
 			object-fit: contain;
 			pointer-events: none;
-			z-index: 3;
+			z-index: 2;
 		}
 
 		.front-name {
 			position: absolute;
 			bottom: 5%;
-			z-index: 4;
+			z-index: 3;
 			color: white;
 			font-size: 1rem;
 		}
@@ -137,15 +126,14 @@ class FrogCard extends HTMLElement {
 			<div class="flip-card-inner">
 				<!-- FRONT -->
 				<div class="flip-card-front">
-					<img class="card-bg" src="./assests/placeholder_background.png" alt="background layer">
 					<img class="face" src="${data.imgSrc}" alt="${data.name} image">
-					<img class="card-fg" src="./assests/placeholder_foreground.png" alt="foreground layer">
+					<img class="card-fg" src="./assests/placeholder_front.png" alt="foreground layer">
 					<p class="front-name">${data.name}</p>
 				</div>
 
 				<!-- BACK -->
 				<div class="flip-card-back">
-					<img class="back-bg" src="./assests/placeholder_background.png" alt="background">
+					<img class="back-bg" src="./assests/placeholder_back.png" alt="background">
 					<p class="bio">${data.bio}</p>
 					<p class="course">${data.course}</p>
 				</div>
