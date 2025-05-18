@@ -8,48 +8,150 @@ Try to use CSS variables for the colors.
 */
 class FrogCard extends HTMLElement {
 	constructor() {
-		super(); 
-
+		super();
 
 		const shadow = this.attachShadow({ mode: 'open' });
 		const card = document.createElement('card');
 		const style = document.createElement('style');
-        // TODO: Fill in the style tag, preferably using the CSS variables
-		style.textContent = `
-		<style>
 
-	</style>
-	`;
-		// A5. TODO - Append the <style> and <card> elements to the Shadow DOM
+		style.textContent = `
+		.flip-card {
+			width: 400px;
+			height: 400px;
+			perspective: 1000px;
+			cursor: pointer;
+		}
+
+		.flip-card-inner {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			transition: transform 0.6s;
+			transform-style: preserve-3d;
+		}
+
+		.flipped .flip-card-inner {
+			transform: rotateY(180deg);
+		}
+
+		.flip-card-front, .flip-card-back {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			backface-visibility: hidden;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: flex-start;
+			background: transparent;
+			border: none;
+		}
+
+		.flip-card-back {
+			transform: rotateY(180deg);
+		}
+
+		.card-bg {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			pointer-events: none;
+			z-index: 1;
+		}
+
+		.face {
+			width: 50%;
+			height: auto;
+			margin-top: 30%;
+			position: relative;
+			z-index: 2;
+		}
+
+		.card-fg {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			pointer-events: none;
+			z-index: 3;
+		}
+
+		.front-name {
+			position: absolute;
+			bottom: 5%;
+			z-index: 4;
+			color: white;
+			font-size: 1rem;
+		}
+
+		.back-bg {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			z-index: 1;
+		}
+
+		.bio {
+			position: absolute;
+			top: 20%;
+			z-index: 2;
+			padding: 1rem;
+			color: white;
+			text-align: center;
+			font-size: 1rem;
+		}
+
+		.course {
+			position: absolute;
+			bottom: 5%;
+			z-index: 2;
+			color: white;
+			text-align: center;
+			font-size: 1rem;
+		}
+		`;
+
 		shadow.appendChild(style);
 		shadow.appendChild(card);
+
+		card.addEventListener('click', () => {
+			card.classList.toggle('flipped');
+		});
 	}
 
-	/**
-	 *
-	 * @param {Object} data - The data to pass into the <recipe-card> must be of the
-	 *                        following format:
-	 *                        {
-	 *                          "imgSrc": "string",
-	 *                          "bio": "string",
-     *                          "course": "string",
-     *                          "name": "string",
-	 *                        }
-	 */
 	set data(data) {
-		// If nothing was passed in, return
-		if (!data) return;
+		if (!data || !data.imgSrc || !data.name || !data.bio || !data.course) return;
 
 		const card = this.shadowRoot.querySelector('card');
-        // TODO - Build the card template using the data passed in
-        // codacy-disable-next-line security/detect-unsafe-innerhtml
-        //This error doesn't matter since data is trusted
+
 		card.innerHTML = `
-            <img src="${data.imgSrc}" alt="${data.name} Image" style="width: 300px; height: 300px;">
-            <h2>${data.name}</h2>
-            <p>${data.bio}</p>
-            <p>${data.course}</p>
-         `
+		<div class="flip-card">
+			<div class="flip-card-inner">
+				<!-- FRONT -->
+				<div class="flip-card-front">
+					<img class="card-bg" src="./assests/placeholder_background.png" alt="background layer">
+					<img class="face" src="${data.imgSrc}" alt="${data.name} image">
+					<img class="card-fg" src="./assests/placeholder_foreground.png" alt="foreground layer">
+					<p class="front-name">${data.name}</p>
+				</div>
+
+				<!-- BACK -->
+				<div class="flip-card-back">
+					<img class="back-bg" src="./assests/placeholder_background.png" alt="background">
+					<p class="bio">${data.bio}</p>
+					<p class="course">${data.course}</p>
+				</div>
+			</div>
+		</div>
+		`;
 	}
 }
 
