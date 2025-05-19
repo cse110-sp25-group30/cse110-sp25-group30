@@ -10,9 +10,15 @@
 - [Group Contract](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/misc/rules.md)
 
 ### Meetings
-
 [Meetings Folder](https://github.com/cse110-sp25-group30/cse110-sp25-group30/tree/main/admin/meetings)
+
+## Sprint Start Meetings
 - [Meeting 1 - May 12th, 2025](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0512-0519/051225meeting.md)
+
+## Sprint Review Meetings
+- [Sprint 1 Review](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/InvertedVoice-patch-2/admin/meetings/0512-0519/051825-sprint-1-review.md)
+
+## Retrospectives
 
 ### ADR's
 
