@@ -24,7 +24,7 @@
 
 [Link to CD Pipeline Folder](https://github.com/cse110-sp25-group30/cse110-sp25-group30/tree/main/admin/cipipeline)
 1. Phase 1:
-- [Template Image]()
+- [Template Image](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/InvertedVoice-patch-1/admin/cipipeline/phase1.png)
 - [Markdown file](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/cipipeline/phase1.md)
 - [Phase 1 Video](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/cipipeline/phase1.mp4)
 
