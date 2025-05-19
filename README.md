@@ -9,23 +9,22 @@
 - [Rules Folder](https://github.com/cse110-sp25-group30/cse110-sp25-group30/tree/main/admin/misc)
 - [Group Contract](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/misc/rules.md)
 
-### Meetings
+## Meetings
 [Meetings Folder](https://github.com/cse110-sp25-group30/cse110-sp25-group30/tree/main/admin/meetings)
 
-## Sprint Start Meetings
+### Sprint Start Meetings
 - [Meeting 1 - May 12th, 2025](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0512-0519/051225meeting.md)
 
-## Sprint Review Meetings
+### Sprint Review Meetings
 - [Sprint 1 Review](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/InvertedVoice-patch-2/admin/meetings/0512-0519/051825-sprint-1-review.md)
 
-## Retrospectives
+### Retrospectives
 - [Sprint 1 Retrospective](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/InvertedVoice-patch-2/admin/meetings/0512-0519/051825-retrospective.md)
 
 ### ADR's
 
 [ADR's Folder](https://github.com/cse110-sp25-group30/cse110-sp25-group30/tree/main/specs/adrs)
 - [ADR1 - Problem Solving and Meeting Decision](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/specs/adrs/051125-ProblemSolvingandMeetingsDecisions.md)
-
 
 ### CD/CI Pipeline
 
