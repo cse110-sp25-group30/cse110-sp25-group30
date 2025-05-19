@@ -52,8 +52,9 @@ class FrogCard extends HTMLElement {
 		}
 
 		.face {
-			width: 53%;
-			height: auto;
+			width: auto;
+			height: 53%;
+			max-width: 71%;
 			margin-top: 30%;
 			position: relative;
 			z-index: 1;
