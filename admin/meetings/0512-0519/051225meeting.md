@@ -9,7 +9,8 @@
 - Terri Tai
 - Julia Wu
 - Ali Farahbakhsh 
-
+- George Minasyan
+- 
 ## Type: Online Video Call on Discord
 
 ## Resources Used:
