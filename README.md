@@ -19,6 +19,7 @@
 - [Sprint 1 Review](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/InvertedVoice-patch-2/admin/meetings/0512-0519/051825-sprint-1-review.md)
 
 ## Retrospectives
+- [Sprint 1 Retrospective](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/InvertedVoice-patch-2/admin/meetings/0512-0519/051825-retrospective.md)
 
 ### ADR's
 
