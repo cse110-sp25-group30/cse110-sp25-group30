@@ -26,7 +26,7 @@ class FrogCard extends HTMLElement {
 			position: relative;
 			width: 100%;
 			height: 100%;
-			transition: transform 0.6s;
+			transition: transform 0.8s;
 			transform-style: preserve-3d;
 		}
 
@@ -72,10 +72,10 @@ class FrogCard extends HTMLElement {
 
 		.front-name {
 			position: absolute;
-			bottom: 5%;
+			bottom: 6%;
 			z-index: 3;
-			color: white;
-			font-size: 1rem;
+			color: #003057; /* ucsd blue */
+			font-size: 100%;
 		}
 
 		.back-bg {
@@ -92,19 +92,19 @@ class FrogCard extends HTMLElement {
 			position: absolute;
 			top: 20%;
 			z-index: 2;
-			padding: 1rem;
-			color: white;
+			padding: 10%;
+			color: #f2a900; /* ucsd yellow */
 			text-align: center;
-			font-size: 1rem;
+			font-size: 100%;
 		}
 
 		.course {
 			position: absolute;
 			bottom: 5%;
 			z-index: 2;
-			color: white;
+			color: #003057; /* ucsd blue */
 			text-align: center;
-			font-size: 1rem;
+			font-size: 100%;
 		}
 		`;
 
