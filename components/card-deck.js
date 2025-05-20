@@ -12,17 +12,17 @@ class CardDeck extends HTMLElement {
         this.shadowRoot.innerHTML = `
         <style>
            .pentagon {
-  width: 150px;
-  height: 150px;
-  background:var(--card-background-color);
-  clip-path: polygon(
-    50% 0%,     /* top */
-    100% 38%,   /* top-right */
-    82% 100%,   /* bottom-right */
-    18% 100%,   /* bottom-left */
-    0% 38%      /* top-left */
-  );
-}
+            width: 150px;
+            height: 150px;
+            background:var(--card-background-color);
+            clip-path: polygon(
+              50% 0%,     /* top */
+              100% 38%,   /* top-right */
+              82% 100%,   /* bottom-right */
+              18% 100%,   /* bottom-left */
+              0% 38%      /* top-left */
+            );
+          }
         </style>
         <div class="pentagon">
         ss
@@ -33,3 +33,13 @@ class CardDeck extends HTMLElement {
 
 }
 customElements.define('card-deck', CardDeck);
+
+/**
+ * Card Deck Animation Breakdown:
+ * 1) Card moves the right 
+ * 2) Card flips to show the back
+ * 3) Card is tucked in the back of the deck
+ * 4) Bring new card forward
+ * 5) Flip new card
+ * 6) Set new card back down
+ * */ 
