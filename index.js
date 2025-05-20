@@ -11,9 +11,9 @@ function Card(title, author) {
 const c1 = new Card("HEY", "Bob");
 console.log(c1.author);
 
-//index of the card to be displayed
-let selected_card = 0;
-let card_data = [];
+// Initialize the deck of cards
+// All event listeners are transfered here
+let deck = document.querySelector('card-deck');
 
 window.addEventListener("DOMContentLoaded", init);
 
@@ -70,62 +70,16 @@ function save_to_local(data, key){
  * @param {Array} card_data - The array of card data.
  * @returns {void}
  * */
-function card_button_click(){
-    const next_button = document.getElementById("next");
-  if (selected_card+1 > card_data.length-1) {
-    next_button.disabled = true;
-  }
 
- const prev_button = document.getElementById("prev");
-    if (selected_card-1 < 0) {
-    prev_button.disabled = true;
-  }
-  next_button.addEventListener("click", function() {
-    if (selected_card+1 > card_data.length-1) {
-      console.log("No more cards to show");
-      next_button.disabled = true;
-      return
-    }
-    selected_card++;
-    next_button.disabled = selected_card + 1 > card_data.length - 1;
-    prev_button.disabled = false;
-    if (selected_card >= 0 && selected_card < card_data.length) {
-    createCard(card_data[selected_card]);
-    }
-  });
-  prev_button.addEventListener("click", function() {
-    if (selected_card-1 < 0) {
-      console.log("No more cards to show");
-      return
-    }
-    selected_card--;
-    prev_button.disabled = selected_card - 1 < 0;
-    next_button.disabled = false;
-    createCard(card_data[selected_card]);
-  });
-}
 
 async function init() {
   const card_data_all = await fetch_data("./card-data.json"); 
   save_to_local(card_data_all, "card_data");//TODO: Delete this line and use unlocked cards from local storage
   const card_data_get =  fetch_unlocked_cards()
-  card_data = card_data_get
-  createCard(card_data[selected_card]);
-  card_button_click()
-
-
+  deck.card_data = card_data_get
+  deck.createCard(deck.card_data[deck.selected_card]);
+  deck.card_button_click()
+  deck.displayDeck()
 
 }
 
-/**
- * Creates a new frog-card element and sets its data.
- * @param {Object} data - The data to set on the frog-card element. Of type card-data.json
- * @returns {HTMLElement} The created frog-card element.
- */
-function createCard(data) {
-  const container = document.getElementById("frog-card");
-  container.innerHTML = ""; 
-  const card = document.createElement("frog-card");
-  card.data = data;
-  container.append(card)
-}
