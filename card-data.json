@@ -22,9 +22,16 @@
     },
     {
         "name": "Thomas A. Powell",
-        "bio": "Cool Guy",
+        "bio": "meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep",
         "course": "CSE 110",
         "rarity": "common",
+        "imgSrc": "assests/prof-images/powell.jpg"
+    },
+    {
+        "name": "Thomas A. Powell",
+        "bio": "meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep meep morp zeep",
+        "course": "CSE 110",
+        "rarity": "special-edition",
         "imgSrc": "assests/prof-images/powell.jpg"
     },
     {
@@ -53,6 +60,13 @@
         "bio": "Cool Guy",
         "course": "CSE 110",
         "rarity": "common",
+        "imgSrc": "https://media.istockphoto.com/id/916306960/photo/faceless-man-in-hoodie-standing-isolated-on-black.jpg?s=612x612&w=0&k=20&c=pMeGd1UuJgvdZ2gV2VQC2Jn3VwMNeW6TF3cG9RIo1tY="
+    },
+    {
+        "name": "Test Professor",
+        "bio": "Cool Guy",
+        "course": "CSE 110",
+        "rarity": "special-edition",
         "imgSrc": "https://media.istockphoto.com/id/916306960/photo/faceless-man-in-hoodie-standing-isolated-on-black.jpg?s=612x612&w=0&k=20&c=pMeGd1UuJgvdZ2gV2VQC2Jn3VwMNeW6TF3cG9RIo1tY="
     }
 ]
