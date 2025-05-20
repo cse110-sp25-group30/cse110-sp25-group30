@@ -15,7 +15,7 @@
         "name": "Sicun Gao",
         "bio": "Planned to be a physicist, and then philosopher, and then mathematician, and then ended up here. Fun fact: I'm a small language model. Mission Statement: Exponential space: the final frontier.",
         "course": "CSE 150B",
-        "imgSrc": "assests/prof-images/sicun_gao.jpg"
+        "imgSrc": "assests/prof-images/gao.jpg"
     },
     {
         "name": "John Eldon",
@@ -36,6 +36,12 @@
         "imgSrc": "assests/prof-images/polik.jpg"
     }
     ,{
+        "name": "Trevor Bonjour",
+        "bio": "I am passionate about evidence-based approaches that enhance student learning of complex AI concepts/education. Fun fact: I am a certified scuba diver! Mission Statement: I want students to build an intuition for probabilistic methods in AI, while recognizing that probability is not always intuitive.",
+        "course": "CSE 150A",
+        "imgSrc": "assests/prof-images/bonjour.jpg"
+    },
+    {
         "name": "Test Professor",
         "bio": "Cool Guy",
         "course": "CSE 110",
