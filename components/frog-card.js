@@ -89,23 +89,31 @@ class FrogCard extends HTMLElement {
 			z-index: 1;
 		}
 
+		.back-name {
+			position: absolute;
+			top: 23%;
+			z-index: 2;
+			color: #003057; /* ucsd blue */
+			font-size: 80%;
+		}
+
 		.bio {
 			position: absolute;
-			top: 20%;
+			top: 32%;
 			z-index: 2;
-			padding: 10%;
 			color: #f2a900; /* ucsd yellow */
 			text-align: center;
-			font-size: 100%;
+			font-size: 70%;
+			max-width: 35%;
 		}
 
 		.course {
 			position: absolute;
-			bottom: 5%;
+			top: 16%;
 			z-index: 2;
-			color: #003057; /* ucsd blue */
+			color: #f2a900; /* ucsd yellow */
 			text-align: center;
-			font-size: 100%;
+			font-size: 80%;
 		}
 		`;
 
@@ -134,7 +142,8 @@ class FrogCard extends HTMLElement {
 
 				<!-- BACK -->
 				<div class="flip-card-back">
-					<img class="back-bg" src="./assests/placeholder_back.png" alt="background">
+					<img class="back-bg" src="./assests/${data.rarity}_back.png" alt="background">
+					<p class="back-name">${data.name}</p>
 					<p class="bio">${data.bio}</p>
 					<p class="course">${data.course}</p>
 				</div>
