@@ -14,6 +14,7 @@
 
 ### Sprint Start Meetings
 - [Meeting 1 - May 12th, 2025](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0512-0519/051225meeting.md)
+- [Meeting 2 - May 19th, 2025](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/InvertedVoice-patch-1/admin/meetings/051925-meeting2.md)
 
 ### Sprint Review Meetings
 - [Sprint 1 Review](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/InvertedVoice-patch-2/admin/meetings/0512-0519/051825-sprint-1-review.md)
