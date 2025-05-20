@@ -42,6 +42,30 @@
         "imgSrc": "assests/prof-images/bonjour.jpg"
     },
     {
+        "name": "Amy Ousterhout",
+        "bio": " An Assistant Professor in Computer Science and Engineering. Fun Fact: Amy has backpacked the 211-mile John Muir Trail. Mission Statement: Operating systems are composed of really elegant abstractions!",
+        "course": "CSE 120",
+        "imgSrc": "assests/prof-images/ouster.jpg"
+    },
+    {
+        "name": "Russel Impagliazzo",
+        "bio": "Got a Mathematics PhD from UC Berkely. 1995 paper presented the possible consequences of P vs. NP in terms of ``five worlds'' that could result, ranging from Algorithmica to Cryptomania Fun Fact: performs improv comedy and is known for writing song parodies, often about the academic life.",
+        "course": "CSE 101",
+        "imgSrc": "assests/prof-images/impag.jpg"
+    },
+    {
+        "name": "Ben Ochoa",
+        "bio": " Received the B.S., M.S., and Ph.D. degrees in electrical engineering in 1999, 2003, and 2007. Fun fact:  All of his degrees are from UC San Diego, completing his degrees as a part-time student while working full-time. Mission Statement: Computer vision is far more than deep learning methods where images or videos are used as input.",
+        "course": "CSE 166",
+        "imgSrc": "assests/prof-images/ochoa.jpg"
+    },
+    {
+        "name": "Earlence Fernandes",
+        "bio": "Received two best paper awards,  NSF CAREER award, and research awards from Meta, Amazon and Google. Fun Fact:  hacked door locks, Stop signs and bicycles. The Stop sign is now an artifact at the Science Museum in London.  Mission Statement: : build secure computer systems and help students learn the security mindset.",
+        "course": "CSE 127",
+        "imgSrc": "https://media.istockphoto.com/id/916306960/photo/faceless-man-in-hoodie-standing-isolated-on-black.jpg?s=612x612&w=0&k=20&c=pMeGd1UuJgvdZ2gV2VQC2Jn3VwMNeW6TF3cG9RIo1tY="
+    },
+    {
         "name": "Test Professor",
         "bio": "Cool Guy",
         "course": "CSE 110",
