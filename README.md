@@ -1,4 +1,4 @@
-﻿# cse110-sp25-group30
+﻿# cse110-sp25-group30 (Team 30 aka Nerdy-Thirty)
 
 ## Important Pages:
 1. [Team File](admin/team.md)
