@@ -118,7 +118,7 @@ class FrogCard extends HTMLElement {
 	}
 
 	set data(data) {
-		if (!data || !data.imgSrc || !data.name || !data.bio || !data.course) return;
+		if (!data || !data.imgSrc || !data.rarity || !data.name || !data.bio || !data.course) return;
 
 		const card = this.shadowRoot.querySelector('card');
 
@@ -128,7 +128,7 @@ class FrogCard extends HTMLElement {
 				<!-- FRONT -->
 				<div class="flip-card-front">
 					<img class="face" src="${data.imgSrc}" alt="${data.name} image">
-					<img class="card-fg" src="./assests/placeholder_front.png" alt="foreground layer">
+					<img class="card-fg" src="./assests/${data.rarity}_front.png" alt="foreground layer">
 					<p class="front-name">${data.name}</p>
 				</div>
 
