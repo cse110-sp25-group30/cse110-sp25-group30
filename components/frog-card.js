@@ -99,12 +99,12 @@ class FrogCard extends HTMLElement {
 
 		.bio {
 			position: absolute;
-			top: 32%;
+			top: 30.5%;
 			z-index: 2;
 			color: #f2a900; /* ucsd yellow */
 			text-align: center;
-			font-size: 70%;
-			max-width: 35%;
+			font-size: 65%;
+			max-width: 40%;
 		}
 
 		.course {
