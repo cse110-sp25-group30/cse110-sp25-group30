@@ -69,44 +69,6 @@ class CardDeck extends HTMLElement {
           width: 100%;
           height: 100%;
         }
-
-        @keyframes slideOutRightAndFlip {
-          0% {
-            transform: translateX(0) rotateY(0);
-            opacity: 1;
-          }
-          50% {
-            transform: translateX(50%) rotateY(90deg);
-            opacity: 0.5;
-          }
-          100% {
-            transform: translateX(100%) rotateY(180deg);
-            opacity: 0;
-          }
-        }
-
-        @keyframes slideInLeftAndFlip {
-          0% {
-            transform: translateX(-100%) rotateY(180deg);
-            opacity: 0;
-          }
-          50% {
-            transform: translateX(-50%) rotateY(90deg);
-            opacity: 0.5;
-          }
-          100% {
-            transform: translateX(0) rotateY(0);
-            opacity: 1;
-          }
-        }
-
-        .anim-slide-out {
-          animation: slideOutRightAndFlip 0.6s ease forwards;
-        }
-
-        .anim-slide-in {
-          animation: slideInLeftAndFlip 0.6s ease forwards;
-        }
       </style>
 
       <div class="deck-wrapper">
