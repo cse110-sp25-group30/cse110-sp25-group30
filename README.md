@@ -3,6 +3,12 @@
 ## Important Pages:
 1. [Team File](admin/team.md)
 
+### Videos
+Status Video 1:
+- [Youtube Link](https://youtu.be/UU8ilUeQxk4)
+- [Repo Link](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/InvertedVoice-patch-2/admin/videos/statusvideo1.mp4)
+
+
 ## Documentation
 
 ### Rules
