@@ -7,8 +7,14 @@
     },
     {
         "name": "Test Professor",
-        "bio": "Cool Guy",
-        "course": "CSE 110",
+        "bio": "Testing Bio",
+        "course": "CSE 0",
         "imgSrc": "https://media.istockphoto.com/id/916306960/photo/faceless-man-in-hoodie-standing-isolated-on-black.jpg?s=612x612&w=0&k=20&c=pMeGd1UuJgvdZ2gV2VQC2Jn3VwMNeW6TF3cG9RIo1tY="
+    },
+    {
+        "name": "Nerdy Thirty",
+        "bio": "Team 30 for CSE110",
+        "course": "CSE 30",
+        "imgSrc": "admin/branding/cse_110_logo.jpg"
     }
 ]
