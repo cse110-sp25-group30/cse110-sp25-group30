@@ -66,6 +66,18 @@
         "imgSrc": "https://media.istockphoto.com/id/916306960/photo/faceless-man-in-hoodie-standing-isolated-on-black.jpg?s=612x612&w=0&k=20&c=pMeGd1UuJgvdZ2gV2VQC2Jn3VwMNeW6TF3cG9RIo1tY="
     },
     {
+        "name": "Bryan Chin",
+        "bio": "I worked for 30+ yrs in industry designing microprocessors for the MIPS, Arm, x86 and PowerPC architectures. Fun fact: I love to play the ukulele and lead a meetup group of likeminded strummers. Mission Statement: I want students to explore how software and hardware work together to solve problems while strengthening their teamwork/communication skills",
+        "course": "CSE 30",
+        "imgSrc": "assests/prof-images/chin.jpg"
+    },
+     {
+        "name": "Ryan Kastner",
+        "bio": "Cool Guy",
+        "course": "CSE 110",
+        "imgSrc": "assests/prof-images/kastner.jpg"
+    },
+     {
         "name": "Test Professor",
         "bio": "Cool Guy",
         "course": "CSE 110",
