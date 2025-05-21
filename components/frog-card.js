@@ -75,7 +75,7 @@ class FrogCard extends HTMLElement {
 			position: absolute;
 			bottom: 6%;
 			z-index: 3;
-			color: #003057; /* ucsd blue */
+			color: var(--name-color);
 			font-size: 100%;
 		}
 
@@ -93,7 +93,7 @@ class FrogCard extends HTMLElement {
 			position: absolute;
 			top: 23%;
 			z-index: 2;
-			color: #003057; /* ucsd blue */
+			color: var(--name-color);
 			font-size: 80%;
 		}
 
@@ -101,7 +101,7 @@ class FrogCard extends HTMLElement {
 			position: absolute;
 			top: 30.5%;
 			z-index: 2;
-			color: #f2a900; /* ucsd yellow */
+			color: var(--text-color);
 			text-align: center;
 			font-size: 65%;
 			max-width: 40%;
@@ -111,7 +111,7 @@ class FrogCard extends HTMLElement {
 			position: absolute;
 			top: 16%;
 			z-index: 2;
-			color: #f2a900; /* ucsd yellow */
+			color: var(--text-color);
 			text-align: center;
 			font-size: 80%;
 		}
@@ -129,6 +129,14 @@ class FrogCard extends HTMLElement {
 		if (!data || !data.imgSrc || !data.rarity || !data.name || !data.bio || !data.course) return;
 
 		const card = this.shadowRoot.querySelector('card');
+
+		if (data.rarity === "legendary") {
+			this.style.setProperty('--name-color', '#FFFFFF'); // ucsd blue
+			this.style.setProperty('--text-color', '#003057'); // ucsd blue
+		} else {
+			this.style.setProperty('--name-color', '#003057'); // ucsd blue
+			this.style.setProperty('--text-color', '#f2a900'); // ucsd yellow
+		}
 
 		card.innerHTML = `
 		<div class="flip-card">
