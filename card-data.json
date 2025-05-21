@@ -1,49 +1,49 @@
 [
 {
         "name": "Thomas A. Powell",
-        "bio": "Long time internet and web focused software engineer. Collector of retro games, Star Wars nerd, soccer fan, occasional joker. Fun Fact: Early Internet Semi-Famous and met Hollywood Stars. Mission Statement: Guiding students in becoming more well rounded software engineers equipped with the technical skills as well as soft skills.",
+        "bio": "Long time internet and web focused software engineer. Collector of retro games, Star Wars nerd, soccer fan, occasional joker. Fun Fact: Early Internet Semi-Famous and met Hollywood Stars. Course Takeaway: Guiding students in becoming more well rounded software engineers equipped with the technical skills as well as soft skills.",
         "course": "CSE 110",
         "imgSrc": "assests/prof-images/powell.jpg"
     },
     {
         "name": "Niema Moshiri",
-        "bio": "I grew up in Chula Vista and have a Bioengineering degree. Fun fact: I have 2000+ games on steam. Mission Statement: we want you to be able to consider different data structures critically to choose the most efficient ones for the problem you're trying to solve ",
+        "bio": "I grew up in Chula Vista and have a Bioengineering degree. Fun fact: I have 2000+ games on steam. Course Takeaway: we want you to be able to consider different data structures critically to choose the most efficient ones for the problem you're trying to solve ",
         "course": "CSE 100",
         "imgSrc": "assests/prof-images/niema.jpg"
     },
     {
         "name": "Sicun Gao",
-        "bio": "Planned to be a physicist, and then philosopher, and then mathematician, and then ended up here. Fun fact: I'm a small language model. Mission Statement: Exponential space: the final frontier.",
+        "bio": "Planned to be a physicist, and then philosopher, and then mathematician, and then ended up here. Fun fact: I'm a small language model. Course Takeaway: Exponential space: the final frontier.",
         "course": "CSE 150B",
         "imgSrc": "assests/prof-images/gao.jpg"
     },
     {
         "name": "John Eldon",
-        "bio": "Got a Doctorate to UCLA, with 40+ years experience. Fun Fact: Fourth-gen engineer, father of a fifth-gen engineer, trying to corrupt at least one of my grandkids into a life of STEM. Mission Statement: seek out opportunities in life, take advantage of the good ones when they come along",
+        "bio": "Got a Doctorate to UCLA, with 40+ years experience. Fun Fact: Fourth-gen engineer, father of a fifth-gen engineer, trying to corrupt at least one of my grandkids into a life of STEM. Course Takeaway: seek out opportunities in life, take advantage of the good ones when they come along",
         "course": "CSE 140",
         "imgSrc": "assests/prof-images/eldon.jpg"
     }
     ,{
         "name": "Julian McAuley",
-        "bio": "In my spare I like triathlon, baroque keyboard, and being a girl dad. Fun fact: I wear running clothes at all times; like an Oblivion character. Mission Statement: I hope students learn that machine learning can still be used to do something fun!",
+        "bio": "In my spare I like triathlon, baroque keyboard, and being a girl dad. Fun fact: I wear running clothes at all times; like an Oblivion character. Course Takeaway: I hope students learn that machine learning can still be used to do something fun!",
         "course": "CSE 153",
         "imgSrc": "assests/prof-images/mculey.jpg"
     }
     ,{
         "name": "Nadia Polikarpova",
-        "bio": "Completed my PhD in 2014 at ETH Zurich (Switzerland). Fun Fact: I was born in a city and a country that don't exist anymore. (Leningrad, USSR). Mission Statement: Don't repeat yourself! (Also, Pattern matching :))",
+        "bio": "Completed my PhD in 2014 at ETH Zurich (Switzerland). Fun Fact: I was born in a city and a country that don't exist anymore. (Leningrad, USSR). Course Takeaway: Don't repeat yourself! (Also, Pattern matching :))",
         "course": "CSE 130",
         "imgSrc": "assests/prof-images/polik.jpg"
     }
     ,{
         "name": "Trevor Bonjour",
-        "bio": "I am passionate about evidence-based approaches that enhance student learning of complex AI concepts/education. Fun fact: I am a certified scuba diver! Mission Statement: I want students to build an intuition for probabilistic methods in AI, while recognizing that probability is not always intuitive.",
+        "bio": "I am passionate about evidence-based approaches that enhance student learning of complex AI concepts/education. Fun fact: I am a certified scuba diver! Course Takeaway: I want students to build an intuition for probabilistic methods in AI, while recognizing that probability is not always intuitive.",
         "course": "CSE 150A",
         "imgSrc": "assests/prof-images/bonjour.jpg"
     },
     {
         "name": "Amy Ousterhout",
-        "bio": " An Assistant Professor in Computer Science and Engineering. Fun Fact: Amy has backpacked the 211-mile John Muir Trail. Mission Statement: Operating systems are composed of really elegant abstractions!",
+        "bio": " An Assistant Professor in Computer Science and Engineering. Fun Fact: Amy has backpacked the 211-mile John Muir Trail. Course Takeaway: Operating systems are composed of really elegant abstractions!",
         "course": "CSE 120",
         "imgSrc": "assests/prof-images/ouster.jpg"
     },
@@ -55,19 +55,19 @@
     },
     {
         "name": "Ben Ochoa",
-        "bio": " Received the B.S., M.S., and Ph.D. degrees in electrical engineering in 1999, 2003, and 2007. Fun fact:  All of his degrees are from UC San Diego, completing his degrees as a part-time student while working full-time. Mission Statement: Computer vision is far more than deep learning methods where images or videos are used as input.",
+        "bio": " Received the B.S., M.S., and Ph.D. degrees in electrical engineering in 1999, 2003, and 2007. Fun fact:  All of his degrees are from UC San Diego, completing his degrees as a part-time student while working full-time. Course Takeaway: Computer vision is far more than deep learning methods where images or videos are used as input.",
         "course": "CSE 166",
         "imgSrc": "assests/prof-images/ochoa.jpg"
     },
     {
         "name": "Earlence Fernandes",
-        "bio": "Received two best paper awards,  NSF CAREER award, and research awards from Meta, Amazon and Google. Fun Fact:  hacked door locks, Stop signs and bicycles. The Stop sign is now an artifact at the Science Museum in London.  Mission Statement: : build secure computer systems and help students learn the security mindset.",
+        "bio": "Received two best paper awards,  NSF CAREER award, and research awards from Meta, Amazon and Google. Fun Fact:  hacked door locks, Stop signs and bicycles. The Stop sign is now an artifact at the Science Museum in London.  Course Takeaway: : build secure computer systems and help students learn the security mindset.",
         "course": "CSE 127",
         "imgSrc": "https://media.istockphoto.com/id/916306960/photo/faceless-man-in-hoodie-standing-isolated-on-black.jpg?s=612x612&w=0&k=20&c=pMeGd1UuJgvdZ2gV2VQC2Jn3VwMNeW6TF3cG9RIo1tY="
     },
     {
         "name": "Bryan Chin",
-        "bio": "I worked for 30+ yrs in industry designing microprocessors for the MIPS, Arm, x86 and PowerPC architectures. Fun fact: I love to play the ukulele and lead a meetup group of likeminded strummers. Mission Statement: I want students to explore how software and hardware work together to solve problems while strengthening their teamwork/communication skills",
+        "bio": "I worked for 30+ yrs in industry designing microprocessors for the MIPS, Arm, x86 and PowerPC architectures. Fun fact: I love to play the ukulele and lead a meetup group of likeminded strummers. Course Takeaway: I want students to explore how software and hardware work together to solve problems while strengthening their teamwork/communication skills",
         "course": "CSE 30",
         "imgSrc": "assests/prof-images/chin.jpg"
     },
@@ -78,6 +78,12 @@
         "imgSrc": "assests/prof-images/kastner.jpg"
     },
      {
+        "name": "Miles Jones",
+        "bio": "I am currently working on research that combines enumerative combinatorics and evolutionary approximation algorithms. I spend most of my free time playing with my kids (3 and 5), laughing with my friends&family, cooking, bird watching, doing math. Course Takeaway: I want you to gain confidence in general problem solving strategies that you can use in a variety of applications.",
+        "course": "CSE 21",
+        "imgSrc": "assests/prof-images/jones.jpg"
+    },
+         {
         "name": "Test Professor",
         "bio": "Cool Guy",
         "course": "CSE 110",
