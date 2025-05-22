@@ -84,3 +84,8 @@ button[disabled] {
     color: var(--secondary-button-text-color);
     cursor: not-allowed;
 }
+
+#clicker_comp{
+    width: 200px;
+    height: 200px;
+}
