@@ -131,7 +131,7 @@ class FrogCard extends HTMLElement {
 		const card = this.shadowRoot.querySelector('card');
 
 		if (data.rarity === "legendary") {
-			this.style.setProperty('--name-color', '#FFFFFF'); // ucsd blue
+			this.style.setProperty('--name-color', '#003057'); // ucsd blue
 			this.style.setProperty('--text-color', '#003057'); // ucsd blue
 		} else {
 			this.style.setProperty('--name-color', '#003057'); // ucsd blue
