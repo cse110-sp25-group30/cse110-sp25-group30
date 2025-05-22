@@ -1,26 +1,21 @@
 name: Generate JSDoc
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
   push:
-    branches: ['**']         
-
+    branches: ['**']
+    # Run only when real source files change—not for docs-only commits
 
 jobs:
   generate-docs:
-    if: github.event_name == 'push' || github.event.action != 'synchronize'
-
     permissions:
       contents: write
-      pull-requests: write
-      actions: write         
+      pull-requests: write     # optional; used only if you add a PR comment
+      actions: write           # lower-case; lets PAT trigger other workflows
 
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-        with: { ref: ${{ github.head_ref || github.ref }} }
 
       - uses: actions/setup-node@v4
         with: { node-version: 20 }
@@ -29,7 +24,7 @@ jobs:
       - run: npm run docs
 
       - name: Commit & push docs
-        env: { GH_TOKEN: ${{ secrets.PAT }} }
+        env: { GH_TOKEN: ${{ secrets.PAT }} }   # or drop this block and use GITHUB_TOKEN
         run: |
           git config --global user.name  "aFarahbakhsh1383"
           git config --global user.email "aFarahbakhsh1383@users.noreply.github.com"
@@ -40,5 +35,5 @@ jobs:
           else
             git commit -m "Update JSDoc documentation"
             git push https://aFarahbakhsh1383:${GH_TOKEN}@github.com/${{ github.repository }} \
-                     HEAD:${{ github.head_ref || github.ref_name }}
+                     HEAD:${{ github.ref_name }}
           fi
