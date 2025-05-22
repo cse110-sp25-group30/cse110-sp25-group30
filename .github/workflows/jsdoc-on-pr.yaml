@@ -41,5 +41,5 @@ jobs:
             git commit -m "Update JSDoc documentation"
             echo "Token User:"
             curl -s -H "Authorization: token ${GH_TOKEN}" https://api.github.com/user
-            git push origin HEAD:${{ github.head_ref }}
+            git push https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }} HEAD:${{ github.head_ref }}
           fi
