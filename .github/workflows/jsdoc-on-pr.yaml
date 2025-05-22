@@ -1,37 +1,35 @@
-name: Generate JSDoc on Pull Request
+name: Generate JSDoc
 
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+  push:
+    branches: ['**']         
+
 
 jobs:
   generate-docs:
+    if: github.event_name == 'push' || github.event.action != 'synchronize'
+
     permissions:
       contents: write
       pull-requests: write
-      Actions: Write
+      actions: write         
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout PR branch
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
+      - uses: actions/checkout@v4
+        with: { ref: ${{ github.head_ref || github.ref }} }
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
 
-      - name: Install dependencies
-        run: npm ci
+      - run: npm ci
+      - run: npm run docs
 
-      - name: Generate JSDoc
-        run: npm run docs
-     
-      - name: Commit and push updated docs
-        env:
-          GH_TOKEN: ${{ secrets.PAT }}
+      - name: Commit & push docs
+        env: { GH_TOKEN: ${{ secrets.PAT }} }
         run: |
           git config --global user.name  "aFarahbakhsh1383"
           git config --global user.email "aFarahbakhsh1383@users.noreply.github.com"
@@ -42,5 +40,5 @@ jobs:
           else
             git commit -m "Update JSDoc documentation"
             git push https://aFarahbakhsh1383:${GH_TOKEN}@github.com/${{ github.repository }} \
-                    HEAD:${{ github.head_ref }}
+                     HEAD:${{ github.head_ref || github.ref_name }}
           fi
