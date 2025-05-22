@@ -8,6 +8,8 @@ Status Video 1:
 - [Youtube Link](https://youtu.be/UU8ilUeQxk4)
 - [Repo Link](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/InvertedVoice-patch-2/admin/videos/statusvideo1.mp4)
 
+### Codacy
+[Codacy Link](https://app.codacy.com/gh/cse110-sp25-group30/cse110-sp25-group30/dashboard)
 
 ## Documentation
 
