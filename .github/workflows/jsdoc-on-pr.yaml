@@ -1,40 +1,31 @@
-name: Generate JSDoc
-
-on:
-  push:
-    branches: ['**']
-
-jobs:
-  generate-docs:
-    permissions:
-      contents: write
-      pull-requests: write   
-      actions: write        
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - run: npm ci
-      - run: npm run docs
-
-      - name: Commit and push docs
+      - name: Push docs and prune old docs branches
         env:
-          GH_TOKEN: ${{ secrets.PAT }}   
+          # name of the branch that will hold the docs for this source branch
+          DOCS_BRANCH: docs/${{ github.ref_name }}
         run: |
-          git config --global user.name  "aFarahbakhsh1383"
-          git config --global user.email "aFarahbakhsh1383@users.noreply.github.com"
+          set -e
 
-          git add -f docs
+          git config --global user.name  "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # ─── create/update the docs branch ─────────────────────────────
+          git switch --orphan "$DOCS_BRANCH"
+          git rm -r --cached . >/dev/null 2>&1 || true    # remove everything from index
+          git add -f docs                                 # keep only docs
+
           if git diff --cached --quiet; then
-            echo "No JSDoc changes to commit"
+            echo "Docs unchanged - skipping push"
           else
-            git commit -m "Update JSDoc documentation"
-            git push https://aFarahbakhsh1383:${GH_TOKEN}@github.com/${{ github.repository }} \
-                     HEAD:${{ github.ref_name }}
+            git commit -m "Update JSDoc documentation for $DOCS_BRANCH"
+            git push --force origin "$DOCS_BRANCH"
           fi
+
+          # ─── prune ALL other docs/* branches ──────────────────────────
+          echo "Cleaning up old docs branches…"
+          for ref in $(git ls-remote --heads origin "refs/heads/docs/*" | awk '{print $2}'); do
+            branch=${ref#refs/heads/}
+            if [[ "$branch" != "$DOCS_BRANCH" ]]; then
+              echo "Deleting $branch"
+              git push origin --delete "$branch"
+            fi
+          done
