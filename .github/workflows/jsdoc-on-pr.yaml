@@ -1,24 +1,52 @@
-name: Generate JSDoc on Pull Request
+name: Generate JSDoc
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  push:
+    branches: ['**']          # run on every branch
 
 jobs:
   generate-docs:
+    permissions:
+      contents: write         # allow GITHUB_TOKEN to push
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 20
 
-      - name: Install dependencies
-        run: npm ci
+      - run: npm ci
+      - run: npm run docs      # output goes to ./docs
 
-      - name: Generate JSDoc
-        run: npm run docs
+      - name: Push docs and prune old docs branches
+        env:
+          DOCS_BRANCH: "docs/${{ github.ref_name }}"   # docs/<source-branch>
+        run: |
+          set -e
+
+          git config --global user.name  "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # ── create / update docs branch ───────────────────────────────
+          git switch --orphan "$DOCS_BRANCH"
+          git rm -r --cached . >/dev/null 2>&1 || true   # clear index
+          git add -f docs                                # keep only docs
+
+          if git diff --cached --quiet; then
+            echo "Docs unchanged - skipping push"
+          else
+            git commit -m "Update JSDoc documentation for $DOCS_BRANCH"
+            git push --force origin "$DOCS_BRANCH"
+          fi
+
+          # ── prune every other docs/* branch ───────────────────────────
+          echo "Cleaning up old docs branches…"
+          for ref in $(git ls-remote --heads origin "refs/heads/docs/*" | awk '{print $2}'); do
+            branch=${ref#refs/heads/}
+            if [[ "$branch" != "$DOCS_BRANCH" ]]; then
+              echo "Deleting $branch"
+              git push origin --delete "$branch"
+            fi
+          done
