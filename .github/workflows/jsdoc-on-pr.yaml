@@ -29,8 +29,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.PAT }}
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "aFarahbakhsh1383"
+          git config --global user.email "aFarahbakhsh1383@users.noreply.github.com"
 
           git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
           
