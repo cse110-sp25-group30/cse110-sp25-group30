@@ -1,24 +1,40 @@
-name: Generate JSDoc on Pull Request
+name: Generate JSDoc
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  push:
+    branches: ['**']
 
 jobs:
   generate-docs:
+    permissions:
+      contents: write          # lets GITHUB_TOKEN push
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
 
-      - name: Install dependencies
-        run: npm ci
+      - run: npm ci
+      - run: npm run docs        # output goes to ./docs
 
-      - name: Generate JSDoc
-        run: npm run docs
+      - name: Force-push docs branch
+        env:
+          DOCS_BRANCH: docs      # ← always “docs”
+        run: |
+          set -e
+          git config --global user.name  "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # create / reset the docs branch as an orphan with only the docs folder
+          git switch --orphan "$DOCS_BRANCH"
+          git rm -r --cached . >/dev/null 2>&1 || true   # clear index
+          git add -f docs                                # keep only docs
+
+          if git diff --cached --quiet; then
+            echo "Docs unchanged - skipping push"
+          else
+            git commit -m "Update JSDoc documentation"
+            git push --force origin "$DOCS_BRANCH"
+          fi
