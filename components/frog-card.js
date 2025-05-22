@@ -75,7 +75,7 @@ class FrogCard extends HTMLElement {
 			position: absolute;
 			bottom: 6%;
 			z-index: 3;
-			color: var(--name-color);
+			color: #003057; /* ucsd blue */
 			font-size: 100%;
 		}
 
@@ -93,7 +93,7 @@ class FrogCard extends HTMLElement {
 			position: absolute;
 			top: 23%;
 			z-index: 2;
-			color: var(--name-color);
+			color: #003057; /* ucsd blue */
 			font-size: 80%;
 		}
 
@@ -131,10 +131,8 @@ class FrogCard extends HTMLElement {
 		const card = this.shadowRoot.querySelector('card');
 
 		if (data.rarity === "legendary") {
-			this.style.setProperty('--name-color', '#003057'); // ucsd blue
 			this.style.setProperty('--text-color', '#003057'); // ucsd blue
 		} else {
-			this.style.setProperty('--name-color', '#003057'); // ucsd blue
 			this.style.setProperty('--text-color', '#f2a900'); // ucsd yellow
 		}
 
