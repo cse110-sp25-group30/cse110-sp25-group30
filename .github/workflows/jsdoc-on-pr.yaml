@@ -32,14 +32,11 @@ jobs:
           git config --global user.name "aFarahbakhsh1383"
           git config --global user.email "aFarahbakhsh1383@users.noreply.github.com"
 
-          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
-          
           git add -f docs
           if git diff --cached --quiet; then
             echo "No JSDoc changes to commit"
           else
             git commit -m "Update JSDoc documentation"
-            echo "Token User:"
-            curl -s -H "Authorization: token ${GH_TOKEN}" https://api.github.com/user
             git push https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }} HEAD:${{ github.head_ref }}
           fi
+
