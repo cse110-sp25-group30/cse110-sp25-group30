@@ -24,7 +24,7 @@ jobs:
 
       - name: Generate JSDoc
         run: npm run docs
-
+     
       - name: Commit and push updated docs
         env:
           GH_TOKEN: ${{ secrets.PAT }}
