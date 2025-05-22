@@ -180,6 +180,7 @@ function createCard(data) {
  * @param {number} points number to increase or decrease user points by
  * @return {boolean} returns true if successful else false. If user has too few points its false
  */
+/* eslint-disable-next-line no-unused-vars */
 function update_points(points){
   const user_data = fetch_user_info()
   if (!user_data || typeof user_data.points !== "number" || typeof points !=="number") {
