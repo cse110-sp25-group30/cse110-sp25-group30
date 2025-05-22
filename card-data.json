@@ -63,7 +63,7 @@
         "name": "Earlence Fernandes",
         "bio": "Received two best paper awards,  NSF CAREER award, and research awards from Meta, Amazon and Google. Fun Fact:  hacked door locks, Stop signs and bicycles. The Stop sign is now an artifact at the Science Museum in London.  Course Takeaway: : build secure computer systems and help students learn the security mindset.",
         "course": "CSE 127",
-        "imgSrc": "https://media.istockphoto.com/id/916306960/photo/faceless-man-in-hoodie-standing-isolated-on-black.jpg?s=612x612&w=0&k=20&c=pMeGd1UuJgvdZ2gV2VQC2Jn3VwMNeW6TF3cG9RIo1tY="
+        "imgSrc": "assests/prof-images/fern.jpg"
     },
     {
         "name": "Bryan Chin",
@@ -81,13 +81,47 @@
         "name": "Miles Jones",
         "bio": "I am currently working on research that combines enumerative combinatorics and evolutionary approximation algorithms. I spend most of my free time playing with my kids (3 and 5), laughing with my friends&family, cooking, bird watching, doing math. Course Takeaway: I want you to gain confidence in general problem solving strategies that you can use in a variety of applications.",
         "course": "CSE 21",
-        "imgSrc": "assests/prof-images/jones.jpg"
+        "imgSrc": "assests/prof-images/miles.jpg"
     },
-         {
-        "name": "Test Professor",
-        "bio": "Cool Guy",
-        "course": "CSE 110",
-        "imgSrc": "https://media.istockphoto.com/id/916306960/photo/faceless-man-in-hoodie-standing-isolated-on-black.jpg?s=612x612&w=0&k=20&c=pMeGd1UuJgvdZ2gV2VQC2Jn3VwMNeW6TF3cG9RIo1tY="
+    {
+        "name": "Mia Minnes",
+        "bio": "Born in Isreal, Moved to Vancouver, Canada. Graduated from Queen University and got her masters at COrnell University. Fun Fact:I can write upside down and backwards. Course Takeaway:a good dose of technical skepticism.",
+        "course": "CSE 20",
+        "imgSrc": "assests/prof-images/minnes.jpg"
+    },
+    {
+        "name": "Paul Cao",
+        "bio": "Before UCSD, I was an associate professor of C.S. at Ashland University (OH). Fun fact: my research interests focus on mobile data analysis, Computer Science Education, and machine learning. Course Takeaway: Use and implementation of basic data structures including linked lists, stacks, and queues.",
+        "course": "CSE 12",
+        "imgSrc": "assests/prof-images/cao.jpg"
+    }
+    ,
+    {
+        "name": "Daniele Micciancio",
+        "bio": "I am a professor in the Computer Science & Engineering department at the University of California, San Diego. Fun Fact: I am a member of the Cryptography and Security group and the Theory of Computation group. Course Takeaway: Read my book Complexity of lattice problems: a cryptographic perspective.",
+        "course": "CSE 15",
+        "imgSrc": "assests/prof-images/micc.jpg"
+    }
+    ,
+    {
+        "name": "Edwin Solares",
+        "bio": "Lecturer in CSE and the Halıcıoğlu Data Science Institute. Fun fact: My research involves leveraging AI and Bioinformatics for securing a sustainable future in the face of our rapidly changing climate. Course Takeway: how computer systems execute programs, store information, and communicate.",
+        "course": "CSE 29",
+        "imgSrc": "assests/prof-images/solares.jpg"
+    }
+    ,
+    {
+        "name": "Yufei Ding",
+        "bio": "She holds a Ph.D. in Computer Science from North Carolina State University and a B.S. in Physics from the University of Science and Technology of China. Fun Fact: Recipient of multiple awards including the NSF CAREER Award. Course Takeaway: Try to learn something about everything and everything about something",
+        "course": "CSE 141",
+        "imgSrc": "assests/prof-images/ding.jpg"
+    }
+    ,
+    {
+        "name": "Leo Porter",
+        "bio": "Professor of Computer Science at UC San Diego interested in computer science education research and computer architecture. Fun fact: I co-founded the Computing Education Research Laboratory dedicated to better understanding how students learn computing. Course Takeaway: ",
+        "course": "CSE 8A",
+        "imgSrc": "assests/prof-images/porter.jpg"
     }
     
 ]
