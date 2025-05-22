@@ -6,23 +6,50 @@ class SiteHeader extends HTMLElement {
         this.render();
     }
     
-
-    
     render() {
         this.shadowRoot.innerHTML = `
         <style>
-            header {
-            background-color: var(--background-color);
-            color: white;
-            padding: 10px;
-            text-align: center;
-            margin:-8px;
-            margin-bottom: 20px;
+            :host {
+                display: block;
+            }
+
+            nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: black;
+                color: white;
+                padding: 10px 20px;
+                font-family: sans-serif;
+            }
+
+            .nav-left {
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+
+            .nav-right button {
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1rem;
+                margin-left: 15px;
+                cursor: pointer;
+            }
+
+            .nav-right button:hover {
+                text-decoration: underline;
             }
         </style>
-        <header>
-            <h1>Nerdy Thirty</h1>
-        </header>
+
+        <nav>
+            <div class="nav-left">Nerdy Thirty</div>
+            <div class="nav-right">
+                <button>Home</button>
+                <button>About</button>
+                <button>Contact</button>
+            </div>
+        </nav>
         `;
     }
 
