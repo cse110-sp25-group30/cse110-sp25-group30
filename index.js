@@ -11,6 +11,16 @@ function Card(title, author) {
 const c1 = new Card("HEY", "Bob");
 console.log(c1.author);
 
+/**
+ * user data
+ * @constructor
+ * @param {number} points represents # of points earned by user
+ */
+function UserInfo(points){
+  this.points = points
+  this.life_time_points = points
+}
+
 // index of the card to be displayed
 let selected_card = 0;
 let card_data = [];
@@ -18,7 +28,7 @@ let card_data = [];
 window.addEventListener("DOMContentLoaded", init);
 
 /**
- * Fetches data from the JSON file and returns it as a Promise.
+ * @description Fetches data from the JSON file and returns it as a Promise.
  * @param {string} path - The path to the JSON file relative to index.html.
  * @returns {Promise} A promise that resolves to the data from the JSON file.
  * @throws {Error} If the fetch operation fails.
@@ -39,25 +49,41 @@ async function fetch_data(path) {
 
 // TODO: Later we have to just fetch the unlocked cards, for now fetches all cards.
 /**
- * Fetches unlocked cards from local storage.
+ * @description Fetches unlocked cards from local storage.
+ * Should return at least one card. default_card is returned now.
+ * @param {Object} default_card An object returned from card-data.json.
  * @returns {Array} An array of unlocked cards from local storage.
  */
-function fetch_unlocked_cards() {
+function fetch_unlocked_cards(default_card) {
   const data = localStorage.getItem("card_data");
   if (!data) {
-    return [];
+    return [default_card];
   }
   const parsed_data = JSON.parse(data);
   return parsed_data;
 }
 
 /**
- * Saves data to local storage.
+ * 
+ * @returns {UserInfo} returns the user_Data saved to local storage
+ */
+
+export function fetch_user_info(){
+  const data = localStorage.getItem("user_data");
+  if (!data) {
+    return undefined;
+  }
+  const parsed_data = JSON.parse(data);
+  return parsed_data;
+}
+
+/**
+ * @description Saves data to local storage.
  * @param {Object} data - The data to save to local storage.
  * @param {string} key - The key under which to save the data.
  * @returns {void}
  */
-function save_to_local(data, key) {
+export function save_to_local(data, key) {
   if (!key) {
     return;
   }
@@ -72,7 +98,9 @@ function save_to_local(data, key) {
 function card_button_click() {
   const next_button = document.getElementById("next");
   const prev_button = document.getElementById("prev");
-
+  if (!next_button || !prev_button){
+    return
+  }
   next_button.addEventListener("click", function () {
     if (selected_card + 1 > card_data.length - 1) {
       console.log("No more cards to show");
@@ -106,27 +134,67 @@ function card_button_click() {
   prev_button.disabled = selected_card - 1 < 0;
 }
 
+
+
+
+
+/**
+ * @description Creates a new frog-card element and appends it inside the <card-deck>.
+ * @param {Object} data - The data to set on the frog-card element. Matches card-data.json format.
+ * @returns {HTMLElement} The created frog-card element.
+ */
+function createCard(data) {
+  const cardDeck = document.querySelector("card-deck");
+  if (!cardDeck){
+    return
+  }
+  cardDeck.innerHTML = ""; // Clear previous card
+  const card = document.createElement("frog-card");
+  card.data = data;
+  cardDeck.appendChild(card);
+}
+
+
+/**
+ * @description update user points by the point value. Can be negative or positive
+ * @param {number} points number to increase or decrease user points by
+ * @return {boolean} returns true if successful else false. If user has too few points its false
+ */
+export function update_points(points){
+  const user_data = fetch_user_info()
+  if (!user_data || typeof user_data.points !== "number" || typeof points !=="number") {
+    console.warn("Data is missing or malformed", user_data)
+    return false;
+  }
+  let cur_points = user_data.points
+  let life_time_points = user_data.life_time_points
+  cur_points+=points
+  if (points > 0){
+    life_time_points+=points
+  }
+  user_data.points = cur_points
+  user_data.life_time_points = life_time_points
+  if (cur_points>=0){
+    save_to_local(user_data,"user_data")
+    return true
+  }
+  return false
+}
+
 /**
  * Initializes the card deck on DOM load.
  */
 async function init() {
   const card_data_all = await fetch_data("./card-data.json");
   save_to_local(card_data_all, "card_data"); // TODO: remove and load from unlocked later
-  card_data = fetch_unlocked_cards();
-
+  const powell = card_data_all[0]
+  card_data = fetch_unlocked_cards(powell);
+  const fetch_user_data = fetch_user_info()
+  console.log("fetch_user_data",fetch_user_data)
+  if (!fetch_user_data){
+    const user_info = new UserInfo(0,0)
+    save_to_local(user_info,"user_data")
+  }
   createCard(card_data[selected_card]);
   card_button_click();
-}
-
-/**
- * Creates a new frog-card element and appends it inside the <card-deck>.
- * @param {Object} data - The data to set on the frog-card element. Matches card-data.json format.
- * @returns {HTMLElement} The created frog-card element.
- */
-function createCard(data) {
-  const cardDeck = document.querySelector("card-deck");
-  cardDeck.innerHTML = ""; // Clear previous card
-  const card = document.createElement("frog-card");
-  card.data = data;
-  cardDeck.appendChild(card);
 }
