@@ -99,7 +99,6 @@ function updatePointsDisplay() {
 function init() {
     const generateBtn = document.getElementById("generate-card");
     const resultDisplay = document.getElementById("result");
-    const cardContainer = document.getElementById("card-container");
 
     updatePointsDisplay();
 
