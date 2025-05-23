@@ -68,7 +68,7 @@ function fetch_unlocked_cards(default_card) {
  * @returns {UserInfo} returns the user_Data saved to local storage
  */
 
-function fetch_user_info(){
+export function fetch_user_info(){
   const data = localStorage.getItem("user_data");
   if (!data) {
     return undefined;
@@ -83,7 +83,7 @@ function fetch_user_info(){
  * @param {string} key - The key under which to save the data.
  * @returns {void}
  */
-function save_to_local(data, key) {
+export function save_to_local(data, key) {
   if (!key) {
     return;
   }
@@ -134,27 +134,7 @@ function card_button_click() {
   prev_button.disabled = selected_card - 1 < 0;
 }
 
-/**
- * @description Adds click event to clicker page where needed
- */
-function clicker_buttons(){
 
-  const clicker_comp = document.getElementById("clicker_comp")
-  if (!clicker_comp){
-    return;
-  }
-  clicker_comp.addEventListener("click", function(){
-    /*
-    TODO: Use update_points to update the # of points. So you dont call the function
-    a ton of times, I recommend using setTimeout so
-    like every 500 ms save points with update_points function.
-    */
-    console.log("clicked")
-  })
-
-
-
-}
 
 
 
@@ -180,8 +160,7 @@ function createCard(data) {
  * @param {number} points number to increase or decrease user points by
  * @return {boolean} returns true if successful else false. If user has too few points its false
  */
-/* eslint-disable-next-line no-unused-vars */
-function update_points(points){
+export function update_points(points){
   const user_data = fetch_user_info()
   if (!user_data || typeof user_data.points !== "number" || typeof points !=="number") {
     console.warn("Data is missing or malformed", user_data)
@@ -200,7 +179,7 @@ function update_points(points){
     return true
   }
   return false
-  }
+}
 
 /**
  * Initializes the card deck on DOM load.
@@ -218,5 +197,4 @@ async function init() {
   }
   createCard(card_data[selected_card]);
   card_button_click();
-  clicker_buttons()
 }
