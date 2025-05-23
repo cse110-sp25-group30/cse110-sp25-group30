@@ -1,11 +1,7 @@
-
 /*
 This is the JavaScript file for the frog-card component.
-We need to add a flipping animation to the card so it can be flipped to show the back
-Bio and course should go on the back of the card. 
-
-Try to use CSS variables for the colors. 
 */
+
 class FrogCard extends HTMLElement {
 	constructor() {
 		super();
@@ -43,8 +39,6 @@ class FrogCard extends HTMLElement {
 			flex-direction: column;
 			align-items: center;
 			justify-content: flex-start;
-			background: transparent;
-			border: none;
 		}
 
 		.flip-card-back {
@@ -53,8 +47,8 @@ class FrogCard extends HTMLElement {
 
 		.face {
 			width: auto;
-			height: 53%;
-			max-width: 71%;
+			height: 53%; /* sets height to fit the height of the frame */
+			max-width: 71%; /* makes sure if the image is landscape, it does not go past the border of the card */
 			margin-top: 30%;
 			position: relative;
 			z-index: 1;
@@ -89,23 +83,31 @@ class FrogCard extends HTMLElement {
 			z-index: 1;
 		}
 
+		.back-name {
+			position: absolute;
+			top: 23%;
+			z-index: 2;
+			color: #003057; /* ucsd blue */
+			font-size: 80%;
+		}
+
 		.bio {
 			position: absolute;
-			top: 20%;
+			top: 30.5%;
 			z-index: 2;
-			padding: 10%;
-			color: #f2a900; /* ucsd yellow */
+			color: var(--text-color);
 			text-align: center;
-			font-size: 100%;
+			font-size: 65%;
+			max-width: 40%;
 		}
 
 		.course {
 			position: absolute;
-			bottom: 5%;
+			top: 16%;
 			z-index: 2;
-			color: #003057; /* ucsd blue */
+			color: var(--text-color);
 			text-align: center;
-			font-size: 100%;
+			font-size: 80%;
 		}
 		`;
 
@@ -118,24 +120,39 @@ class FrogCard extends HTMLElement {
 	}
 
 	set data(data) {
-		if (!data || !data.imgSrc || !data.name || !data.bio || !data.course) return;
+		if (!data || !data.imgSrc || !data.rarity || !data.name || !data.bio || !data.course) return;
 
 		const card = this.shadowRoot.querySelector('card');
+
+		/* changes the color of the text from ucsd yellow to blue if the card is of legendary rarity */
+		this.style.setProperty('--text-color', '#f2a900'); // ucsd yellow
+		
+		if (data.rarity === "legendary") {
+			this.style.setProperty('--text-color', '#003057'); // ucsd blue
+		}
 
 		card.innerHTML = `
 		<div class="flip-card">
 			<div class="flip-card-inner">
 				<!-- FRONT -->
 				<div class="flip-card-front">
+					<!-- PROF IMAGE -->
 					<img class="face" src="${data.imgSrc}" alt="${data.name} image">
-					<img class="card-fg" src="./assests/placeholder_front.png" alt="foreground layer">
+					<!-- CARD OVERLAY -->
+					<img class="card-fg" src="./assests/${data.rarity}_front.png" alt="foreground layer">
+					<!-- PROF NAME -->
 					<p class="front-name">${data.name}</p>
 				</div>
 
 				<!-- BACK -->
 				<div class="flip-card-back">
-					<img class="back-bg" src="./assests/placeholder_back.png" alt="background">
+					<!-- CARD BACKGROUND -->
+					<img class="back-bg" src="./assests/${data.rarity}_back.png" alt="background">
+					<!-- PROF NAME -->
+					<p class="back-name">${data.name}</p>
+					<!-- PROF BIO -->
 					<p class="bio">${data.bio}</p>
+					<!-- COURSE -->
 					<p class="course">${data.course}</p>
 				</div>
 			</div>

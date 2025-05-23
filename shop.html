@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="/styles/main.css">
      <script type="module" src="/components/site-header.js"></script>
+     <script type="module" src="/components/frog-card.js"></script>
      <script type="module" src="/scripts/shop.js"></script>
     <title>Nerdy Thirty Shop</title>
     <script src="index.js" type="module"></script>
 </head>
-<body>
+<body style="background-color: var(--secondary-background-color); padding: 2rem; color: white;">
     <site-header></site-header> 
-    <div> 
+    <p id="points-display">Points: 0</p>
+    <h1>🛒 Card Shop</h1>
+    <button id="generate-card" style="margin: 1rem 0; padding: 1rem;">Generate Random Card</button>
+    <button id="add-points">Add 500 Points</button> <!-- temporary -->
 
-    </div>
+    <div id="result" style="margin-top: 1.5rem; font-size: 1.2rem;"></div>
+    <div id="card-container" style="margin-top: 2rem;"></div>
 </body>
 </html>
