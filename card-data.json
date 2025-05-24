@@ -3,6 +3,7 @@
         "name": "Thomas A. Powell",
         "bio": "Long time internet and web focused software engineer. Collector of retro games, Star Wars nerd, soccer fan, occasional joker. Fun Fact: Early Internet Semi-Famous and met Hollywood Stars. Course Takeaway: Guiding students in becoming more well rounded software engineers equipped with the technical skills as well as soft skills.",
         "course": "CSE 110",
+        "rarity": "common",
         "imgSrc": "assests/prof-images/powell.jpg"
     },
     {
@@ -22,20 +23,20 @@
         "bio": "Got a Doctorate to UCLA, with 40+ years experience. Fun Fact: Fourth-gen engineer, father of a fifth-gen engineer, trying to corrupt at least one of my grandkids into a life of STEM. Course Takeaway: seek out opportunities in life, take advantage of the good ones when they come along",
         "course": "CSE 140",
         "imgSrc": "assests/prof-images/eldon.jpg"
-    }
-    ,{
+    },
+    {
         "name": "Julian McAuley",
         "bio": "In my spare I like triathlon, baroque keyboard, and being a girl dad. Fun fact: I wear running clothes at all times; like an Oblivion character. Course Takeaway: I hope students learn that machine learning can still be used to do something fun!",
         "course": "CSE 153",
         "imgSrc": "assests/prof-images/mculey.jpg"
-    }
-    ,{
+    },
+    {
         "name": "Nadia Polikarpova",
         "bio": "Completed my PhD in 2014 at ETH Zurich (Switzerland). Fun Fact: I was born in a city and a country that don't exist anymore. (Leningrad, USSR). Course Takeaway: Don't repeat yourself! (Also, Pattern matching :))",
         "course": "CSE 130",
         "imgSrc": "assests/prof-images/polik.jpg"
-    }
-    ,{
+    },
+    {
         "name": "Trevor Bonjour",
         "bio": "I am passionate about evidence-based approaches that enhance student learning of complex AI concepts/education. Fun fact: I am a certified scuba diver! Course Takeaway: I want students to build an intuition for probabilistic methods in AI, while recognizing that probability is not always intuitive.",
         "course": "CSE 150A",
@@ -71,13 +72,13 @@
         "course": "CSE 30",
         "imgSrc": "assests/prof-images/chin.jpg"
     },
-     {
+    {
         "name": "Ryan Kastner",
         "bio": "Cool Guy",
         "course": "CSE 110",
         "imgSrc": "assests/prof-images/kastner.jpg"
     },
-     {
+    {
         "name": "Miles Jones",
         "bio": "I am currently working on research that combines enumerative combinatorics and evolutionary approximation algorithms. I spend most of my free time playing with my kids (3 and 5), laughing with my friends&family, cooking, bird watching, doing math. Course Takeaway: I want you to gain confidence in general problem solving strategies that you can use in a variety of applications.",
         "course": "CSE 21",
@@ -85,7 +86,7 @@
     },
     {
         "name": "Mia Minnes",
-        "bio": "Born in Isreal, Moved to Vancouver, Canada. Graduated from Queen University and got her masters at COrnell University. Fun Fact:I can write upside down and backwards. Course Takeaway:a good dose of technical skepticism.",
+        "bio": "Born in Israel, Moved to Vancouver, Canada. Graduated from Queen University and got her masters at COrnell University. Fun Fact:I can write upside down and backwards. Course Takeaway:a good dose of technical skepticism.",
         "course": "CSE 20",
         "imgSrc": "assests/prof-images/minnes.jpg"
     },
@@ -94,8 +95,7 @@
         "bio": "Before UCSD, I was an associate professor of C.S. at Ashland University (OH). Fun fact: my research interests focus on mobile data analysis, Computer Science Education, and machine learning. Course Takeaway: Use and implementation of basic data structures including linked lists, stacks, and queues.",
         "course": "CSE 12",
         "imgSrc": "assests/prof-images/cao.jpg"
-    }
-    ,
+    },
     {
         "name": "Daniele Micciancio",
         "bio": "I am a professor in the Computer Science & Engineering department at the University of California, San Diego. Fun Fact: I am a member of the Cryptography and Security group and the Theory of Computation group. Course Takeaway: Read my book Complexity of lattice problems: a cryptographic perspective.",
@@ -108,20 +108,19 @@
         "bio": "Lecturer in CSE and the Halıcıoğlu Data Science Institute. Fun fact: My research involves leveraging AI and Bioinformatics for securing a sustainable future in the face of our rapidly changing climate. Course Takeway: how computer systems execute programs, store information, and communicate.",
         "course": "CSE 29",
         "imgSrc": "assests/prof-images/solares.jpg"
-    }
-    ,
+    },
     {
         "name": "Yufei Ding",
         "bio": "She holds a Ph.D. in Computer Science from North Carolina State University and a B.S. in Physics from the University of Science and Technology of China. Fun Fact: Recipient of multiple awards including the NSF CAREER Award. Course Takeaway: Try to learn something about everything and everything about something",
         "course": "CSE 141",
         "imgSrc": "assests/prof-images/ding.jpg"
-    }
-    ,
+    },
     {
         "name": "Leo Porter",
         "bio": "Professor of Computer Science at UC San Diego interested in computer science education research and computer architecture. Fun fact: I co-founded the Computing Education Research Laboratory dedicated to better understanding how students learn computing. Course Takeaway: ",
         "course": "CSE 8A",
         "imgSrc": "assests/prof-images/porter.jpg"
+        "rarity": "common",
+        "imgSrc": "https://media.istockphoto.com/id/916306960/photo/faceless-man-in-hoodie-standing-isolated-on-black.jpg?s=612x612&w=0&k=20&c=pMeGd1UuJgvdZ2gV2VQC2Jn3VwMNeW6TF3cG9RIo1tY="
     }
-    
 ]

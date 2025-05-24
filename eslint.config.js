@@ -26,6 +26,7 @@ export default defineConfig([
       "package-lock.json",
       "package.json",
       "jsdoc.json",
+      "docs/**"
     ]
   }
 ]);
