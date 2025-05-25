@@ -35,7 +35,24 @@
 }
 
 #card-container {
-    justify-self: center;
+  position: relative;
+  width: 400px; /* or your card width */
+  height: 400px; /* or your card height */
+  margin: 0 auto; /* center horizontally if you want */
+}
+
+frog-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+pack-cover {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @media (max-width: 768px) {
@@ -43,8 +60,4 @@
       width: 98%;          /* Uses 90% of screen width */
       max-width: 100%;
     }
-  }
-
-
-
-
+}

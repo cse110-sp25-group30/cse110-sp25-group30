@@ -155,11 +155,15 @@ function addOrUpdateCard(card) {
 
 function displayCard(card) {
   const container = document.getElementById("card-container");
-  container.innerHTML = ""; // Clear previous
+  container.innerHTML = ""; // Clear previous card
+
+  const cover = document.createElement("pack-cover");
 
   const frogCard = document.createElement("frog-card");
   frogCard.data = card;
+
   container.appendChild(frogCard);
+  container.appendChild(cover);
 }
 
 function updatePointsDisplay() {
@@ -172,32 +176,32 @@ function updatePointsDisplay() {
 }
 
 function init() {
-    const generateBtn = document.getElementById("generate-card");
-    const resultDisplay = document.getElementById("result");
+  const generateBtn = document.getElementById("generate-card");
+  const resultDisplay = document.getElementById("result");
 
+  updatePointsDisplay();
+
+  generateBtn.addEventListener("click", () => {
+    const user = fetch_user_info();
+    if (!user || user.points < 1) { //currently set to price of generation = 1, can change later
+    resultDisplay.textContent = "❌ Not enough points. ❌";
+    return;
+    }
+
+    const newCard = generateRandomCard();
+    const updatedCard = addOrUpdateCard(newCard);
+
+    resultDisplay.textContent =
+    `🎉 You got a ${updatedCard.rarity} "${updatedCard.name}" (Total owned: ${updatedCard.quantity})`;
+
+    displayCard(updatedCard);
+    update_points(-1); //price of card generation, can change later
     updatePointsDisplay();
+  });
 
-    generateBtn.addEventListener("click", () => {
-        const user = fetch_user_info();
-        if (!user || user.points < 1) { //currently set to price of generation = 1, can change later
-        resultDisplay.textContent = "❌ Not enough points. ❌";
-        return;
-        }
-
-        const newCard = generateRandomCard();
-        const updatedCard = addOrUpdateCard(newCard);
-
-        resultDisplay.textContent =
-        `🎉 You got a ${updatedCard.rarity} "${updatedCard.name}" (Total owned: ${updatedCard.quantity})`;
-
-        displayCard(updatedCard);
-        update_points(-1); //price of card generation, can change later
-        updatePointsDisplay();
-    });
-
-    /* temporary for testing */
-    document.getElementById("add-points").addEventListener("click", () => {
-        update_points(500);
-        updatePointsDisplay();
-    });
+  /* temporary for testing */
+  document.getElementById("add-points").addEventListener("click", () => {
+      update_points(500);
+      updatePointsDisplay();
+  });
 }
