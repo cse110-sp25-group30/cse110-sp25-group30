@@ -202,7 +202,7 @@
         "name": "Leo Porter",
         "bio": "Professor of Computer Science at UC San Diego interested in computer science education research and computer architecture. Fun fact: I co-founded the Computing Education Research Laboratory dedicated to better understanding how students learn computing. Course Takeaway: ",
         "course": "CSE 8A",
-        "imgSrc": "assests/prof-images/porter.jpg"
-        "rarity": "common",
+        "imgSrc": "assests/prof-images/porter.jpg",
+        "rarity": "common"
     }
 ]
