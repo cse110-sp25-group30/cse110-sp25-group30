@@ -101,6 +101,7 @@
         "name": "Sicun Gao",
         "bio": "Planned to be a physicist, and then philosopher, and then mathematician, and then ended up here. Fun fact: I'm a small language model. Course Takeaway: Exponential space: the final frontier.",
         "course": "CSE 150B",
+        "rarity": "common",
         "imgSrc": "assests/prof-images/gao.jpg"
     },
     {
