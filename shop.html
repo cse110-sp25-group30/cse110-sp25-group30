@@ -17,11 +17,25 @@
     <p id="points-display" style="margin:0rem; margin-left: 1rem; margin-top: 0.25rem;;">Points: 0</p>
     <h1 id="shoptitle">🛒 Card Shop 🛒</h1>
     <div id="gen-container">
-        <div id="result" style="margin-top: 1rem; font-size: 1.2rem;"></div>
         <div id="card-container" style="margin-top: 1rem;"></div>
+        <div id="result" style="margin-top: 1rem; font-size: 1.2rem;"></div>
     </div>
     <div id="buttoncont">
-        <button id="generate-card" style="margin: 1rem 0; padding: 1rem;">Buy Random Card (-1)</button> <!-- temporary button name-->
+        <div id="button-row">
+            <button id="generate-card" style="margin: 1rem 0; padding: 1rem;">Buy Random Card (-1)</button> <!-- temporary button name-->
+            <div class="tooltip-container">
+                <span class="tooltip-icon">❔</span>
+                <div class="tooltip-text">
+                    Drop Rates:<br>
+                    Common: 55%<br>
+                    Uncommon: 25%<br>
+                    Rare: 15%<br>
+                    Epic: 4%<br>
+                    Legendary: 0.9%<br>
+                    Special-edition: 0.1%
+                </div>
+            </div>
+        </div>
         <button id="add-points">Add 500 Points</button> <!-- temporary -->
     </div>
 </body>
