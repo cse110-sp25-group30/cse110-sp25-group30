@@ -90,11 +90,12 @@ pack-cover {
   padding: 8px 12px;
   position: absolute;
   z-index: 1;
-  bottom: 170%; /* Show above the icon */
-  left: 50%;
+  bottom: 150%; /* Show above the icon */
+  left: 200%;
   transform: translateX(-50%);
   transition: opacity 0.3s;
   white-space: nowrap;
+  font-family: Tahoma, sans-serif;
 }
 
 .tooltip-container:hover .tooltip-text {
