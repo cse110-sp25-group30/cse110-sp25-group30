@@ -34,6 +34,7 @@ Status Video 1:
 
 [ADR's Folder](https://github.com/cse110-sp25-group30/cse110-sp25-group30/tree/main/specs/adrs)
 - [ADR1 - Problem Solving and Meeting Decision](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/specs/adrs/051125-ProblemSolvingandMeetingsDecisions.md)
+- [ADR2 - Card Grid, Collector Features and Hosting](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/InvertedVoice-patch-2/specs/adrs/052225-CardGridandCollectorFeatures)
 
 ### CD/CI Pipeline
 
