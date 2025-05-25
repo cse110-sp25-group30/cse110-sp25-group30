@@ -1,5 +1,49 @@
+#shoptitle {
+    text-align: center;
+    margin: 0.25rem 0rem;
+}
 
+#buttoncont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
 
+#gen-container {
+    justify-self: center;
+    border-radius: 5px;
+    border: 1px solid white;
+    width: 650px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+#result {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center;
+    text-align: center;
+    word-wrap: break-word;
+    max-width: 100%;
+    overflow-wrap: break-word;
+}
+
+#card-container {
+    justify-self: center;
+}
+
+@media (max-width: 768px) {
+    #gen-container {
+      width: 98%;          /* Uses 90% of screen width */
+      max-width: 100%;
+    }
+  }
 
 
 

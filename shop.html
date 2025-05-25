@@ -4,20 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="/styles/main.css">
+     <link rel="stylesheet" href="shop.css">
      <script type="module" src="/components/site-header.js"></script>
      <script type="module" src="/components/frog-card.js"></script>
      <script type="module" src="/scripts/shop.js"></script>
     <title>Nerdy Thirty Shop</title>
     <script src="index.js" type="module"></script>
 </head>
-<body style="background-color: var(--secondary-background-color); padding: 2rem; color: white;">
+<body style="background-color: var(--secondary-background-color); color: white;">
     <site-header></site-header> 
-    <p id="points-display">Points: 0</p>
-    <h1>🛒 Card Shop</h1>
-    <button id="generate-card" style="margin: 1rem 0; padding: 1rem;">Buy Random Card (-1)</button> <!-- temporary button name-->
-    <button id="add-points">Add 500 Points</button> <!-- temporary -->
-
-    <div id="result" style="margin-top: 1.5rem; font-size: 1.2rem;"></div>
-    <div id="card-container" style="margin-top: 2rem;"></div>
+    <p id="points-display" style="margin:0rem; margin-left: 1rem; margin-top: 0.25rem;;">Points: 0</p>
+    <h1 id="shoptitle">🛒 Card Shop</h1>
+    <div id="gen-container">
+        <div id="result" style="margin-top: 1rem; font-size: 1.2rem;"></div>
+        <div id="card-container" style="margin-top: 1rem;"></div>
+    </div>
+    <div id="buttoncont">
+        <button id="generate-card" style="margin: 1rem 0; padding: 1rem;">Buy Random Card (-1)</button> <!-- temporary button name-->
+        <button id="add-points">Add 500 Points</button> <!-- temporary -->
+    </div>
 </body>
 </html>
