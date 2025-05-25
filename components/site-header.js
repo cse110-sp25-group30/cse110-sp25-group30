@@ -28,7 +28,7 @@ class SiteHeader extends HTMLElement {
                 font-weight: bold;
             }
 
-            .nav-right button {
+            .nav-right a {
                 background: none;
                 border: none;
                 color: white;
@@ -37,7 +37,7 @@ class SiteHeader extends HTMLElement {
                 cursor: pointer;
             }
 
-            .nav-right button:hover {
+            .nav-right a:hover {
                 text-decoration: underline;
             }
         </style>
@@ -45,9 +45,9 @@ class SiteHeader extends HTMLElement {
         <nav>
             <div class="nav-left">Nerdy Thirty</div>
             <div class="nav-right">
-                <button>Home</button>
-                <button>About</button>
-                <button>Contact</button>
+                <a href="index.html">Home</a>
+                <a href="index.html">Collection</a> <!-- TODO: goes to the grid html -->
+                <a href="shop.html">Shop</a>
             </div>
         </nav>
         `;

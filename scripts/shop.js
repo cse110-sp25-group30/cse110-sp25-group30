@@ -2,8 +2,9 @@
 import { update_points, fetch_user_info } from "../index.js";
 
 window.addEventListener("DOMContentLoaded", init);
-
+//TODO: add rest of professors
 const cardNames = ["Thomas A. Powell", "Test Professor"];
+// drop rates (can change later)
 const rarities = [
   { type: "common", chance: 55 },
   { type: "uncommon", chance: 25 },
@@ -13,16 +14,19 @@ const rarities = [
   { type: "special-edition", chance: 0.1 }
 ];
 
+//TODO: add rest of professors, write actual bios
 const bios = {
   "Thomas A. Powell": "Powell bio",
   "Test Professor": "Test bio",
 };
 
+//TODO: add rest of professors and remove test professor
 const courses = {
   "Thomas A. Powell": "CSE 110",
   "Test Professor": "CSE 0",
 };
 
+//TODO: show paths to all professor images and remove test professor
 const images = {
   "Thomas A. Powell": "assests/prof-images/powell.jpg",
   "Test Professor": "https://media.istockphoto.com/id/916306960/photo/faceless-man-in-hoodie-standing-isolated-on-black.jpg?s=612x612&w=0&k=20&c=pMeGd1UuJgvdZ2gV2VQC2Jn3VwMNeW6TF3cG9RIo1tY=",
