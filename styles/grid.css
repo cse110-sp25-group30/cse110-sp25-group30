@@ -1,10 +1,9 @@
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  column-gap: 12px; 
-  /* row-gap: 4px;  */
-  padding: 20px 40px; 
-  row-gap: 10px; 
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  column-gap: 10px; 
+  padding: 20px 0px; 
+  row-gap: 4px; 
   justify-items: center;
 }
 
@@ -45,9 +44,8 @@
   height: 200px;
   overflow: visible;
   opacity: 0;
-  padding-top: 125px;
+  padding-top: 50px;
   animation-name: fadeSlideIn;
   animation-duration: 0.5s;
-  animation-delay: 0.2s;
   animation-fill-mode: forwards;
 }
