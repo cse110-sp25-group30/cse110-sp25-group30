@@ -93,11 +93,11 @@ class FrogCard extends HTMLElement {
 
 		.bio {
 			position: absolute;
-			top: 30.5%;
+			top: 31.5%;
 			z-index: 2;
 			color: var(--text-color);
 			text-align: center;
-			font-size: 65%;
+			font-size: 54%;
 			max-width: 40%;
 		}
 

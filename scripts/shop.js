@@ -47,7 +47,7 @@ const bios = {
   "Ben Ochoa": "Received the B.S., M.S., and Ph.D. degrees in electrical engineering in 1999, 2003, and 2007. Fun fact: All of his degrees are from UC San Diego, completing his degrees as a part-time student while working full-time. Course Takeaway: Computer vision is far more than deep learning methods where images or videos are used as input.",
   "Earlence Fernandes": "Received two best paper awards, NSF CAREER award, and research awards from Meta, Amazon and Google. Fun Fact: hacked door locks, Stop signs and bicycles. The Stop sign is now an artifact at the Science Museum in London. Course Takeaway: build secure computer systems and help students learn the security mindset.",
   "Bryan Chin": "I worked for 30+ yrs in industry designing microprocessors for the MIPS, Arm, x86 and PowerPC architectures. Fun fact: I love to play the ukulele and lead a meetup group of likeminded strummers. Course Takeaway: I want students to explore how software and hardware work together to solve problems while strengthening their teamwork/communication skills",
-  "Ryan Kastner": "Cool Guy",
+  "Ryan Kastner": "Prof. Kastner leads the Kastner Research Group, whose current research interests are broad but generally fall into three areas: hardware acceleration, hardware security, and remote sensing. Fun fact: I worked in a funeral home during high school. Course Takeaway: Parallel programming is critical in developing and using modern computing systems.",
   "Miles Jones": "I am currently working on research that combines enumerative combinatorics and evolutionary approximation algorithms. I spend most of my free time playing with my kids (3 and 5), laughing with my friends&family, cooking, bird watching, doing math. Course Takeaway: I want you to gain confidence in general problem solving strategies that you can use in a variety of applications.",
   "Mia Minnes": "Born in Israel, Moved to Vancouver, Canada. Graduated from Queen University and got her masters at COrnell University. Fun Fact:I can write upside down and backwards. Course Takeaway:a good dose of technical skepticism.",
   "Paul Cao": "Before UCSD, I was an associate professor of C.S. at Ashland University (OH). Fun fact: my research interests focus on mobile data analysis, Computer Science Education, and machine learning. Course Takeaway: Use and implementation of basic data structures including linked lists, stacks, and queues.",
@@ -180,7 +180,7 @@ function init() {
     generateBtn.addEventListener("click", () => {
         const user = fetch_user_info();
         if (!user || user.points < 1) { //currently set to price of generation = 1, can change later
-        resultDisplay.textContent = "❌ Not enough points to generate a card.";
+        resultDisplay.textContent = "❌ Not enough points. ❌";
         return;
         }
 
