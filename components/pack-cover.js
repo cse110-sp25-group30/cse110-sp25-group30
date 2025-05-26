@@ -44,7 +44,8 @@ class PackCover extends HTMLElement {
 		20%  { transform: translateX(-1.5%); }
 		40%  { transform: translateX(-1%); }
 		60%  { transform: translateX(-1%); opacity: 1; }
-		100% { transform: translateX(-150%); opacity: 0; }
+		80% { transform: translateX(-65%); opacity: 0.8; }
+		100% { transform: translateX(-70%); opacity: 0; }
 		}
 
 		@keyframes dramaticSlideRight {
@@ -52,7 +53,8 @@ class PackCover extends HTMLElement {
 		20%  { transform: translateX(1.5%); }
 		40%  { transform: translateX(1%); }
 		60%  { transform: translateX(1%); opacity: 1; }
-		100% { transform: translateX(150%); opacity: 0; }
+		80% { transform: translateX(65%); opacity: 0.8; }
+		100% { transform: translateX(70%); opacity: 0; }
 		}
 
 		.left.slide-out {
