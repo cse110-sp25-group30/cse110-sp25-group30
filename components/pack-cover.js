@@ -28,7 +28,6 @@ class PackCover extends HTMLElement {
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
-			transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
 			position: absolute;
 		}
 
@@ -40,14 +39,28 @@ class PackCover extends HTMLElement {
             z-index: 11;
         }
 
+		@keyframes dramaticSlideLeft {
+		0%   { transform: translateX(0); }
+		20%  { transform: translateX(-1.5%); }
+		40%  { transform: translateX(-1%); }
+		60%  { transform: translateX(-1%); opacity: 1; }
+		100% { transform: translateX(-150%); opacity: 0; }
+		}
+
+		@keyframes dramaticSlideRight {
+		0%   { transform: translateX(0); }
+		20%  { transform: translateX(1.5%); }
+		40%  { transform: translateX(1%); }
+		60%  { transform: translateX(1%); opacity: 1; }
+		100% { transform: translateX(150%); opacity: 0; }
+		}
+
 		.left.slide-out {
-			transform: translateX(-150%);
-			opacity: 0;
+		animation: dramaticSlideLeft 0.9s ease-in-out forwards;
 		}
 
 		.right.slide-out {
-			transform: translateX(150%);
-			opacity: 0;
+		animation: dramaticSlideRight 0.9s ease-in-out forwards;
 		}
 		`;
 
@@ -71,7 +84,7 @@ class PackCover extends HTMLElement {
 			setTimeout(() => {
 				this.remove(); // remove the cover from the DOM
 				this.dispatchEvent(new CustomEvent('cover-opened', { bubbles: true }));
-			}, 800); // duration should match CSS transition
+			}, 900); // duration should match CSS transition
 		});
 	}
 }
