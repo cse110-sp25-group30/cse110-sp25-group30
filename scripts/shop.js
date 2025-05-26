@@ -191,12 +191,26 @@ function init() {
     const newCard = generateRandomCard();
     const updatedCard = addOrUpdateCard(newCard);
 
+    // Hide result initially
+    resultDisplay.style.visibility = "hidden";
     resultDisplay.textContent =
     `🎉 You got a ${updatedCard.rarity} "${updatedCard.name}" (Total owned: ${updatedCard.quantity})`;
 
     displayCard(updatedCard);
     update_points(-1); //price of card generation, can change later
     updatePointsDisplay();
+
+    // Wait for the 'cover-opened' event, then reveal result
+    document.addEventListener("cover-opened", function handler() {
+      resultDisplay.style.visibility = "visible";
+      if (updatedCard.rarity == 'epic' || updatedCard.rarity == 'legendary' || updatedCard.rarity == 'special-edition') {
+        const audio = new Audio('assests/sound-effects/lucky-draw2.mp3');
+        audio.currentTime = 0;
+        audio.play();
+      }
+      // Remove listener so it only triggers once per open
+      document.removeEventListener("cover-opened", handler);
+    });
   });
 
   /* temporary for testing */

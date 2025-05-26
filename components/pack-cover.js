@@ -79,13 +79,20 @@ class PackCover extends HTMLElement {
 		const left = cover.querySelector('.left');
 		const right = cover.querySelector('.right');
 
+		const audio = new Audio('assests/sound-effects/rip-sound.mp3');
+
 		cover.addEventListener('click', () => {
+			audio.currentTime = 0.17; // Reset if replaying
+    		audio.play();
 			left.classList.add('slide-out');
 			right.classList.add('slide-out');
 
 			setTimeout(() => {
-				this.remove(); // remove the cover from the DOM
 				this.dispatchEvent(new CustomEvent('cover-opened', { bubbles: true }));
+			}, 560); // Show content a bit before cover is gone
+
+			setTimeout(() => {
+				this.remove(); // remove the cover from the DOM
 			}, 900); // duration should match CSS transition
 		});
 	}
