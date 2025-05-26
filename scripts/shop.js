@@ -171,7 +171,7 @@ function updatePointsDisplay() {
   const points = data?.points ?? 0;
   const display = document.getElementById("points-display");
   if (display) {
-    display.textContent = `Points: ${points}`;
+    display.textContent = `${points}`;
   }
 }
 
