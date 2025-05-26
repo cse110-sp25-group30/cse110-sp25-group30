@@ -1,7 +1,10 @@
 ﻿# cse110-sp25-group30 (Team 30 aka Nerdy-Thirty)
 
 ## Important Pages:
-1. [Team File](admin/team.md)
+[Team File](admin/team.md)
+
+## Final Project
+[Heroku Hosted Link](https://nerdity-thirty-c404d15cf7fe.herokuapp.com/)
 
 ### Videos
 Status Video 1:
@@ -12,6 +15,9 @@ Status Video 1:
 [Codacy Link](https://app.codacy.com/gh/cse110-sp25-group30/cse110-sp25-group30/dashboard)
 
 ## Documentation
+
+### JSDocs
+- [Page Link](https://cse110-sp25-group30.github.io/cse110-sp25-group30/)
 
 ### Rules
 - [Rules Folder](https://github.com/cse110-sp25-group30/cse110-sp25-group30/tree/main/admin/misc)
