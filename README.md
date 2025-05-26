@@ -26,9 +26,11 @@ Status Video 1:
 
 ### Sprint Review Meetings
 - [Sprint 1 Review](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/InvertedVoice-patch-2/admin/meetings/0512-0519/051825-sprint-1-review.md)
+- [Spring 2 Review](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/InvertedVoice-patch-1/admin/meetings/0519-0525/052525-sprint2-review.md)
 
 ### Retrospectives
 - [Sprint 1 Retrospective](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/InvertedVoice-patch-2/admin/meetings/0512-0519/051825-retrospective.md)
+- [Spring 2 Retrospective](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/InvertedVoice-patch-1/admin/meetings/0519-0525/052525-retrospective.md)
 
 ### ADR's
 
@@ -44,3 +46,7 @@ Status Video 1:
 - [Markdown file](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/cipipeline/phase1.md)
 - [Phase 1 Video](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/cipipeline/phase1.mp4)
 
+2. Phase 2:
+- [Template Image](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/InvertedVoice-patch-1/admin/cipipeline/phase2/phase2.png)
+- [Markdown file](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/InvertedVoice-patch-1/admin/cipipeline/phase2/phase2.md)
+- [Phase 2 Video](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/InvertedVoice-patch-1/admin/cipipeline/phase2/phase2.mp4)
