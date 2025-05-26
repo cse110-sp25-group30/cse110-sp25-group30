@@ -52,9 +52,9 @@ class SiteHeader extends HTMLElement {
         <nav>
             <a class="nav-left" href="index.html">Nerdy Thirty</a>
             <div class="nav-right">
-                <a href="index.html">Home</a>
                 <a href="index.html">Collection</a> <!-- TODO: goes to the grid html -->
                 <a href="shop.html">Shop</a>
+                <a href="clicker.html">Clicker</a>
             </div>
         </nav>
         `;
