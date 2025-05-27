@@ -46,6 +46,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
 }
 
 #gen-container {
@@ -120,7 +121,7 @@ pack-cover {
   position: absolute;
   z-index: 1;
   bottom: 150%; /* Show above the icon */
-  left: 200%;
+  left: 0%;
   transform: translateX(-50%);
   transition: opacity 0.3s;
   white-space: nowrap;
