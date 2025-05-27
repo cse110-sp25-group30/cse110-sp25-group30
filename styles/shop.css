@@ -34,19 +34,11 @@
 
 #buttoncont {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-self: center;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-
-#button-row { /* when add points button is removed, delete this and change flex direction to row in #buttoncont*/
-  display:flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 #gen-container {
@@ -59,6 +51,7 @@
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
+    /* TODO: make size scale with view window for mobile (maybe use transform: scale();) */
 }
 
 #result {
@@ -101,11 +94,11 @@ pack-cover {
 
 .tooltip-icon {
   font-weight: bold;
-  font-size: 16px;
+  font-size: 100%;
   border-radius: 50%;
-  padding: 3px 4px;
+  padding: 0rem 0.3rem;
   background-color: #a1a1a1;
-  border: 1px solid #ffffff;
+  border: 0.1rem solid #ffffff;
   margin-left: 1rem;
 }
 
@@ -116,12 +109,12 @@ pack-cover {
   background-color: #333;
   color: #fff;
   text-align: left;
-  border-radius: 6px;
-  padding: 8px 12px;
+  border-radius: 0.2rem;
+  padding: 1rem 1rem;
   position: absolute;
   z-index: 1;
-  bottom: 150%; /* Show above the icon */
-  left: 0%;
+  bottom: 75%; /* Show above the icon */
+  left: 60%;
   transform: translateX(-50%);
   transition: opacity 0.3s;
   white-space: nowrap;
