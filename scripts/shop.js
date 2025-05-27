@@ -26,12 +26,12 @@ const cardNames = [
 ];
 // drop rates (can change later)
 const rarities = [
-  { type: "common", chance: 0 },
-  { type: "uncommon", chance: 0 },
-  { type: "rare", chance: 0 },
-  { type: "epic", chance: 50 },
-  { type: "legendary", chance: 50 },
-  { type: "special-edition", chance: 0 }
+  { type: "common", chance: 55 },
+  { type: "uncommon", chance: 25 },
+  { type: "rare", chance: 15 },
+  { type: "epic", chance: 4 },
+  { type: "legendary", chance: 0.9 },
+  { type: "special-edition", chance: 0.1 }
 ];
 
 const bios = {
