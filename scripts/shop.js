@@ -187,14 +187,26 @@ function init() {
     resultDisplay.textContent = "❌ Not enough points. ❌";
     return;
     }
+    const click = new Audio('assests/sound-effects/click.mp3'); // no like this sound will change later
+    click.currentTime = 0;
+    click.play();
 
     const newCard = generateRandomCard();
     const updatedCard = addOrUpdateCard(newCard);
 
     // Hide result initially
     resultDisplay.style.visibility = "hidden";
-    resultDisplay.textContent =
-    `🎉 You got a ${updatedCard.rarity} "${updatedCard.name}" (Total owned: ${updatedCard.quantity})`;
+    if (updatedCard.quantity == 1) {
+      /* const audio = new Audio('assests/sound-effects/new-card.mp3');
+      audio.currentTime = 0;
+      audio.play(); */ //TODO: decide if we want to keep this
+      resultDisplay.textContent =
+      `🎉 New card unlocked: You got a ${updatedCard.rarity} "${updatedCard.name}"`;
+    }
+    else {
+      resultDisplay.textContent =
+      `🎉 You got a ${updatedCard.rarity} "${updatedCard.name}" (Total owned: ${updatedCard.quantity})`;
+    }
 
     displayCard(updatedCard);
     update_points(-1); //price of card generation, can change later
@@ -203,7 +215,12 @@ function init() {
     // Wait for the 'cover-opened' event, then reveal result
     document.addEventListener("cover-opened", function handler() {
       resultDisplay.style.visibility = "visible";
-      if (updatedCard.rarity == 'epic' || updatedCard.rarity == 'legendary' || updatedCard.rarity == 'special-edition') {
+      if (updatedCard.rarity == 'epic') {
+        const audio = new Audio('assests/sound-effects/lucky-draw1.mp3');
+        audio.currentTime = 0;
+        audio.play();
+      }
+      else if (updatedCard.rarity == 'legendary' || updatedCard.rarity == 'special-edition') {
         const audio = new Audio('assests/sound-effects/lucky-draw2.mp3');
         audio.currentTime = 0;
         audio.play();
