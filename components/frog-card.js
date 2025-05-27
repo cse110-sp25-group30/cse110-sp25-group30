@@ -115,7 +115,11 @@ class FrogCard extends HTMLElement {
 		shadow.appendChild(card);
 
 		card.addEventListener('click', () => {
+			const audio = new Audio('assests/sound-effects/card-flip.mp3');
+			audio.volume = 0.1;
 			card.classList.toggle('flipped');
+			audio.currentTime = 0; // Reset if replaying
+    		audio.play();
 		});
 	}
 
