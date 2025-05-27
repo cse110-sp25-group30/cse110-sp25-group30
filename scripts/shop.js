@@ -230,10 +230,4 @@ function init() {
       document.removeEventListener("cover-opened", handler);
     });
   });
-
-  /* temporary for testing */
-  document.getElementById("add-points").addEventListener("click", () => {
-      update_points(500);
-      updatePointsDisplay();
-  });
 }
