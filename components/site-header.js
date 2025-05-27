@@ -54,7 +54,7 @@ class SiteHeader extends HTMLElement {
             <div class="nav-right">
                 <a href="index.html">📁 Collection</a> <!-- TODO: goes to the grid html -->
                 <a href="shop.html">🛍️ Shop</a>
-                <a href="clicker.html">🪙 Clicker</a>
+                <a href="clicker.html">🟡 Clicker</a>
             </div>
         </nav>
         `;
