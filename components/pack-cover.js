@@ -8,7 +8,7 @@ class PackCover extends HTMLElement {
 
 		const shadow = this.attachShadow({ mode: 'open' });
 
-		const cover = document.createElement('cover');
+		this.cover = document.createElement('cover');
 		const style = document.createElement('style');
 
 		style.textContent = `
@@ -66,7 +66,7 @@ class PackCover extends HTMLElement {
 		}
 		`;
 
-		cover.innerHTML = `
+		this.cover.innerHTML = `
         <div class="cover">
             <img class="left" src="./assests/pack_left.png" alt="pack left">
             <img class="right" src="./assests/pack_right.png" alt="pack right">
@@ -74,14 +74,18 @@ class PackCover extends HTMLElement {
         `;
 
 		shadow.appendChild(style);
-		shadow.appendChild(cover);
+		shadow.appendChild(this.cover);
 
-		const left = cover.querySelector('.left');
-		const right = cover.querySelector('.right');
+		this.addEventListeners();
+	}
+
+	addEventListeners() {
+		const left = this.cover.querySelector('.left');
+		const right = this.cover.querySelector('.right');
 
 		const audio = new Audio('assests/sound-effects/rip-sound.mp3');
 
-		cover.addEventListener('click', () => {
+		this.cover.addEventListener('click', () => {
 			audio.currentTime = 0.17; // Reset if replaying
     		audio.play();
 			left.classList.add('slide-out');

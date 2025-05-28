@@ -204,7 +204,7 @@ function init() {
 
     // Wait for the 'cover-opened' event, then reveal result
     document.addEventListener("cover-opened", function handler() {
-      if (updatedCard.quantity == 1) {
+      if (updatedCard.quantity === 1) {
         resultDisplay.textContent =
         `🎉 New card unlocked: You got a ${updatedCard.rarity} "${updatedCard.name}"`;
       }
