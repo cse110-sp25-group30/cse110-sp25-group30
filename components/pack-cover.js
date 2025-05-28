@@ -100,6 +100,10 @@ class PackCover extends HTMLElement {
 			}, 900); // duration should match CSS transition
 		});
 	}
+
+	click() {
+		this.cover.click();
+	}
 }
 
 customElements.define('pack-cover', PackCover);

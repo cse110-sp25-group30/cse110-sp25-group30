@@ -196,7 +196,7 @@ function init() {
 
     generateBtn.disabled = true;
 
-    resultDisplay.textContent = "click to open";
+    resultDisplay.innerHTML = "click to open [O]";
 
     displayCard(updatedCard);
     update_points(-100); //price of card generation, can change later
@@ -205,12 +205,12 @@ function init() {
     // Wait for the 'cover-opened' event, then reveal result
     document.addEventListener("cover-opened", function handler() {
       if (updatedCard.quantity === 1) {
-        resultDisplay.textContent =
-        `🎉 New card unlocked: You got a ${updatedCard.rarity} "${updatedCard.name}"`;
+        resultDisplay.innerHTML =
+        `🎉 New card unlocked: You got a ${updatedCard.rarity} "${updatedCard.name}"<br>click to flip [F]`;
       }
       else {
-        resultDisplay.textContent =
-        `🎉 You got a ${updatedCard.rarity} "${updatedCard.name}" (Total owned: ${updatedCard.quantity})`;
+        resultDisplay.innerHTML =
+        `🎉 You got a ${updatedCard.rarity} "${updatedCard.name}" (Total owned: ${updatedCard.quantity})<br>click to flip [F]`;
       }
       resultDisplay.style.visibility = "visible";
       if (updatedCard.rarity == 'epic') {
@@ -229,5 +229,17 @@ function init() {
       // Remove listener so it only triggers once per open
       document.removeEventListener("cover-opened", handler);
     });
+  });
+
+  // Keyboard shortcuts
+  document.addEventListener("keydown", (e) => {
+    const key = e.key.toLowerCase();
+    if (key === 'b') {
+      document.getElementById("generate-card")?.click();
+    } else if (key === 'o') {
+      document.querySelector("pack-cover")?.click();
+    } else if (key === 'f') {
+      document.querySelector("frog-card")?.click(); //TODO: make it so cards cant be flipped before the cover is opened
+    }
   });
 }

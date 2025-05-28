@@ -7,7 +7,7 @@ class FrogCard extends HTMLElement {
 		super();
 
 		const shadow = this.attachShadow({ mode: 'open' });
-		const card = document.createElement('card');
+		this.card = document.createElement('card');
 		const style = document.createElement('style');
 
 		style.textContent = `
@@ -112,12 +112,16 @@ class FrogCard extends HTMLElement {
 		`;
 
 		shadow.appendChild(style);
-		shadow.appendChild(card);
+		shadow.appendChild(this.card);
 
-		card.addEventListener('click', () => {
+		this.addEventListener();
+	}
+
+	addEventListener() {
+		this.card.addEventListener('click', () => {
 			const audio = new Audio('assests/sound-effects/card-flip.mp3');
 			audio.volume = 0.1;
-			card.classList.toggle('flipped');
+			this.card.classList.toggle('flipped');
 			audio.currentTime = 0; // Reset if replaying
     		audio.play();
 		});
@@ -162,6 +166,10 @@ class FrogCard extends HTMLElement {
 			</div>
 		</div>
 		`;
+	}
+
+	click() {
+		this.card.click();
 	}
 }
 
