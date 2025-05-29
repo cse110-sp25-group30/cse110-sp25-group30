@@ -57,6 +57,7 @@ async function fetch_data(path) {
 function fetch_unlocked_cards(default_card) {
   const data = localStorage.getItem("card_data");
   if (!data) {
+    save_to_local([default_card], "card_data")
     return [default_card];
   }
   const parsed_data = JSON.parse(data);
@@ -166,19 +167,19 @@ export function update_points(points){
     console.warn("Data is missing or malformed", user_data)
     return false;
   }
-  let cur_points = user_data.points
-  let life_time_points = user_data.life_time_points
-  cur_points+=points
-  if (points > 0){
-    life_time_points+=points
+  let cur_points = user_data.points;
+  let life_time_points = user_data.life_time_points;
+  cur_points += points;
+  if (points > 0) {
+    life_time_points += points;
   }
-  user_data.points = cur_points
-  user_data.life_time_points = life_time_points
-  if (cur_points>=0){
-    save_to_local(user_data,"user_data")
-    return true
+  user_data.points = cur_points;
+  user_data.life_time_points = life_time_points;
+  if (cur_points >= 0) {
+    save_to_local(user_data,"user_data");
+    return true;
   }
-  return false
+  return false;
 }
 
 /**
@@ -186,14 +187,15 @@ export function update_points(points){
  */
 async function init() {
   const card_data_all = await fetch_data("./card-data.json");
-  save_to_local(card_data_all, "card_data"); // TODO: remove and load from unlocked later
-  const powell = card_data_all[0]
+  //save_to_local(card_data_all, "card_data"); // TODO: remove and load from unlocked later
+  const powell = card_data_all[0];
+  console.log("powell", powell);
   card_data = fetch_unlocked_cards(powell);
-  const fetch_user_data = fetch_user_info()
-  console.log("fetch_user_data",fetch_user_data)
+  const fetch_user_data = fetch_user_info();
+  console.log("fetch_user_data",fetch_user_data);
   if (!fetch_user_data){
-    const user_info = new UserInfo(0,0)
-    save_to_local(user_info,"user_data")
+    const user_info = new UserInfo(0,0);
+    save_to_local(user_info,"user_data");
   }
   createCard(card_data[selected_card]);
   card_button_click();

@@ -4,15 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="/styles/main.css">
+     <link rel="stylesheet" href="/styles/shop.css">
      <script type="module" src="/components/site-header.js"></script>
+     <script type="module" src="/components/frog-card.js"></script>
+     <script type="module" src="/components/pack-cover.js"></script>
      <script type="module" src="/scripts/shop.js"></script>
     <title>Nerdy Thirty Shop</title>
     <script src="index.js" type="module"></script>
 </head>
-<body>
+<body style="background-color: var(--secondary-background-color); color: white;">
     <site-header></site-header> 
-    <div> 
-
+    <div id="top-bar">
+        <div id="points">
+            <p id="points-display">0</p>
+            <img id="points-img" src="/assests/point.png" alt="points">
+        </div>
+        <h1 id="shoptitle">Card Shop</h1>
+    </div>
+    <div id="gen-container">
+        <div id="card-container" style="margin-top: 1rem;"></div>
+        <div id="result" style="margin-top: 1rem; font-size: 1.2rem;"></div>
+    </div>
+    <div id="buttoncont">
+        <div class="tooltip-container">
+            <p class="tooltip-icon">❔</p>
+            <p class="tooltip-text">
+                Drop Rates:<br>
+                Common: 55%<br>
+                Uncommon: 25%<br>
+                Rare: 15%<br>
+                Epic: 4%<br>
+                Legendary: 0.9%<br>
+                Special-Edition: 0.1%
+            </p>
+        </div>
+        <button id="generate-card" style="margin: 1rem 0; padding: 1rem;">Buy Random Card [B]</button> <!-- temporary button name-->
+        <p>Cost: 100</p>
     </div>
 </body>
 </html>
