@@ -1,4 +1,3 @@
-/* eslint-disable-next-line no-unused-vars */
 import { update_points, fetch_user_info } from "../index.js";
 import {cardNames, rarities, bios, courses, images} from "/scripts/card-values.js";
 
