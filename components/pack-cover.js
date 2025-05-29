@@ -6,11 +6,15 @@ class PackCover extends HTMLElement {
 	constructor() {
 		super();
 
-		const shadow = this.attachShadow({ mode: 'open' });
+		this.shadow = this.attachShadow({ mode: 'open' });
 
-		this.cover = document.createElement('cover');
+		this.initStyles();
+		this.initCover();
+		this.addEventListeners();
+	}
+
+	initStyles() {
 		const style = document.createElement('style');
-
 		style.textContent = `
 		.cover {
 			width: 420px;
@@ -65,18 +69,17 @@ class PackCover extends HTMLElement {
 		animation: dramaticSlideRight 0.9s ease-in-out forwards;
 		}
 		`;
+		this.shadow.appendChild(style);
+	}
 
+	initCover() {
+		this.cover = document.createElement('div');
+		this.cover.classList.add('cover');
 		this.cover.innerHTML = `
-        <div class="cover">
-            <img class="left" src="./assests/pack_left.png" alt="pack left">
-            <img class="right" src="./assests/pack_right.png" alt="pack right">
-        </div>
-        `;
-
-		shadow.appendChild(style);
-		shadow.appendChild(this.cover);
-
-		this.addEventListeners();
+			<img class="left" src="./assests/pack_left.png" alt="pack left">
+			<img class="right" src="./assests/pack_right.png" alt="pack right">
+		`;
+		this.shadow.appendChild(this.cover);
 	}
 
 	addEventListeners() {
