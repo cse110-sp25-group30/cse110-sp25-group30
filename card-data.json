@@ -1,5 +1,5 @@
 [
-    [
+    
     {
         "name": "Thomas A. Powell",
         "bio": "Long time internet and web focused software engineer. Collector of retro games, Star Wars nerd, soccer fan, occasional joker. Fun Fact: Early Internet Semi-Famous and met Hollywood Stars. Course Takeaway: Guiding students in becoming more well rounded software engineers equipped with the technical skills as well as soft skills.",
@@ -141,5 +141,5 @@
         "rarity": "common",
         "imgSrc": "assests/prof-images/porter.jpg"
     }
-]
+
 ]

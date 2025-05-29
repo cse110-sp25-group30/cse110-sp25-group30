@@ -1,6 +1,9 @@
 import { update_points, fetch_user_info } from "../index.js";
 import {cardNames, rarities, bios, courses, images} from "/scripts/card-values.js";
 
+/*
+TODO: Add description for functions in this file.
+*/
 window.addEventListener("DOMContentLoaded", init);
 
 let coverOpened = false;
@@ -31,14 +34,15 @@ function generateRandomCard() {
     course: courses[name] || "???"
   };
 }
-
+//Here we can use fetch_unlocked_cards to load cards from index.js
 function loadCardsFromLocal() {
-  const data = localStorage.getItem("owned_cards");
+  const data = localStorage.getItem("card_data");
   return data ? JSON.parse(data) : [];
 }
 
+//Here we can use save_to_local to save cards fron index.js
 function saveCardsToLocal(cards) {
-  localStorage.setItem("owned_cards", JSON.stringify(cards));
+  localStorage.setItem("card_data", JSON.stringify(cards));
 }
 
 function addOrUpdateCard(card) {
