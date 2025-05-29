@@ -4,6 +4,8 @@ import {cardNames, rarities, bios, courses, images} from "/scripts/card-values.j
 
 window.addEventListener("DOMContentLoaded", init);
 
+let coverOpened = false;
+
 function getRandomElement(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
@@ -65,6 +67,8 @@ function displayCard(card) {
 
   container.appendChild(frogCard);
   container.appendChild(cover);
+
+  coverOpened = false;
 }
 
 function updatePointsDisplay() {
@@ -105,6 +109,8 @@ function init() {
 
     // Wait for the 'cover-opened' event, then reveal result
     document.addEventListener("cover-opened", function handler() {
+      coverOpened = true;
+
       if (updatedCard.quantity === 1) {
         resultDisplay.innerHTML =
         `🎉 New card unlocked: You got a ${updatedCard.rarity} "${updatedCard.name}"<br>click to flip [F]`;
@@ -139,8 +145,8 @@ function init() {
       document.getElementById("generate-card")?.click();
     } else if (key === 'o') {
       document.querySelector("pack-cover")?.click();
-    } else if (key === 'f') {
-      document.querySelector("frog-card")?.click(); //TODO: make it so cards cant be flipped before the cover is opened
+    } else if ((key === 'f') && (coverOpened === true)) {
+      document.querySelector("frog-card")?.click();
     }
   });
 }
