@@ -1,4 +1,3 @@
-/* eslint-disable-next-line no-unused-vars */
 import {update_points} from "../index.js"
 import {fetch_user_info} from "../index.js"
 

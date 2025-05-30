@@ -206,11 +206,11 @@ async function init() {
     });
   }
 
-  // redirect to clicker.html when 
-  const viewClickerButton = document.getElementById("view-clicker");
-  if ("view-clicker") {
-    viewClickerButton.addEventListener("click", () => {
-      window.location.href = "clicker.html";
-    })
-  }
+  // TODO: redirect to clicker.html to shop
+  // const viewClickerButton = document.getElementById("view-clicker");
+  // if ("view-clicker") {
+  //   viewClickerButton.addEventListener("click", () => {
+  //     window.location.href = "clicker.html";
+  //   })
+  // }
 }
