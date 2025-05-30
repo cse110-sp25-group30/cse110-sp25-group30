@@ -25,7 +25,7 @@ function clicker_buttons(){
       */
       // console.log("clicked")
       update_points(1);
-      let user_info = JSON.parse(localStorage.getItem("user_data"));
+      let user_info = fetch_user_info();
       if (!user_info){
         console.error("No user info found");
         return;
