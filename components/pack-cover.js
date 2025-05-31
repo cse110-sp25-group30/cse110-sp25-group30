@@ -88,7 +88,12 @@ class PackCover extends HTMLElement {
 
 		const audio = new Audio('assets/sound-effects/rip-sound.mp3');
 
+		let clicked = false;
+
 		this.cover.addEventListener('click', () => {
+			if (clicked) return;
+			clicked = true;
+			
 			audio.currentTime = 0.17; // Reset if replaying
     		audio.play();
 			left.classList.add('slide-out');
