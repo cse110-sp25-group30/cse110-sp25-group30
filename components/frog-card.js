@@ -119,7 +119,7 @@ class FrogCard extends HTMLElement {
 
 	addEventListener() {
 		this.card.addEventListener('click', () => {
-			const audio = new Audio('assests/sound-effects/card-flip.mp3');
+			const audio = new Audio('assets/sound-effects/card-flip.mp3');
 			audio.volume = 0.1;
 			this.card.classList.toggle('flipped');
 			audio.currentTime = 0; // Reset if replaying
@@ -128,7 +128,7 @@ class FrogCard extends HTMLElement {
 	}
 
 	set data(data) {
-		if (!data || !data.imgSrc || !data.rarity || !data.name || !data.bio || !data.course) return;
+		if (!data || !data.rarity || !data.name || !data.bio || !data.course) return;
 
 		const card = this.shadowRoot.querySelector('card');
 
@@ -145,9 +145,9 @@ class FrogCard extends HTMLElement {
 				<!-- FRONT -->
 				<div class="flip-card-front">
 					<!-- PROF IMAGE -->
-					<img class="face" src="${data.imgSrc}" alt="${data.name} image">
+					<img class="face" src="./assets/prof-images/${data.name}.webp" alt="${data.name} image">
 					<!-- CARD OVERLAY -->
-					<img class="card-fg" src="./assests/${data.rarity}_front.png" alt="foreground layer">
+					<img class="card-fg" src="./assets/card-backings/${data.rarity}_front.webp" alt="foreground layer">
 					<!-- PROF NAME -->
 					<p class="front-name">${data.name}</p>
 				</div>
@@ -155,7 +155,7 @@ class FrogCard extends HTMLElement {
 				<!-- BACK -->
 				<div class="flip-card-back">
 					<!-- CARD BACKGROUND -->
-					<img class="back-bg" src="./assests/${data.rarity}_back.png" alt="background">
+					<img class="back-bg" src="./assets/card-backings/${data.rarity}_back.webp" alt="background">
 					<!-- PROF NAME -->
 					<p class="back-name">${data.name}</p>
 					<!-- PROF BIO -->
