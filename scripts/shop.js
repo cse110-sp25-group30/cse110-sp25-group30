@@ -95,7 +95,7 @@ function init() {
     resultDisplay.textContent = "❌ Not enough points. ❌";
     return;
     }
-    const click = new Audio('assests/sound-effects/buy.mp3');
+    const click = new Audio('assets/sound-effects/buy.mp3');
     click.currentTime = 0.095;
     click.play();
 
@@ -124,12 +124,12 @@ function init() {
       }
       resultDisplay.style.visibility = "visible";
       if (updatedCard.rarity == 'epic') {
-        const audio = new Audio('assests/sound-effects/lucky-draw1.mp3');
+        const audio = new Audio('assets/sound-effects/lucky-draw1.mp3');
         audio.currentTime = 0;
         audio.play();
       }
       else if (updatedCard.rarity == 'legendary' || updatedCard.rarity == 'special-edition') {
-        const audio = new Audio('assests/sound-effects/lucky-draw2.mp3');
+        const audio = new Audio('assets/sound-effects/lucky-draw2.mp3');
         audio.currentTime = 0;
         audio.play();
       }
