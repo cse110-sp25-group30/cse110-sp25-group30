@@ -1,5 +1,5 @@
 import { update_points, fetch_user_info } from "../index.js";
-import {cardNames, rarities, bios, courses, images} from "/scripts/card-values.js";
+import {cardNames, rarities, bios, courses} from "/scripts/card-values.js";
 
 /*
 TODO: Add description for functions in this file.
@@ -30,7 +30,6 @@ function generateRandomCard() {
     name,
     rarity,
     quantity: 1,
-    imgSrc: images[name] || "admin/branding/cse_110_logo.jpg",
     bio: bios[name] || "A mysterious card.",
     course: courses[name] || "???"
   };

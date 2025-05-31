@@ -77,13 +77,13 @@ export const courses = {
 };
 
 export const images = {
-  "Thomas A. Powell": "assets/prof-images/powell.jpg",
+  "Thomas A. Powell": "assets/prof-images/Thomas A. Powell.webp",
   "Niema Moshiri": "assets/prof-images/niema.jpg",
   "Sicun Gao": "assets/prof-images/gao.jpg",
   "John Eldon": "assets/prof-images/eldon.jpg",
   "Julian McAuley": "assets/prof-images/mculey.jpg",
   "Nadia Polikarpova": "assets/prof-images/polik.jpg",
-  "Trevor Bonjour": "assets/prof-images/bonjour.jpg",
+  "Trevor Bonjour": "assets/prof-images/Trevor Bonjour.webp",
   "Amy Ousterhout": "assets/prof-images/ouster.jpg",
   "Russel Impagliazzo": "assets/prof-images/impag.jpg",
   "Ben Ochoa": "assets/prof-images/ochoa.jpg",
