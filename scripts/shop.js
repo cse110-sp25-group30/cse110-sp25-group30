@@ -7,6 +7,7 @@ TODO: Add description for functions in this file.
 window.addEventListener("DOMContentLoaded", init);
 
 let coverOpened = false;
+let COST = 100;
 
 function getRandomElement(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -83,15 +84,23 @@ function updatePointsDisplay() {
   }
 }
 
+function updateCost() {
+  const cost_display = document.getElementById("cost");
+  if (cost_display) {
+    cost_display.textContent = `Cost: ${COST}`;
+  }
+}
+
 function init() {
   const generateBtn = document.getElementById("generate-card");
   const resultDisplay = document.getElementById("result");
 
   updatePointsDisplay();
+  updateCost();
 
   generateBtn.addEventListener("click", () => {
     const user = fetch_user_info();
-    if (!user || user.points < 100) { //currently set to price of generation = 1, can change later
+    if (!user || user.points < COST) { //currently set to price of generation = 1, can change later
     resultDisplay.textContent = "❌ Not enough points. ❌";
     return;
     }
@@ -107,7 +116,7 @@ function init() {
     resultDisplay.innerHTML = "click to open [O]";
 
     displayCard(updatedCard);
-    update_points(-100); //price of card generation, can change later
+    update_points(-COST); //price of card generation, can change later
     updatePointsDisplay();
 
     // Wait for the 'cover-opened' event, then reveal result
