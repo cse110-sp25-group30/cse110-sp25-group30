@@ -200,11 +200,19 @@ async function init() {
   createCard(card_data[selected_card]);
   card_button_click();
 
-  //redirect to grid.html when view all button is clicked
+  // redirect to grid.html when view all button is clicked
   const viewAllBtn = document.getElementById("view-all");
   if (viewAllBtn) {
     viewAllBtn.addEventListener("click", () => {
       window.location.href = "grid.html";
     });
   }
+
+  // TODO: redirect to clicker.html to shop
+  // const viewClickerButton = document.getElementById("view-clicker");
+  // if ("view-clicker") {
+  //   viewClickerButton.addEventListener("click", () => {
+  //     window.location.href = "clicker.html";
+  //   })
+  // }
 }
