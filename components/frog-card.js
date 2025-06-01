@@ -7,7 +7,7 @@ class FrogCard extends HTMLElement {
 		super();
 
 		const shadow = this.attachShadow({ mode: 'open' });
-		const card = document.createElement('card');
+		this.card = document.createElement('card');
 		const style = document.createElement('style');
 
 		style.textContent = `
@@ -93,11 +93,11 @@ class FrogCard extends HTMLElement {
 
 		.bio {
 			position: absolute;
-			top: 30.5%;
+			top: 31.5%;
 			z-index: 2;
 			color: var(--text-color);
 			text-align: center;
-			font-size: 65%;
+			font-size: 54%;
 			max-width: 40%;
 		}
 
@@ -112,15 +112,23 @@ class FrogCard extends HTMLElement {
 		`;
 
 		shadow.appendChild(style);
-		shadow.appendChild(card);
+		shadow.appendChild(this.card);
 
-		card.addEventListener('click', () => {
-			card.classList.toggle('flipped');
+		this.addEventListener();
+	}
+
+	addEventListener() {
+		this.card.addEventListener('click', () => {
+			const audio = new Audio('assets/sound-effects/card-flip.mp3');
+			audio.volume = 0.1;
+			this.card.classList.toggle('flipped');
+			audio.currentTime = 0; // Reset if replaying
+    		audio.play();
 		});
 	}
 
 	set data(data) {
-		if (!data || !data.imgSrc || !data.rarity || !data.name || !data.bio || !data.course) return;
+		if (!data || !data.rarity || !data.name || !data.bio || !data.course) return;
 
 		const card = this.shadowRoot.querySelector('card');
 
@@ -137,9 +145,9 @@ class FrogCard extends HTMLElement {
 				<!-- FRONT -->
 				<div class="flip-card-front">
 					<!-- PROF IMAGE -->
-					<img class="face" src="${data.imgSrc}" alt="${data.name} image">
+					<img class="face" src="./assets/prof-images/${data.name}.webp" alt="${data.name} image">
 					<!-- CARD OVERLAY -->
-					<img class="card-fg" src="./assests/${data.rarity}_front.png" alt="foreground layer">
+					<img class="card-fg" src="./assets/card-backings/${data.rarity}_front.webp" alt="foreground layer">
 					<!-- PROF NAME -->
 					<p class="front-name">${data.name}</p>
 				</div>
@@ -147,7 +155,7 @@ class FrogCard extends HTMLElement {
 				<!-- BACK -->
 				<div class="flip-card-back">
 					<!-- CARD BACKGROUND -->
-					<img class="back-bg" src="./assests/${data.rarity}_back.png" alt="background">
+					<img class="back-bg" src="./assets/card-backings/${data.rarity}_back.webp" alt="background">
 					<!-- PROF NAME -->
 					<p class="back-name">${data.name}</p>
 					<!-- PROF BIO -->
@@ -158,6 +166,10 @@ class FrogCard extends HTMLElement {
 			</div>
 		</div>
 		`;
+	}
+
+	click() {
+		this.card.click();
 	}
 }
 

@@ -11,43 +11,50 @@ class SiteHeader extends HTMLElement {
         <style>
             :host {
                 display: block;
+                width: 100%;
             }
-
+          
             nav {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 background-color: black;
                 color: white;
-                padding: 10px 20px;
+                padding: 10px 40px;
                 font-family: sans-serif;
+                width: 100%;              /* ✅ instead of 100vw */
+                box-sizing: border-box;   /* ✅ ensures padding is included */
             }
 
-            .nav-left {
+            .nav-left{
                 font-size: 1.5rem;
                 font-weight: bold;
+                text-decoration: none;
+                color: white;
             }
 
-            .nav-right button {
+            .nav-right a {
                 background: none;
                 border: none;
                 color: white;
-                font-size: 1rem;
+                font-size: 1.25rem;
                 margin-left: 15px;
                 cursor: pointer;
-            }
+                text-decoration: none;
+                transition: all 0.3s ease-in-out;
+            }       
 
-            .nav-right button:hover {
-                text-decoration: underline;
+            .nav-right a:hover {
+                color: #D3D3D3;
             }
         </style>
 
         <nav>
-            <div class="nav-left">Nerdy Thirty</div>
+            <a class="nav-left" href="index.html">Nerdy Thirty</a>
             <div class="nav-right">
-                <button>Home</button>
-                <button>About</button>
-                <button>Contact</button>
+                <a href="index.html">📁 Collection</a> <!-- TODO: goes to the grid html -->
+                <a href="shop.html">🛍️ Shop</a>
+                <a href="clicker.html">🟡 Clicker</a>
             </div>
         </nav>
         `;

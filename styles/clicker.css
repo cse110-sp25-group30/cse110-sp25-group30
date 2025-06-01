@@ -1,0 +1,20 @@
+/* @keyframes shrinkGrow {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px) scale(0.1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(0.55);
+  }
+} */
+
+#clicker-comp {
+  transform: scale(1);
+  transform-origin: center;
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  overflow: visible;
+  padding-top: 100px;
+}
