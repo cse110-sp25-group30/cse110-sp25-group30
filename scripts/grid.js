@@ -8,9 +8,13 @@ window.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("card-grid");
   if (!container) return;
 
-  for (const data of cards) {
+ cards.forEach((data, index) => {
     const card = document.createElement("frog-card");
     card.data = data;
+
+    card.style.animationDelay = (index * 0.1) + 's';
+
     container.appendChild(card);
-  }
+  });
+
 });
