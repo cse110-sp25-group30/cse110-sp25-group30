@@ -70,6 +70,10 @@ button[disabled] {
     cursor: not-allowed;
 }
 
+.nav-right {
+    display: flex;
+}
+
 @media (max-width: 768px) {
     #card_buttons{
         flex-direction: row; 

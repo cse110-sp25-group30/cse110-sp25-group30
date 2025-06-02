@@ -40,8 +40,28 @@ class SiteHeader extends HTMLElement {
             margin-right: 10px;
         }
 
-        .hamburger {
+        /* Default: horizontal nav bar (for wide screens) */
+        .nav-right {
             display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .nav-right a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.25rem;
+            margin-left: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-right a:hover {
+            color: #D3D3D3;
+        }
+
+        /* Hamburger hidden by default (only shows on small screens) */
+        .hamburger {
+            display: none;
             flex-direction: column;
             justify-content: space-between;
             width: 24px;
@@ -71,36 +91,39 @@ class SiteHeader extends HTMLElement {
             transform: translateY(-7.5px) rotate(-45deg);
         }
 
-        .nav-right {
-            position: fixed;
-            top: 0;
-            right: 0;
-            height: 100%;
-            width: 250px;
-            background-color: #182B49;
-            padding-top: 60px;
-            display: flex;
-            flex-direction: column;
-            transform: translateX(100%);
-            transition: transform 0.6s ease;
-            z-index: 1000;
-        }
+        /* Small screen styles: hamburger + slide-out */
+        @media (max-width: 768px) {
+            .nav-right {
+                position: fixed;
+                top: 0;
+                right: 0;
+                height: 100%;
+                width: 250px;
+                background-color: #182B49;
+                padding-top: 60px;
+                flex-direction: column;
+                transform: translateX(100%);
+                transition: transform 0.5s ease;
+                z-index: 1000;
+            }
 
-        .nav-right.open {
-            transform: translateX(0);
-        }
+            .nav-right.open {
+                transform: translateX(0);
+            }
 
-        .nav-right a {
-            color: white;
-            padding: 15px 20px;
-            text-decoration: none;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            font-size: 1.25rem;
-            transition: background-color 0.4s ease;
-        }
+            .hamburger {
+                display: flex;
+            }
 
-        .nav-right a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            .nav-right a {
+                margin-left: 0;
+                padding: 15px 20px;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .nav-right a:last-child {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            }
         }
 
         .backdrop {
@@ -119,12 +142,6 @@ class SiteHeader extends HTMLElement {
         .backdrop.show {
             opacity: 1;
             pointer-events: auto;
-        }
-
-        @media (min-width: 601px) {
-            .nav-right {
-                display: none !important;
-            }
         }
         </style>
 
@@ -174,10 +191,7 @@ class SiteHeader extends HTMLElement {
         });
 
         backdrop.addEventListener('click', closeMenu);
-
-        links.forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
+        links.forEach(link => link.addEventListener('click', closeMenu));
     }
 }
 
