@@ -103,12 +103,12 @@ class SiteHeader extends HTMLElement {
                 padding-top: 60px;
                 flex-direction: column;
                 transform: translateX(100%);
-                transition: transform 0.5s ease;
                 z-index: 1000;
             }
 
             .nav-right.open {
                 transform: translateX(0);
+                transition: transform 0.5s ease;
             }
 
             .hamburger {
