@@ -11,6 +11,7 @@
   --secondary-background-color: #2a2a2a;  /* Slightly lighter for sections/cards */
   --modal-background-color: #2e2e2e;      /* For modals or popups */
   --font-body: 'Wizard World', serif;
+
   /* Text Colors */
   --text-color: #f2e8c9;                  /* Aged parchment */
   --secondary-text-color: #cfae6d;        /* Gold-accented text */
@@ -63,6 +64,16 @@ button{
     display:flex; justify-content: space-between; align-items: center; padding: 10px;
 }
 
+button[disabled] {
+    background-color: var(--secondary-button-color);
+    color: var(--secondary-button-text-color);
+    cursor: not-allowed;
+}
+
+.nav-right {
+    display: flex;
+}
+
 @media (max-width: 768px) {
     #card_buttons{
         flex-direction: row; 
@@ -76,13 +87,18 @@ button{
         margin-bottom: 0px !important;
         margin-right: 10px !important;
     }
-}
-
-
-button[disabled] {
-    background-color: var(--secondary-button-color);
-    color: var(--secondary-button-text-color);
-    cursor: not-allowed;
+    nav {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .nav-right {
+      display: none; 
+    }
+    .hamburger {
+      display: block;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
 }
 
 
