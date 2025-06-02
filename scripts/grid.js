@@ -6,15 +6,28 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const cards = JSON.parse(localData);
   const container = document.getElementById("card-grid");
+  const searchInput = document.getElementById("search-input");
+
   if (!container) return;
 
- cards.forEach((data, index) => {
-    const card = document.createElement("frog-card");
-    card.data = data;
+ function renderCards(filter = "") {
+    container.innerHTML = ""; // Clear existing cards
+    cards.forEach((data, index) => {
+      const name = data.name?.toLowerCase() || "";
+      if (!filter || name.includes(filter.toLowerCase())) {
+        const card = document.createElement("frog-card");
+        card.data = data;
+        card.style.animationDelay = `${index * 0.1}s`;
+        container.appendChild(card);
+      }
+    });
+  }
 
-    card.style.animationDelay = (index * 0.1) + 's';
+  // Initial render
+  renderCards();
 
-    container.appendChild(card);
+  // Search bar functionality
+  searchInput.addEventListener("input", () => {
+    renderCards(searchInput.value);
   });
-
 });

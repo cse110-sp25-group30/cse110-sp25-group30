@@ -16,6 +16,13 @@ class FrogCard extends HTMLElement {
 			height: 400px;
 			perspective: 1000px;
 			cursor: pointer;
+			/*hover code after this*/
+			transition: transform 0.2s ease;
+		}
+		
+		.flip-card:hover {
+			transform: scale(1.05);
+			z-index: 2;
 		}
 
 		.flip-card-inner {
