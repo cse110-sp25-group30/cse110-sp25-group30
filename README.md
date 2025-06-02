@@ -1,4 +1,4 @@
-﻿#CSE Card Collector (Final Proect by Team 30 aka Nerdy-Thirty)
+﻿# CSE Card Collector (Final Proect by Team 30 aka Nerdy-Thirty)
 
 ## Overview:
 Welcome to Nerdy-Thirty's (aka Team 30's) Final Project for CSE 110! Our project is a card collecting app, similar to mobile TCG games, with the main theme being Computer Science Engineering (CSE) Major professors from the University of San Diego, California. The app consists of a Shop to buy a single pack of a card, a Grid View displaying all of the collected cards, as well as a "Cookie Clicker"-esque minigame, used as the main source of obtaining currency that is used in the shop! With this project we aimed for it to be entertaining and fun, while also tying it to our overrall CSE major, with the cards having small bio's in the back about the professors and the course they're teaching.
@@ -36,11 +36,13 @@ Status Video 1:
 
 ### Sprint Review Meetings
 - [Sprint 1 Review](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0512-0518/051825-sprint-1-review.md)
-- [Spring 2 Review](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0519-0525/052525-sprint2-review.md)
-  
+- [Sprint 2 Review](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0519-0525/052525-sprint2-review.md)
+- [Sprint 3 Review](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0526-0601/060125-sprint3-review.md)
+
 ### Retrospectives
 - [Sprint 1 Retrospective](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0512-0518/051825-retrospective.md)
 - [Sprint 2 Retrospective](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0519-0525/052525-retrospective.md)
+- [Sprint 3 Retrospective](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0526-0601/060125-retrospective.md)
 
 ### ADR's
 
