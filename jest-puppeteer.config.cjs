@@ -1,12 +1,19 @@
 module.exports = {
     launch: {
-      headless: false,
-      slowMo: 25
+      headless: true,
+      slowMo: 0,
+      //Stuff for github actions
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-gpu',               
+        '--disable-dev-shm-usage'       
+      ]
     },
     server: {
-      command: 'npx serve . -l 3000', // or `npm run start`
+      command: 'npx serve . -l 3000', 
       port: 3000,
-      launchTimeout: 10000,           // ms to wait for server to be ready
+      launchTimeout: 10000,          
       debug: false
     }
   }
