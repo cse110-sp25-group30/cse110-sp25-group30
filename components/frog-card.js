@@ -1,17 +1,13 @@
-
 /*
 This is the JavaScript file for the frog-card component.
-We need to add a flipping animation to the card so it can be flipped to show the back
-Bio and course should go on the back of the card. 
-
-Try to use CSS variables for the colors. 
 */
+
 class FrogCard extends HTMLElement {
 	constructor() {
 		super();
 
 		const shadow = this.attachShadow({ mode: 'open' });
-		const card = document.createElement('card');
+		this.card = document.createElement('card');
 		const style = document.createElement('style');
 
 		style.textContent = `
@@ -43,8 +39,6 @@ class FrogCard extends HTMLElement {
 			flex-direction: column;
 			align-items: center;
 			justify-content: flex-start;
-			background: transparent;
-			border: none;
 		}
 
 		.flip-card-back {
@@ -53,8 +47,8 @@ class FrogCard extends HTMLElement {
 
 		.face {
 			width: auto;
-			height: 53%;
-			max-width: 71%;
+			height: 53%; /* sets height to fit the height of the frame */
+			max-width: 71%; /* makes sure if the image is landscape, it does not go past the border of the card */
 			margin-top: 30%;
 			position: relative;
 			z-index: 1;
@@ -89,58 +83,93 @@ class FrogCard extends HTMLElement {
 			z-index: 1;
 		}
 
+		.back-name {
+			position: absolute;
+			top: 23%;
+			z-index: 2;
+			color: #003057; /* ucsd blue */
+			font-size: 80%;
+		}
+
 		.bio {
 			position: absolute;
-			top: 20%;
+			top: 31.5%;
 			z-index: 2;
-			padding: 10%;
-			color: #f2a900; /* ucsd yellow */
+			color: var(--text-color);
 			text-align: center;
-			font-size: 100%;
+			font-size: 54%;
+			max-width: 40%;
 		}
 
 		.course {
 			position: absolute;
-			bottom: 5%;
+			top: 16%;
 			z-index: 2;
-			color: #003057; /* ucsd blue */
+			color: var(--text-color);
 			text-align: center;
-			font-size: 100%;
+			font-size: 80%;
 		}
 		`;
 
 		shadow.appendChild(style);
-		shadow.appendChild(card);
+		shadow.appendChild(this.card);
 
-		card.addEventListener('click', () => {
-			card.classList.toggle('flipped');
+		this.addEventListener();
+	}
+
+	addEventListener() {
+		this.card.addEventListener('click', () => {
+			const audio = new Audio('assets/sound-effects/card-flip.mp3');
+			audio.volume = 0.1;
+			this.card.classList.toggle('flipped');
+			audio.currentTime = 0; // Reset if replaying
+    		audio.play();
 		});
 	}
 
 	set data(data) {
-		if (!data || !data.imgSrc || !data.name || !data.bio || !data.course) return;
+		if (!data || !data.rarity || !data.name || !data.bio || !data.course) return;
 
 		const card = this.shadowRoot.querySelector('card');
+
+		/* changes the color of the text from ucsd yellow to blue if the card is of legendary rarity */
+		this.style.setProperty('--text-color', '#f2a900'); // ucsd yellow
+		
+		if (data.rarity === "legendary") {
+			this.style.setProperty('--text-color', '#003057'); // ucsd blue
+		}
 
 		card.innerHTML = `
 		<div class="flip-card">
 			<div class="flip-card-inner">
 				<!-- FRONT -->
 				<div class="flip-card-front">
-					<img class="face" src="${data.imgSrc}" alt="${data.name} image">
-					<img class="card-fg" src="./assests/placeholder_front.png" alt="foreground layer">
+					<!-- PROF IMAGE -->
+					<img class="face" src="./assets/prof-images/${data.name}.webp" alt="${data.name} image">
+					<!-- CARD OVERLAY -->
+					<img class="card-fg" src="./assets/card-backings/${data.rarity}_front.webp" alt="foreground layer">
+					<!-- PROF NAME -->
 					<p class="front-name">${data.name}</p>
 				</div>
 
 				<!-- BACK -->
 				<div class="flip-card-back">
-					<img class="back-bg" src="./assests/placeholder_back.png" alt="background">
+					<!-- CARD BACKGROUND -->
+					<img class="back-bg" src="./assets/card-backings/${data.rarity}_back.webp" alt="background">
+					<!-- PROF NAME -->
+					<p class="back-name">${data.name}</p>
+					<!-- PROF BIO -->
 					<p class="bio">${data.bio}</p>
+					<!-- COURSE -->
 					<p class="course">${data.course}</p>
 				</div>
 			</div>
 		</div>
 		`;
+	}
+
+	click() {
+		this.card.click();
 	}
 }
 

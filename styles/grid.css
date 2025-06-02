@@ -1,0 +1,51 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+  column-gap: 10px; 
+  padding: 20px 0px; 
+  row-gap: 4px; 
+  justify-items: center;
+}
+
+.grid-container frog-card {
+  transform: scale(0.5);
+  transform-origin: top center;
+  height: 200px;
+  overflow: visible;
+}
+
+.back-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--button-color);
+  color: var(--button-text-color);
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  font-family: sans-serif;
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px) scale(0.1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(0.55);
+  }
+}
+
+.grid-container frog-card {
+  transform: scale(0.5);
+  transform-origin: top center;
+  height: 200px;
+  overflow: visible;
+  opacity: 0;
+  padding-top: 50px;
+  animation-name: fadeSlideIn;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}

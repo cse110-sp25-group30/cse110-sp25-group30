@@ -35,8 +35,7 @@ body {
     font-family: 'Garamond', serif; /* A classic, elegant font */
     line-height: 1.6;
     font-family: var(--font-body);
-    max-width: 1200px;
-    margin: 0 auto;
+    margin: 0;
 }
 
 .hidden {
@@ -53,6 +52,7 @@ button{
     font-size: 16px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 #card_buttons{
     display: flex; 
     flex-direction: column; 
@@ -85,7 +85,4 @@ button[disabled] {
     cursor: not-allowed;
 }
 
-#clicker_comp{
-    width: 200px;
-    height: 200px;
-}
+
