@@ -1,6 +1,6 @@
 module.exports = {
     launch: {
-      headless: false,
+      headless: true,
       slowMo: 0,
       //Stuff for github actions
       args: [
