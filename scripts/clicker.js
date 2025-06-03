@@ -11,12 +11,12 @@ window.addEventListener("DOMContentLoaded", init);
  * @description Adds click event to clicker page where needed
  */
 function clicker_buttons(){
-    const clicker_comp = document.getElementById("clicker-comp");
+    const clicker_button = document.getElementById("clicker-button");
     const points_display = document.getElementById("points_display");
-    if (!clicker_comp){
+    if (!clicker_button){
       return;
     }
-    clicker_comp.addEventListener("mousedown", function(){
+    clicker_button.addEventListener("mousedown", function(){
       /*
       TODO: Use update_points to update the # of points. So you dont call the function
       a ton of times, I recommend using setTimeout so
@@ -33,16 +33,16 @@ function clicker_buttons(){
       //   console.log(user_info.points);
       // }
       points_display.innerHTML = `Points: ${user_info.points}`;
-      clicker_comp.style.transform = "scale(0.95)";
+      clicker_button.style.transform = "scale(0.95)";
     })
-    clicker_comp.addEventListener("mouseup", function(){
+    clicker_button.addEventListener("mouseup", function(){
       /*
       TODO: Use update_points to update the # of points. So you dont call the function
       a ton of times, I recommend using setTimeout so
       like every 500 ms save points with update_points function.
       */      
      
-      clicker_comp.style.transform = "scale(1)";
+      clicker_button.style.transform = "scale(1)";
     })
     /**
      * Updates the user point in the backend and the UI.
