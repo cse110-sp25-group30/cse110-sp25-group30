@@ -4,7 +4,7 @@ module.exports = {
       {
         displayName: "unit",
         testMatch: ["<rootDir>/tests/unit/**/*.test.js"],
-        testEnvironment: "node",
+        testEnvironment: "jsdom",
       },
       {
         displayName: "puppeteer",

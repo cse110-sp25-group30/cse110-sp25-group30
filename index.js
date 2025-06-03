@@ -16,7 +16,7 @@ console.log(c1.author);
  * @constructor
  * @param {number} points represents # of points earned by user
  */
-function UserInfo(points){
+export function UserInfo(points){
   this.points = points
   this.life_time_points = points
 }
@@ -33,7 +33,7 @@ window.addEventListener("DOMContentLoaded", init);
  * @returns {Promise} A promise that resolves to the data from the JSON file.
  * @throws {Error} If the fetch operation fails.
  */
-async function fetch_data(path) {
+export async function fetch_data(path) {
   try {
     const response = await fetch(path);
     if (!response.ok) {
@@ -54,7 +54,7 @@ async function fetch_data(path) {
  * @param {Object} default_card An object returned from card-data.json.
  * @returns {Array} An array of unlocked cards from local storage.
  */
-function fetch_unlocked_cards(default_card) {
+export function fetch_unlocked_cards(default_card) {
   const data = localStorage.getItem("card_data");
   if (!data) {
     save_to_local([default_card], "card_data")
@@ -144,7 +144,7 @@ function card_button_click() {
  * @param {Object} data - The data to set on the frog-card element. Matches card-data.json format.
  * @returns {HTMLElement} The created frog-card element.
  */
-function createCard(data) {
+export function createCard(data) {
   const cardDeck = document.querySelector("card-deck");
   if (!cardDeck){
     return
