@@ -10,52 +10,64 @@ window.addEventListener("DOMContentLoaded", init);
 /**
  * @description Adds click event to clicker page where needed
  */
-function clicker_buttons(){
-    const clicker_button = document.getElementById("clicker-button");
-    const points_display = document.getElementById("points_display");
-    if (!clicker_button){
+function clicker_buttons() {
+  const clicker_button = document.getElementById("clicker-button");
+  const points_display = document.getElementById("points_display");
+
+  if (!clicker_button) return;
+
+  clicker_button.addEventListener("mousedown", function () {
+    let user_info = fetch_user_info();
+    if (!user_info) {
+      console.error("No user info found");
       return;
     }
-    clicker_button.addEventListener("mousedown", function(){
-      /*
-      TODO: Use update_points to update the # of points. So you dont call the function
-      a ton of times, I recommend using setTimeout so
-      like every 500 ms save points with update_points function.
-      */
-      // console.log("clicked")
+
+    // 🎲 10% chance to show a bonus popup instead of earning 1 point
+    if (Math.random() < 0.05) {
+      showBonusPopup();
+    }
+    else {
       update_points(1);
-      let user_info = fetch_user_info();
-      if (!user_info){
-        console.error("No user info found");
-        return;
-      }
-      // else{
-      //   console.log(user_info.points);
-      // }
+      user_info.points += 1;
       points_display.innerHTML = `Points: ${user_info.points}`;
-      clicker_button.style.transform = "scale(0.95)";
-    })
-    clicker_button.addEventListener("mouseup", function(){
-      /*
-      TODO: Use update_points to update the # of points. So you dont call the function
-      a ton of times, I recommend using setTimeout so
-      like every 500 ms save points with update_points function.
-      */      
-     
-      clicker_button.style.transform = "scale(1)";
-    })
-    /**
-     * Updates the user point in the backend and the UI.
-     * Calls update_points() with the new points.
-     */
-    
-    // Update the user points
-    // call update_points with the new points
-    // update the UI with the new pointsg
+    }
 
+    clicker_button.style.transform = "scale(0.95)";
+  });
 
+  clicker_button.addEventListener("mouseup", function () {
+    clicker_button.style.transform = "scale(1)";
+  });
+
+  function showBonusPopup() {
+    const bonus = document.createElement("div");
+    bonus.id = "bonus-popup";
+    bonus.textContent = "+10!";
+    bonus.classList.add("bonus-popup");
+
+    // Random position in the viewport
+    bonus.style.left = Math.random() * 80 + 10 + "%";
+    bonus.style.top = Math.random() * 60 + 20 + "%";
+
+    document.body.appendChild(bonus);
+
+    bonus.addEventListener("click", () => {
+      let user_info = fetch_user_info();
+      update_points(10);
+      user_info.points += 10;
+      points_display.innerHTML = `Points: ${user_info.points}`;
+      bonus.remove();
+    });
+
+    // Auto-remove after 3 seconds
+    setTimeout(() => {
+      if (document.body.contains(bonus)) {
+        bonus.remove();
+      }
+    }, 1000);
+  }
 }
-
 
 
   async function init(){

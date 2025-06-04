@@ -33,4 +33,29 @@
     width: 85vw;
   }
 }
+.bonus-popup {
+  position: absolute;
+  padding: 15px 25px;
+  background-color: gold;
+  color: black;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: 2px solid orange;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 200, 0, 0.8);
+  z-index: 1000;
+  animation: popup-fadein 0.2s ease-out;
+}
+
+@keyframes popup-fadein {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 
