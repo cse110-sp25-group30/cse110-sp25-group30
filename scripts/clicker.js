@@ -23,8 +23,11 @@ function clicker_buttons() {
       return;
     }
 
-    // 🎲 10% chance to show a bonus popup instead of earning 1 point
+    //  5% chance to show a bonus popup instead of earning 1 point
     if (Math.random() < 0.05) {
+      update_points(1);
+      user_info.points += 1;
+      points_display.innerHTML = `Points: ${user_info.points}`;
       showBonusPopup();
     }
     else {
@@ -41,17 +44,17 @@ function clicker_buttons() {
   });
 
   function showBonusPopup() {
-    const bonus = document.createElement("div");
+    const bonus = document.createElement("div");//creates the bonus window
     bonus.id = "bonus-popup";
     bonus.textContent = "+10!";
     bonus.classList.add("bonus-popup");
 
-    // Random position in the viewport
+    // Random position on screen
     bonus.style.left = Math.random() * 80 + 10 + "%";
     bonus.style.top = Math.random() * 60 + 20 + "%";
 
     document.body.appendChild(bonus);
-
+    //actually adds 10 when clicked
     bonus.addEventListener("click", () => {
       let user_info = fetch_user_info();
       update_points(10);
@@ -60,7 +63,7 @@ function clicker_buttons() {
       bonus.remove();
     });
 
-    // Auto-remove after 3 seconds
+    // Auto-remove after 1 seconds
     setTimeout(() => {
       if (document.body.contains(bonus)) {
         bonus.remove();
