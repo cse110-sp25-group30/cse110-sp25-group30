@@ -22,19 +22,14 @@ function clicker_buttons() {
       console.error("No user info found");
       return;
     }
-
+    update_points(1);
+    user_info.points += 1;//updates points
+    points_display.innerHTML = `Points: ${user_info.points}`;
     //  5% chance to show a bonus popup instead of earning 1 point
     if (Math.random() < 0.05) {
-      update_points(1);
-      user_info.points += 1;
-      points_display.innerHTML = `Points: ${user_info.points}`;
       showBonusPopup();
     }
-    else {
-      update_points(1);
-      user_info.points += 1;
-      points_display.innerHTML = `Points: ${user_info.points}`;
-    }
+
 
     clicker_button.style.transform = "scale(0.95)";
   });
@@ -42,7 +37,7 @@ function clicker_buttons() {
   clicker_button.addEventListener("mouseup", function () {
     clicker_button.style.transform = "scale(1)";
   });
-
+  //popup button function
   function showBonusPopup() {
     const bonus = document.createElement("div");//creates the bonus window
     bonus.id = "bonus-popup";
