@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npx serve .",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
     "lint:html": "htmlhint .",
     "lint": "eslint .",
     "docs": "jsdoc -c jsdoc.json",
