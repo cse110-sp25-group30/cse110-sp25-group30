@@ -9,6 +9,11 @@ jobs: # the things being executed
       - uses: actions/checkout@v4 # using version 4 of Actions
       - name: Install Dependencies
         run: npm install
-      - name: Unit Test
-        run: node --experimental-vm-modules node_modules/jest/bin/jest.js
+      - name: Unit Test with Coverage
+        run: npm run test
+      - name: Upload Coverage to Codacy
+        env:
+          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }} # secret token for Codacy
+        run: |
+          bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage/lcov.info
 
