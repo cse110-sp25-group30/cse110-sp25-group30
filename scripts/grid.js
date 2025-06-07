@@ -9,7 +9,7 @@ window.addEventListener("DOMContentLoaded", () => {
   if (!container) return;
 
  cards.forEach((data, index) => {
-    const card = document.createElement("frog-card");
+    const card = document.createElement("card-thumbnail");
     card.data = data;
 
     card.style.animationDelay = (index * 0.1) + 's';

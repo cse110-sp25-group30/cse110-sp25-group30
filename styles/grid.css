@@ -7,7 +7,7 @@
   justify-items: center;
 }
 
-.grid-container frog-card {
+.grid-container card-thumbnail {
   transform: scale(0.5);
   transform-origin: top center;
   height: 200px;
@@ -38,7 +38,7 @@
   }
 }
 
-.grid-container frog-card {
+.grid-container card-thumbnail {
   transform: scale(0.5);
   transform-origin: top center;
   height: 200px;
