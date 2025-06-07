@@ -17,7 +17,7 @@ class FrogCard extends HTMLElement {
 
 	initStyles() {
 		const style = document.createElement('style');
-		style.textContent = style.textContent = `
+		style.textContent = `
 		.flip-card {
 			width: 400px;
 			height: 400px;
@@ -118,6 +118,10 @@ class FrogCard extends HTMLElement {
 		}
 
 		.loading {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
 			margin-top: 65%;
 		}
 		
@@ -166,9 +170,9 @@ class FrogCard extends HTMLElement {
 
 		// Set default loading message
 		this.card.innerHTML = `
-			<div class="loading"></div>
+			<div class="loading">
 				<div class="spinner"></div>
-			<div class="loading"></div>
+			</div>
 		`;
 
 		Promise.all([
@@ -201,7 +205,7 @@ class FrogCard extends HTMLElement {
 				</div>
 			`;
 		}).catch((err) => {
-			card.innerHTML = `<p class="loading">Failed to load card</p>`;
+			this.card.innerHTML = `<p class="loading">Failed to load card</p>`;
 			console.error("Image failed to load", err);
 		});
 	}
