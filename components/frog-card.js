@@ -6,11 +6,18 @@ class FrogCard extends HTMLElement {
 	constructor() {
 		super();
 
-		const shadow = this.attachShadow({ mode: 'open' });
+		this.shadow = this.attachShadow({ mode: 'open' });
 		this.card = document.createElement('card');
-		const style = document.createElement('style');
 
-		style.textContent = `
+		this.shadow.appendChild(this.card);
+
+		this.initStyles();
+		this.addEventListener();
+	}
+
+	initStyles() {
+		const style = document.createElement('style');
+		style.textContent = style.textContent = `
 		.flip-card {
 			width: 400px;
 			height: 400px;
@@ -109,12 +116,27 @@ class FrogCard extends HTMLElement {
 			text-align: center;
 			font-size: 80%;
 		}
+
+		.loading {
+			margin-top: 65%;
+		}
+		
+		.spinner {
+			width: 150px;
+			height: 150px;
+			border: 10px solid rgba(0, 0, 0, 0.1);
+			border-left-color: #003057;
+			border-radius: 50%;
+			animation: spin 1s linear infinite;
+		}
+
+		@keyframes spin {
+			to {
+				transform: rotate(360deg);
+			}
+		}
 		`;
-
-		shadow.appendChild(style);
-		shadow.appendChild(this.card);
-
-		this.addEventListener();
+		this.shadow.appendChild(style);
 	}
 
 	addEventListener() {
@@ -130,42 +152,58 @@ class FrogCard extends HTMLElement {
 	set data(data) {
 		if (!data || !data.rarity || !data.name || !data.bio || !data.course) return;
 
-		const card = this.shadowRoot.querySelector('card');
+		const profImgUrl = `./assets/prof-images/${data.name}.webp`;
+		const fgImgUrl = `./assets/card-backings/${data.rarity}_front.webp`;
+		const bgImgUrl = `./assets/card-backings/${data.rarity}_back.webp`;
 
-		/* changes the color of the text from ucsd yellow to blue if the card is of legendary rarity */
-		this.style.setProperty('--text-color', '#f2a900'); // ucsd yellow
-		
-		if (data.rarity === "legendary") {
-			this.style.setProperty('--text-color', '#003057'); // ucsd blue
-		}
+		const loadImage = (src) =>
+			new Promise((resolve, reject) => {
+				const img = new Image();
+				img.onload = resolve;
+				img.onerror = reject;
+				img.src = src;
+			});
 
-		card.innerHTML = `
-		<div class="flip-card">
-			<div class="flip-card-inner">
-				<!-- FRONT -->
-				<div class="flip-card-front">
-					<!-- PROF IMAGE -->
-					<img class="face" src="./assets/prof-images/${data.name}.webp" alt="${data.name} image">
-					<!-- CARD OVERLAY -->
-					<img class="card-fg" src="./assets/card-backings/${data.rarity}_front.webp" alt="foreground layer">
-					<!-- PROF NAME -->
-					<p class="front-name">${data.name}</p>
-				</div>
-
-				<!-- BACK -->
-				<div class="flip-card-back">
-					<!-- CARD BACKGROUND -->
-					<img class="back-bg" src="./assets/card-backings/${data.rarity}_back.webp" alt="background">
-					<!-- PROF NAME -->
-					<p class="back-name">${data.name}</p>
-					<!-- PROF BIO -->
-					<p class="bio">${data.bio}</p>
-					<!-- COURSE -->
-					<p class="course">${data.course}</p>
-				</div>
-			</div>
-		</div>
+		// Set default loading message
+		this.card.innerHTML = `
+			<div class="loading"></div>
+				<div class="spinner"></div>
+			<div class="loading"></div>
 		`;
+
+		Promise.all([
+			loadImage(profImgUrl),
+			loadImage(fgImgUrl),
+			loadImage(bgImgUrl),
+		]).then(() => {
+			this.style.setProperty('--text-color', '#f2a900');
+			if (data.rarity === "legendary") {
+				this.style.setProperty('--text-color', '#003057');
+			}
+
+			this.card.innerHTML = `
+				<div class="flip-card">
+					<div class="flip-card-inner">
+						<!-- FRONT -->
+						<div class="flip-card-front">
+							<img class="face" src="${profImgUrl}" alt="${data.name} image">
+							<img class="card-fg" src="${fgImgUrl}" alt="foreground layer">
+							<p class="front-name">${data.name}</p>
+						</div>
+						<!-- BACK -->
+						<div class="flip-card-back">
+							<img class="back-bg" src="${bgImgUrl}" alt="background">
+							<p class="back-name">${data.name}</p>
+							<p class="bio">${data.bio}</p>
+							<p class="course">${data.course}</p>
+						</div>
+					</div>
+				</div>
+			`;
+		}).catch((err) => {
+			card.innerHTML = `<p class="loading">Failed to load card</p>`;
+			console.error("Image failed to load", err);
+		});
 	}
 
 	click() {
