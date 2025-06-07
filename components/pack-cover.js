@@ -43,6 +43,15 @@ class PackCover extends HTMLElement {
             z-index: 11;
         }
 
+		.placeholder {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			background-color: white;
+			z-index: 5;
+			clip-path: polygon(50% 5%, 99% 39%, 80% 97%, 20% 97%, 1% 39%);
+		}
+
 		@keyframes dramaticSlideLeft {
 		0%   { transform: translateX(0); }
 		20%  { transform: translateX(-1.5%); }
@@ -73,13 +82,33 @@ class PackCover extends HTMLElement {
 	}
 
 	initCover() {
-		this.cover = document.createElement('div');
-		this.cover.classList.add('cover');
+		this.cover = document.createElement('cover');
 		this.cover.innerHTML = `
-			<img class="left" src="./assets/misc-images/pack_left.webp" alt="pack left">
-			<img class="right" src="./assets/misc-images/pack_right.webp" alt="pack right">
+			<div class="cover">
+				<!-- Pentagon placeholder -->
+				<div class="placeholder"></div>
+
+				<!-- Actual images -->
+				<img class="left" src="./assets/misc-images/pack_left.webp" alt="pack left">
+				<img class="right" src="./assets/misc-images/pack_right.webp" alt="pack right">
+			</div>
 		`;
+
 		this.shadow.appendChild(this.cover);
+
+		const left = this.cover.querySelector('.left');
+		const right = this.cover.querySelector('.right');
+		const placeholder = this.cover.querySelector('.placeholder');
+
+		const checkLoaded = () => {
+			if (left.complete && right.complete) {
+				placeholder.style.display = 'none';
+			}
+		};
+
+		// Add listeners
+		left.addEventListener('load', checkLoaded);
+		right.addEventListener('load', checkLoaded);
 	}
 
 	addEventListeners() {
