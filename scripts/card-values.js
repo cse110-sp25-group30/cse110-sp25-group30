@@ -24,9 +24,9 @@ export const cardNames = [
 ];
 
 export const rarities = [
-  { type: "common", chance: 55 },
-  { type: "uncommon", chance: 25 },
-  { type: "rare", chance: 15 },
+  { type: "common", chance: 50 },
+  { type: "uncommon", chance: 28 },
+  { type: "rare", chance: 17 },
   { type: "epic", chance: 4 },
   { type: "legendary", chance: 0.9 },
   { type: "special-edition", chance: 0.1 }
