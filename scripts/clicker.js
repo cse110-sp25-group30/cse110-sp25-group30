@@ -2,58 +2,45 @@ import {update_points} from "../index.js"
 import {fetch_user_info} from "../index.js"
 
 window.addEventListener("DOMContentLoaded", init);
-
-
-
-
-
 /**
- * @description Adds click event to clicker page where needed
+ * Initializes click event listeners for the clicker component.
+ * 
+ * When the clicker component is pressed, increments the user's points,
+ * updates the points display, and applies a scaling effect for visual feedback.
+ * On mouse release, restores the original scale.
+ * 
+ * Assumes the existence of `update_points` and `fetch_user_info` functions,
+ * and elements with IDs "clicker-comp" and "points_display" in the DOM.
  */
-function clicker_buttons(){
-    const clicker_comp = document.getElementById("clicker-comp");
-    const points_display = document.getElementById("points_display");
-    if (!clicker_comp){
+function clicker_buttons() {
+  const clicker_comp = document.getElementById("clicker-comp");
+  const points_display = document.getElementById("points_display");
+  if (!clicker_comp) {
+    return;
+  }
+
+  const handleClick = () => {
+    update_points(1);
+    let user_info = fetch_user_info();
+    if (!user_info) {
+      console.error("No user info found");
       return;
     }
-    clicker_comp.addEventListener("mousedown", function(){
-      /*
-      TODO: Use update_points to update the # of points. So you dont call the function
-      a ton of times, I recommend using setTimeout so
-      like every 500 ms save points with update_points function.
-      */
-      // console.log("clicked")
-      update_points(1);
-      let user_info = fetch_user_info();
-      if (!user_info){
-        console.error("No user info found");
-        return;
-      }
-      // else{
-      //   console.log(user_info.points);
-      // }
-      points_display.innerHTML = `Points: ${user_info.points}`;
-      clicker_comp.style.transform = "scale(0.95)";
-    })
-    clicker_comp.addEventListener("mouseup", function(){
-      /*
-      TODO: Use update_points to update the # of points. So you dont call the function
-      a ton of times, I recommend using setTimeout so
-      like every 500 ms save points with update_points function.
-      */      
-     
-      clicker_comp.style.transform = "scale(1)";
-    })
-    /**
-     * Updates the user point in the backend and the UI.
-     * Calls update_points() with the new points.
-     */
-    
-    // Update the user points
-    // call update_points with the new points
-    // update the UI with the new pointsg
+    points_display.innerHTML = `Points: ${user_info.points}`;
+    clicker_comp.style.transform = "scale(0.95)";
+  };
 
+  const resetScale = () => {
+    clicker_comp.style.transform = "scale(1)";
+  };
 
+  // Desktop events
+  clicker_comp.addEventListener("mousedown", handleClick);
+  clicker_comp.addEventListener("mouseup", resetScale);
+
+  // Mobile events
+  clicker_comp.addEventListener("touchstart", handleClick);
+  clicker_comp.addEventListener("touchend", resetScale);
 }
 
 
