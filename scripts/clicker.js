@@ -63,7 +63,7 @@ function clicker_buttons() {
       if (document.body.contains(bonus)) {
         bonus.remove();
       }
-    }, 1000);
+    }, 1500);
   }
 }
 
