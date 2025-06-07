@@ -1,3 +1,7 @@
+body {
+  background-color: #c69214; /* background color */
+}
+
 #top-bar {
   display: flex;
   justify-content: center;
@@ -51,6 +55,7 @@
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
+    background-color: #aaaaaa; /* box background color */
     /* TODO: make size scale with view window for mobile (maybe use transform: scale();) */
 }
 
@@ -128,7 +133,7 @@ pack-cover {
 
 @media (max-width: 768px) {
     #gen-container {
-      width: 98%;          /* Uses 90% of screen width */
+      width: 98%;
       max-width: 100%;
     }
 }

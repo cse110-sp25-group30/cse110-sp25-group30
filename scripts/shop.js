@@ -9,10 +9,21 @@ window.addEventListener("DOMContentLoaded", init);
 let coverOpened = false;
 const COST = 100;
 
+/**
+ * @description Returns a random element from an array.
+ * @param {Array} arr - The array to choose from.
+ * @returns {*} A randomly selected element from the array.
+ */
 function getRandomElement(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
+
+/**
+ * @description Randomly selects a rarity based on weighted chances.
+ * @param {Array} rarities - Array of rarity objects, each with `type` and `chance` properties.
+ * @returns {string} The selected rarity type.
+ */
 function getRandomRarity(rarities) {
   const rand = Math.random() * 100;
   let sum = 0;
@@ -23,6 +34,11 @@ function getRandomRarity(rarities) {
   return rarities[0].type; // fallback
 }
 
+
+/**
+ * @description Generates a random card object with a name, rarity, and metadata.
+ * @returns {Object} A card object.
+ */
 function generateRandomCard() {
   const name = getRandomElement(cardNames);
   const rarity = getRandomRarity(rarities);
@@ -34,17 +50,31 @@ function generateRandomCard() {
     course: courses[name] || "???"
   };
 }
+
+/**
+ * @description Loads the user's saved cards from local storage.
+ * @returns {Array} An array of saved card objects.
+ */
 //Here we can use fetch_unlocked_cards to load cards from index.js
 function loadCardsFromLocal() {
   const data = localStorage.getItem("card_data");
   return data ? JSON.parse(data) : [];
 }
 
+/**
+ * @description Saves an array of cards to local storage.
+ * @param {Array} cards - Array of card objects to save.
+ */
 //Here we can use save_to_local to save cards fron index.js
 function saveCardsToLocal(cards) {
   localStorage.setItem("card_data", JSON.stringify(cards));
 }
 
+/**
+ * @description Adds a new card or increments the quantity if it already exists.
+ * @param {Object} card - The card to add or update.
+ * @returns {Object} The updated or newly added card object.
+ */
 function addOrUpdateCard(card) {
   let cards = loadCardsFromLocal();
   const index = cards.findIndex(c => c.name === card.name && c.rarity === card.rarity);
@@ -59,6 +89,10 @@ function addOrUpdateCard(card) {
   return cards[index] || card;
 }
 
+/**
+ * @description Displays a card and overlays a pack-cover.
+ * @param {Object} card - The card object to display.
+ */
 function displayCard(card) {
   const container = document.getElementById("card-container");
   container.innerHTML = ""; // Clear previous card
@@ -74,6 +108,9 @@ function displayCard(card) {
   coverOpened = false;
 }
 
+/**
+ * @description Updates the points display on the page using user data.
+ */
 function updatePointsDisplay() {
   const data = fetch_user_info();
   const points = data?.points ?? 0;
@@ -83,6 +120,9 @@ function updatePointsDisplay() {
   }
 }
 
+/**
+ * @description Updates the card generation cost displayed on the page.
+ */
 function updateCost() {
   const cost_display = document.getElementById("cost");
   if (cost_display) {
@@ -90,6 +130,9 @@ function updateCost() {
   }
 }
 
+/**
+ * @description Initializes the card generation page, sets up event listeners, and handles card generation logic.
+ */
 function init() {
   const generateBtn = document.getElementById("generate-card");
   const resultDisplay = document.getElementById("result");
