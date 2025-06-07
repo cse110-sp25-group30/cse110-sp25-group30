@@ -1,7 +1,7 @@
-﻿# CSE Card Collector (Final Proect by Team 30 aka Nerdy-Thirty)
+﻿# CSE Card Collector (Final Project by Team 30 aka Nerdy-Thirty)
 
 ## Overview:
-Welcome to Nerdy-Thirty's (aka Team 30's) Final Project for CSE 110! Our project is a card collecting app, similar to mobile TCG games, with the main theme being Computer Science Engineering (CSE) Major professors from the University of San Diego, California. The app consists of a Shop to buy a single pack of a card, a Grid View displaying all of the collected cards, as well as a "Cookie Clicker"-esque minigame, used as the main source of obtaining currency that is used in the shop! With this project we aimed for it to be entertaining and fun, while also tying it to our overrall CSE major, with the cards having small bio's in the back about the professors and the course they're teaching.
+Welcome to Nerdy-Thirty's (aka Team 30's) Final Project for CSE 110! Our project is a card collecting app, similar to mobile TCG games, with the main theme being Computer Science Engineering (CSE) Major professors from the University of California, San Diego. The app consists of a Shop to buy a single pack of a card, a Grid View displaying all of the collected cards, as well as a "Cookie Clicker"-esque minigame, used as the main source of obtaining currency that is used in the shop! With this project we aimed for it to be entertaining and fun, while also tying it to our overall CSE major, with the cards having small bios in the back about the professors and the course they're teaching.
 
 ## Installation Guide:
 If you want to contribute to the project with your own implementation of features, you may do so by following these steps:
@@ -24,7 +24,7 @@ The app has been optimized to be properly implemented and working on most types 
 The app includes some sense of accessibility by having keyboard binds that can be used instead of mouse clicking. These can be seen in the clicker page being able to play the clicker game with a button press, as well as the shop page, being able to buy packs, open them, and flip the card all with the press of keyboard buttons.
 
 ## Performance
-The app has been tested on slow working networks, using network throttling on 3g. While the core functionality of the app still works as intended, the site was not visually responsive, affecting the program's intended RAIL (Response, Animation, Idle, Load) values.
+The app has been tested on slow-working networks, using network throttling on 3g. While the core functionality of the app still works as intended, the site was not visually responsive, affecting the program's intended RAIL (Response, Animation, Idle, Load) values.
 
 ## Important Pages:
 [Team File](admin/team.md)
