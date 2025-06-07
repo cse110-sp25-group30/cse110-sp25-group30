@@ -11,28 +11,26 @@
 
 #clicker-comp {
   display: flex;
-  /* align-items: center; */
+  align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 #clicker-button {
   transform: scale(1);
   transform-origin: center;
-  position: absolute;
   width: 300px;
   aspect-ratio: 1 / 1;
   min-block-size: 1vh;
   overflow: visible;
-  margin-top: 100px;
   border-radius: 50%;
   
 }
 .tooltip-container {
-  position: relative;
-  display: inline-block;
   align-items: center;
-  margin-left: 6px;
+  justify-self: center;
   cursor: pointer;
+  margin-top: 0.5rem;
 }
 
 .tooltip-icon {
@@ -42,7 +40,6 @@
   padding: 0rem 0.3rem;
   background-color: #a1a1a1;
   border: 0.1rem solid #ffffff;
-  margin-left: 1rem;
 }
 
 .tooltip-text {
@@ -51,14 +48,11 @@
   width: max-content;
   background-color: #333;
   color: #fff;
-  text-align: left;
   border-radius: 0.2rem;
   padding: 1rem 1rem;
   position: absolute;
   z-index: 1;
-  bottom: 75%; /* Show above the icon */
-  left: 60%;
-  transform: translateX(-50%);
+  transform: translateX(-45%);
   transition: opacity 0.3s;
   white-space: nowrap;
   font-family: Tahoma, sans-serif;
