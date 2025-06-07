@@ -37,7 +37,9 @@ function clicker_buttons() {
   clicker_button.addEventListener("mouseup", function () {
     clicker_button.style.transform = "scale(1)";
   });
-  //popup button function
+  /**
+ * @description Creates the reandom popup buttons at 5% per click and removes them after 1.5 seconds.
+ */
   function showBonusPopup() {
     const bonus = document.createElement("div");//creates the bonus window
     bonus.id = "bonus-popup";
