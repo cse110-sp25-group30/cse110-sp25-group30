@@ -77,7 +77,7 @@ function updateCardGrid(cards) {
   const container = document.getElementById("card-grid");
   if (!container) return;
 
-  // Get or create the no-cards-message element
+  // Get the no-cards-message element
   let noCardsMessage = document.getElementById("no-cards-message");
   if (!noCardsMessage) {
     noCardsMessage = document.createElement("div");
@@ -92,6 +92,13 @@ function updateCardGrid(cards) {
       </div>
     `;
     container.appendChild(noCardsMessage);
+  }
+
+  // Update total cards count
+  const totalCardsElement = document.getElementById("total-cards");
+  if (totalCardsElement) {
+    const totalCards = cards ? cards.reduce((sum, card) => sum + (card.quantity || 1), 0) : 0;
+    totalCardsElement.textContent = `Total Filtered Cards: ${totalCards}`;
   }
 
   // Clear existing cards
