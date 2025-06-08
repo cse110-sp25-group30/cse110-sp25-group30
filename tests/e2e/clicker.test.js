@@ -6,8 +6,10 @@ describe('Test Clicker Functionality', () => {
   beforeAll(async () => {
     await page.evaluateOnNewDocument(() => {
       const localItem = localStorage.getItem("user_data")
-      if (!localItem )
+      if (!localItem ){
+        console.log("No user data found, initializing with 0 points");
       localStorage.setItem('user_data', JSON.stringify({ points: 0 }));
+    }
     });
 
     await page.goto('http://localhost:3000/clicker');
@@ -19,7 +21,7 @@ describe('Test Clicker Functionality', () => {
     const initialText = await page.evaluate(el => el.textContent, pointsElem);
     const initialPoints = Number(initialText.split(" ")[1]);
 
-    const clickerElem = await page.$("#clicker-button");
+    const clickerElem = await page.$("#clicker-comp");
     if (!clickerElem) throw new Error("Clicker element not found");
 
     for (let i = 0; i < 100; i++) {
@@ -40,6 +42,7 @@ describe('Test Clicker Functionality', () => {
     await page.goto('http://localhost:3000/shop');
     const pointsElem = await page.$("#points-display")
     const pointsNumber = Number(await page.evaluate(el => el.textContent, pointsElem))
+    console.log("pointsNumber", pointsNumber)
     expect(pointsNumber).toBe(100)
   })
 });

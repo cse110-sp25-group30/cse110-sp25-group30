@@ -18,7 +18,7 @@ class FrogCard extends HTMLElement {
 	initStyles() {
 		const link = document.createElement('link');
 		link.setAttribute('rel', 'stylesheet');
-		link.setAttribute('href', 'styles/frog-card.css'); // adjust path if needed
+		link.setAttribute('href', 'styles/frog-card.css');
 		this.shadow.appendChild(link);
 	}
 
