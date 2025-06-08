@@ -210,6 +210,7 @@ async function init() {
     });
   }
 
+  //show contributor cards
   const cards = document.querySelectorAll("#contributors .contributors-grid frog-card");
   cards.forEach((card, index) => {
     const name = devNames[index];

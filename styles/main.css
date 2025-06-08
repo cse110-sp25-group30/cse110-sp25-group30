@@ -74,13 +74,6 @@ button[disabled] {
     display: flex;
 }
 
-/* frog-card {
-    width: 180px;
-    height: 260px;
-    display: block;
-    box-sizing: border-box;
-} */
-
 frog-card, .flip-card, .flip-card-inner {
     margin: 0 !important;
     padding: 0 !important;
