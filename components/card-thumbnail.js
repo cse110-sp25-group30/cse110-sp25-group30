@@ -12,7 +12,7 @@ class CardThumbnail extends HTMLElement {
 		this.shadow.appendChild(this.card);
 
 		this.initStyles();
-		this.addEventListener();
+		this.addCardClickListener();
 	}
 
 	initStyles() {
@@ -22,13 +22,17 @@ class CardThumbnail extends HTMLElement {
 		this.shadow.appendChild(link);
 	}
 
-	addEventListener() {
+	addCardClickListener() {
 		this.card.addEventListener('click', () => {
-			// Save card data and redirect
 			if (this._data) {
-				localStorage.setItem('selected_card', JSON.stringify(this._data));
-				window.location.href = 'viewer.html';
-			}
+				this.dispatchEvent(
+					new CustomEvent('card-clicked', {
+					detail: this._data,
+					bubbles: true,
+					composed: true
+					})
+				);
+    		}
 		});
 	}
 
