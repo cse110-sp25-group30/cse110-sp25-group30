@@ -30,16 +30,19 @@
             <p class="tooltip-icon">❔</p>
             <p class="tooltip-text">
                 Drop Rates:<br>
-                Common: 55%<br>
-                Uncommon: 25%<br>
-                Rare: 15%<br>
-                Epic: 4%<br>
-                Legendary: 0.9%<br>
-                Special-Edition: 0.1%
+                <span class="rarity-common">Common: 55%</span><br>
+                <span class="rarity-uncommon">Uncommon: 25%</span><br>
+                <span class="rarity-rare">Rare: 15% (G:10)</span><br>
+                <span class="rarity-epic">Epic: 4% (G:20)</span><br>
+                <span class="rarity-legendary">Legendary: 0.9% (G:50)</span><br>
+                <span class="rarity-special-edition">Special-Edition: 0.1% (G:100)</span><br>
+                <span style="font-size: 0.85rem; color: #ccc; margin-top: 0.5rem; display: block; border-top: 1px solid #555; padding-top: 0.5rem;">G = Guaranteed after X buys</span>
             </p>
         </div>
-        <button id="generate-card" style="margin: 1rem 0; padding: 1rem;">Buy Random Card [B]</button> <!-- temporary button name-->
+        <button id="generate-card">Buy Random Card [B]</button>
         <p id="cost">Cost: </p>
     </div>
+    <div id="guarantee-display"></div>
+    <div id="guarantee-display"></div>
 </body>
 </html>
