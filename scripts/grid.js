@@ -11,6 +11,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   let currentSort = "default";
 
+  //get card rarities for sorting
   const rarityRank = {
     common: 1,
     uncommon: 2,
@@ -23,11 +24,13 @@ window.addEventListener("DOMContentLoaded", () => {
   function renderCards(filter = "") {
     container.innerHTML = "";
 
+    //filter cards based on search
     let filteredCards = cards.filter(data => {
       const name = data.name?.toLowerCase() || "";
       return !filter || name.includes(filter.toLowerCase());
     });
 
+    //sort according to selected option
     if (currentSort === "az") {
       filteredCards.sort((a, b) => (a.name || "").localeCompare(b.name || ""));
     } 
