@@ -49,6 +49,8 @@ function addOrUpdateCard(card, num_cards = 1) {
 
 /**
  * @description Creates a new frog-card element and appends it inside the <card-display> element.
+ * Also sets up the crafting UI for the displayed card.
+ * @param {Object} data - The card data object containing name, rarity, course, bio, and quantity properties.
  */
 function createCard(data) {
   const card_display = document.querySelector("card-display");
@@ -63,6 +65,11 @@ function createCard(data) {
   setupCraftingUI(data);
 }
 
+/**
+ * @description Updates the card grid display by loading cards from local storage and creating
+ * card-thumbnail elements for each card. Sets up click event listeners for each card to open
+ * the card modal when clicked.
+ */
 function updateCardGrid() {
   const container = document.getElementById("card-grid");
   if (!container) return;
@@ -101,6 +108,12 @@ function updateCardGrid() {
   });
 }
 
+/**
+ * @description Sets up the crafting UI for a given card, including the slider, summary text,
+ * and craft button. Handles the logic for determining if crafting is possible based on rarity
+ * and available quantity. Sets up event listeners for the slider and craft button.
+ * @param {Object} data - The card data object containing name, rarity, course, bio, and quantity properties.
+ */
 function setupCraftingUI(data) {
   const craftingUI = document.getElementById("crafting-ui");
   const slider = document.getElementById("craft-slider");
@@ -182,6 +195,10 @@ function setupCraftingUI(data) {
   };
 }
 
+/**
+ * @description Initializes the application when the DOM is fully loaded. Sets up the card grid,
+ * modal close functionality, and keyboard event listeners for closing the modal with the Escape key.
+ */
 window.addEventListener("DOMContentLoaded", () => {
   updateCardGrid();
 
