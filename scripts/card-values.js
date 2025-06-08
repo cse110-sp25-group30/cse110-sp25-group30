@@ -1,4 +1,4 @@
-export const rarityOrder = ["common", "uncommon", "rare", "epic", "legendary"];
+export const rarityOrder = ["common", "uncommon", "rare", "epic", "legendary", "special-edition"];
 
 export const cardNames = [
   "Thomas A. Powell",
