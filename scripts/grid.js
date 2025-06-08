@@ -287,6 +287,12 @@ function renderCards(filter = "") {
         return lastB.localeCompare(lastA);
       });
     }
+    else if (currentSort === "quantity-asc") {
+      filteredCards.sort((a, b) => a.quantity - b.quantity);
+    }
+    else if (currentSort === "quantity-desc") {
+      filteredCards.sort((a, b) => b.quantity - a.quantity);
+    }
 
     return filteredCards
 }
