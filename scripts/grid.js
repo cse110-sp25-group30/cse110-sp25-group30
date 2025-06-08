@@ -31,22 +31,36 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
     //sort according to selected option
-    if (currentSort === "az") {
+    if (currentSort === "first-name-az") {
       filteredCards.sort((a, b) => (a.name || "").localeCompare(b.name || ""));
     } 
-    else if (currentSort === "za") {
+    else if (currentSort === "first-name-za") {
       filteredCards.sort((a, b) => (b.name || "").localeCompare(a.name || ""));
     } 
     else if (currentSort === "rarity-asc") {
       filteredCards.sort((a, b) => {
-        return (rarityRank[a.rarity?.toLowerCase()] || 0) - 
+        return (rarityRank[a.rarity?.toLowerCase()] || 0) -
                (rarityRank[b.rarity?.toLowerCase()] || 0);
       });
     } 
     else if (currentSort === "rarity-desc") {
       filteredCards.sort((a, b) => {
-        return (rarityRank[b.rarity?.toLowerCase()] || 0) - 
+        return (rarityRank[b.rarity?.toLowerCase()] || 0) -
                (rarityRank[a.rarity?.toLowerCase()] || 0);
+      });
+    } 
+    else if (currentSort === "last-name-az") {
+      filteredCards.sort((a, b) => {
+        const lastA = (a.name || "").trim().split(" ").slice(-1)[0].toLowerCase();
+        const lastB = (b.name || "").trim().split(" ").slice(-1)[0].toLowerCase();
+        return lastA.localeCompare(lastB);
+      });
+    }
+    else if (currentSort === "last-name-za") {
+      filteredCards.sort((a, b) => {
+        const lastA = (a.name || "").trim().split(" ").slice(-1)[0].toLowerCase();
+        const lastB = (b.name || "").trim().split(" ").slice(-1)[0].toLowerCase();
+        return lastB.localeCompare(lastA);
       });
     }
 
@@ -55,7 +69,7 @@ window.addEventListener("DOMContentLoaded", () => {
       card.data = data;
       card.style.animationDelay = `${index * 0.1}s`;
       container.appendChild(card);
-    });
+    });    
   }
 
   //initial render
