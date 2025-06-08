@@ -472,8 +472,15 @@ function init() {
   generate_btn.addEventListener("click", function () {
     const user = fetch_user_info();
     if (!user || user.points < COST) {
-      result_display.textContent = "❌ Not enough points. ❌";
-      return;
+       result_display.innerHTML = `
+    <div style="font-weight: bold; color: red;">❌ NOT ENOUGH POINTS. ❌</div>
+    <div style="margin-top: 0.3rem;">
+      <a href="/clicker.html" style="color: #FFD700; font-weight: bold; text-decoration: none;">
+        CLICK HERE TO EARN MORE!
+      </a>
+    </div>
+  `;
+  return;
     }
     
     // Remove any previous handler to prevent double-firing
