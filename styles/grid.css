@@ -71,23 +71,26 @@ card-display {
 }
 
 #craft-slider {
-  width: 100%;
+  width: 50%;
   margin: 0.5rem 0;
 }
 
 #craft-summary {
   font-size: 1rem;
   margin-bottom: 0.5rem;
+  text-align: center;
 }
 
 #craft-button {
   padding: 0.5rem 1rem;
-  background: #4CAF50;
-  color: white;
   border: none;
   border-radius: 0.5rem;
   font-size: 1rem;
   cursor: pointer;
+}
+
+.crafting-ui.hidden {
+  display: none;
 }
 
 .card-title {

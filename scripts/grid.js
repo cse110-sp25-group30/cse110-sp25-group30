@@ -6,7 +6,6 @@ const CRAFT_COST = 5;
  * @description Loads the user's saved cards from local storage.
  * @returns {Array} An array of saved card objects.
  */
-//Here we can use fetch_unlocked_cards to load cards from index.js
 function loadCardsFromLocal() {
   const data = localStorage.getItem("card_data");
   return data ? JSON.parse(data) : [];
@@ -16,11 +15,9 @@ function loadCardsFromLocal() {
  * @description Saves an array of cards to local storage.
  * @param {Array} cards - Array of card objects to save.
  */
-//Here we can use save_to_local to save cards fron index.js
 function saveCardsToLocal(cards) {
   localStorage.setItem("card_data", JSON.stringify(cards));
 }
-
 
 /**
  * @description Adds a new card or updates the quantity if it already exists.
@@ -52,8 +49,6 @@ function addOrUpdateCard(card, num_cards = 1) {
 
 /**
  * @description Creates a new frog-card element and appends it inside the <card-display> element.
- * @param {Object} data - The data to set on the frog-card element. Matches card-data.json format.
- * @returns {void}
  */
 function createCard(data) {
   const card_display = document.querySelector("card-display");
@@ -68,75 +63,17 @@ function createCard(data) {
   setupCraftingUI(data);
 }
 
-function setupCraftingUI(cardData) {
-  const craftingUI = document.getElementById("crafting-ui");
-  const slider = document.getElementById("craft-slider");
-  const summary = document.getElementById("craft-summary");
-  const craftBtn = document.getElementById("craft-button");
-
-  if (!craftingUI || !slider || !summary || !craftBtn) {
-    console.error("Required crafting UI elements not found");
-    return;
-  }
-
-  const rarityIndex = rarityOrder.indexOf(cardData.rarity);
-  const nextRarity = rarityOrder[rarityIndex + 1];
-  const quantity = cardData.quantity;
-  const maxCraftable = Math.floor(quantity / CRAFT_COST);
-
-  craftingUI.classList.remove("hidden");
-
-  if (!nextRarity || maxCraftable < 1) {
-    craftBtn.disabled = true;
-    slider.disabled = true;
-    summary.textContent = "";
-    slider.value = 0;
-    slider.max = 0;
-  } else {
-    craftBtn.disabled = false;
-    slider.disabled = false;
-
-    slider.max = maxCraftable;
-    slider.value = 1;
-
-    const updateSummary = () => {
-      summary.textContent = `Use ${slider.value * CRAFT_COST} cards to craft ${slider.value} ${nextRarity}`;
-    };
-
-    slider.oninput = updateSummary;
-    updateSummary();
-  }
-
-  craftBtn.onclick = () => {
-    if (craftBtn.disabled) return;
-
-    const craftAmount = parseInt(slider.value);
-
-    const newCard = {
-      name: cardData.name,
-      rarity: nextRarity,
-      quantity: craftAmount,
-    };
-
-    addOrUpdateCard(newCard, craftAmount);
-    addOrUpdateCard(cardData, -craftAmount * CRAFT_COST);
-
-    location.reload();
-  };
-}
-
-window.addEventListener("DOMContentLoaded", () => {
-  const localData = localStorage.getItem("card_data");
-  if (!localData) return;
-
-  const cards = JSON.parse(localData);
+function updateCardGrid() {
   const container = document.getElementById("card-grid");
   if (!container) return;
 
+  // Clear existing cards
+  container.innerHTML = "";
+
+  const cards = loadCardsFromLocal();
   cards.forEach((data, index) => {
     const card = document.createElement("card-thumbnail");
     
-    // Check if custom element creation was successful
     if (!card) {
       console.error("Failed to create card-thumbnail element");
       return;
@@ -162,6 +99,91 @@ window.addEventListener("DOMContentLoaded", () => {
 
     container.appendChild(card);
   });
+}
+
+function setupCraftingUI(data) {
+  const craftingUI = document.getElementById("crafting-ui");
+  const slider = document.getElementById("craft-slider");
+  const summary = document.getElementById("craft-summary");
+  const craftBtn = document.getElementById("craft-button");
+
+  if (!craftingUI || !slider || !summary || !craftBtn) {
+    console.error("Required crafting UI elements not found");
+    return;
+  }
+
+  const rarityIndex = rarityOrder.indexOf(data.rarity);
+  const nextRarity = rarityOrder[rarityIndex + 1];
+  const quantity = data.quantity;
+  const maxCraftable = Math.floor(quantity / CRAFT_COST);
+
+  if (!nextRarity) {
+    // Hide the entire crafting UI if there's no next rarity
+    craftingUI.classList.add("hidden");
+    return;
+  }
+
+  craftingUI.classList.remove("hidden");
+
+  if (maxCraftable < 1) {
+    craftBtn.disabled = true;
+    slider.disabled = true;
+    summary.textContent = "Not enough cards to merge";
+    slider.value = 0;
+    slider.max = 0;
+  } else {
+    slider.disabled = false;
+    slider.max = maxCraftable;
+    slider.min = 0;
+    slider.value = 0; // Start at 0
+
+    const updateSummary = () => {
+      if (slider.value == 0) {
+        summary.textContent = "Slide to increase the number of cards to craft";
+        craftBtn.disabled = true;
+      } else {
+        summary.textContent = `Use ${slider.value * CRAFT_COST} ${data.rarity} "${data.name}" cards to craft ${slider.value} ${nextRarity} "${data.name}" card(s)`;
+        craftBtn.disabled = false;
+      }
+    };
+
+    slider.oninput = updateSummary;
+    updateSummary(); // Initialize the summary
+  }
+
+  craftBtn.onclick = () => {
+    if (craftBtn.disabled) return;
+
+    const craftAmount = parseInt(slider.value);
+
+    const new_data = {
+      name: data.name,
+      course: data.course,
+      bio: data.bio,
+      quantity: 1,
+      rarity: nextRarity
+    };
+
+    // Update the cards
+    addOrUpdateCard(new_data, craftAmount);
+    addOrUpdateCard(data, -craftAmount * CRAFT_COST);
+
+    // Update the grid to reflect changes
+    updateCardGrid();
+
+    // Close the modal
+    const modal = document.getElementById("card-modal");
+    if (modal) {
+      modal.classList.add("hidden");
+    }
+
+    // Show success message (optional)
+    console.log(`Crafted ${craftAmount} ${nextRarity} "${data.name}"`);
+  };
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  updateCardGrid();
 
   // Modal close logic
   const closeBtn = document.getElementById("modal-close");
