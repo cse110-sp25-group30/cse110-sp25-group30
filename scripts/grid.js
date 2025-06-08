@@ -151,9 +151,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
       // Set the card title above the modal card
       const titleEl = document.getElementById("card-title");
-      if (titleEl) {
-        titleEl.textContent = `${selectedData.rarity} \"${selectedData.name}\" | quantity: ${selectedData.quantity}` || "Unnamed Card";
-      }
+      titleEl.textContent = `${selectedData.rarity} "${selectedData.name}" | quantity: ${selectedData.quantity}` || "Unnamed Card";
 
       createCard(selectedData);
       const modal = document.getElementById("card-modal");
