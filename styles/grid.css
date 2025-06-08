@@ -111,14 +111,6 @@ card-display {
   justify-items: center;
 }
 
-.grid-container card-thumbnail {
-  transform: scale(0.5);
-  transform-origin: top center;
-  height: 200px;
-  overflow: visible;
-}
-
-
 .back-button {
   display: inline-block;
   padding: 10px 20px;
@@ -144,7 +136,7 @@ card-display {
 }
 
 
-.grid-container frog-card {
+.grid-container card-thumbnail {
   transform: scale(0.8);
   transform-origin: top center;
   height: 300px;

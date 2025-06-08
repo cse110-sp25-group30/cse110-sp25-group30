@@ -1,14 +1,7 @@
 import { rarityOrder } from "/scripts/card-values.js";
 
 const CRAFT_COST = 5;
-const rarityRank = {
-  common: 1,
-  uncommon: 2,
-  rare: 3,
-  epic: 4,
-  legendary: 5,
-  "special-edition": 6,
-};
+
 let currentSort = "default";
 /**
  * @description Loads the user's saved cards from local storage.
@@ -134,6 +127,12 @@ function setupCraftingUI(data) {
     return;
   }
 
+  // Hide crafting UI for legendary and special-edition cards
+  if (data.rarity === "legendary" || data.rarity === "special-edition") {
+    craftingUI.classList.add("hidden");
+    return;
+  }
+
   const rarityIndex = rarityOrder.indexOf(data.rarity);
   const nextRarity = rarityOrder[rarityIndex + 1];
   const quantity = data.quantity;
@@ -191,7 +190,9 @@ function setupCraftingUI(data) {
     addOrUpdateCard(data, -craftAmount * CRAFT_COST);
 
     // Update the grid to reflect changes
-    updateCardGrid();
+    const searchInput = document.getElementById("search-input");
+    const filteredData = renderCards(searchInput.value);
+    updateCardGrid(filteredData);
 
     // Close the modal
     const modal = document.getElementById("card-modal");
@@ -233,14 +234,12 @@ function renderCards(filter = "") {
     } 
     else if (currentSort === "rarity-asc") {
       filteredCards.sort((a, b) => {
-        return (rarityRank[a.rarity?.toLowerCase()] || 0) -
-               (rarityRank[b.rarity?.toLowerCase()] || 0);
+        return rarityOrder.indexOf(a.rarity?.toLowerCase()) - rarityOrder.indexOf(b.rarity?.toLowerCase());
       });
     } 
     else if (currentSort === "rarity-desc") {
       filteredCards.sort((a, b) => {
-        return (rarityRank[b.rarity?.toLowerCase()] || 0) -
-               (rarityRank[a.rarity?.toLowerCase()] || 0);
+        return rarityOrder.indexOf(b.rarity?.toLowerCase()) - rarityOrder.indexOf(a.rarity?.toLowerCase());
       });
     } 
     else if (currentSort === "last-name-az") {
