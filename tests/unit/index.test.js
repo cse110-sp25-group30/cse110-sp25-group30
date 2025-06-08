@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 //Tests functiosn in index.js
-import { update_points, fetch_user_info, save_to_local, UserInfo, fetch_unlocked_cards, fetch_data } from "../../index.js";
+import { update_points, fetch_user_info, save_to_local, UserInfo, fetch_unlocked_cards, fetch_data, add_or_update_card } from "../../index.js";
 import { jest } from '@jest/globals';
 
 beforeEach(() => {
@@ -58,27 +58,22 @@ test("Fetch Unlocked Cards", () => {
         "rarity": "rare",
         "quantity": 1
     }
-    const card_data = fetch_unlocked_cards()
+    let card_data = fetch_unlocked_cards()
     expect(card_data.length).toBe(0);
 
     //When data is stored, it should return the data stored
-    save_to_local([card_1], "card_data");
-    const card_data_1 = fetch_unlocked_cards();
-    expect(card_data_1.length).toBe(1);
-    expect(card_data_1[0].name).toBe(card_1.name);
-    expect(card_data_1[0].bio).toBe(card_1.bio);
-    expect(card_data_1[0].course).toBe(card_1.course);
-    expect(card_data_1[0].rarity).toBe(card_1.rarity);
+    const updated_card1 = add_or_update_card(card_1);
+    expect(updated_card1).toEqual(card_1);
+    card_data = fetch_unlocked_cards();
+    expect(card_data.length).toBe(1);
+    expect(card_data[0]).toEqual(card_1);
 
     //When data is stored, it should return the data stored
-    save_to_local([card_2], "card_data");
-    const card_data_2 = fetch_unlocked_cards();
-    expect(card_data_2.length).toBe(2);
-    expect(card_data_2[1].name).toBe(card_2.name);
-    expect(card_data_2[1].bio).toBe(card_2.bio);
-    expect(card_data_2[1].course).toBe(card_2.course);
-    expect(card_data_2[1].rarity).toBe(card_2.rarity);
-
+    const updated_card2 = add_or_update_card(card_2);
+    expect(updated_card2).toEqual(card_2);
+    card_data = fetch_unlocked_cards();
+    expect(card_data.length).toBe(2);
+    expect(card_data[1]).toEqual(card_2);
 })
 
 test("Fetch User Info", () => {
