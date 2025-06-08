@@ -28,7 +28,7 @@ The following components of the pipeline are working:
   - We have automated the generation of documentation using JSDoc. All docs will be automatically genearted when there is a push and will be saved in the docs branch of our repository.
 
 - **Codacy Integration**
-  - **Codacy Analysis**: Codacy Analysis CLI has been set up and configured to work properly. The link to to its dashboard is in our readme file. We mainly fixed some configuration issues in Codacy.
+  - **Codacy Analysis**: Codacy Analysis CLI has been set up and configured to work properly. The link to to its dashboard is in our readme file. We mainly fixed some configuration issues in Codacy. Also, we added code coverage analysis to Codacy to track how much code is being tested.
   
 
 
