@@ -22,7 +22,6 @@
   border-radius: 1rem;
   max-width: 600px;
   width: 90%;
-  height: 80%;
   position: relative;
 }
 
@@ -36,9 +35,59 @@
 
 card-display {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   width: 100%;
   height: 100%;
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+card-display {
+  margin-bottom: 1rem;
+}
+
+.crafting-ui {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 1rem;
+  border-top: 1px solid #ccc;
+}
+
+#craft-slider {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+#craft-summary {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+#craft-button {
+  padding: 0.5rem 1rem;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 .card-title {
