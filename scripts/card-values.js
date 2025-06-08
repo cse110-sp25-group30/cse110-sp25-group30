@@ -1,4 +1,4 @@
-export const cardNames = [
+export const profNames = [
   "Thomas A. Powell",
   "Niema Moshiri",
   "Sicun Gao",
@@ -19,6 +19,21 @@ export const cardNames = [
   "Edwin Solares",
   "Yufei Ding",
   "Leo Porter"
+];
+
+export const devNames = [
+  "Aditya Dutt",
+  "Aldrin Ilagan",
+  "Ali Farahbakhsh", 
+  "Cody Lee",
+  "George Minasyan", 
+  "Jay Gao",
+  "Jonathan Cohen-Wang",
+  "Julia Wu",
+  "Kevin Sun",
+  "Mei Man Teng Lam",
+  "Richard Nie",
+  "Terri Tai"
 ];
 
 export const rarities = [

@@ -74,6 +74,16 @@ button[disabled] {
     display: flex;
 }
 
+.contributors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 24px;
+    justify-items: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+  
 @media (max-width: 768px) {
     #card_buttons{
         flex-direction: row; 

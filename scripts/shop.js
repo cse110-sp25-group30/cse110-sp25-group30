@@ -1,5 +1,5 @@
 import { update_points, fetch_user_info } from "../index.js";
-import {cardNames, rarities, bios, courses} from "/scripts/card-values.js";
+import {profNames, rarities, bios, courses} from "/scripts/card-values.js";
 
 /*
 TODO: Add description for functions in this file.
@@ -40,7 +40,7 @@ function getRandomRarity(rarities) {
  * @returns {Object} A card object.
  */
 function generateRandomCard() {
-  const name = getRandomElement(cardNames);
+  const name = getRandomElement(profNames);
   const rarity = getRandomRarity(rarities);
   return {
     name,

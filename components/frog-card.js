@@ -36,6 +36,7 @@ class FrogCard extends HTMLElement {
 		if (!data || !data.rarity || !data.name || !data.bio || !data.course) return;
 
 		const profImgUrl = `./assets/prof-images/${data.name}.webp`;
+		const fallbackImage = './assets/prof-images/Thomas A. Powell.webp';
 		const fgImgUrl = `./assets/card-backings/${data.rarity}_front.webp`;
 		const bgImgUrl = `./assets/card-backings/${data.rarity}_back.webp`;
 
@@ -55,7 +56,8 @@ class FrogCard extends HTMLElement {
 		`;
 
 		Promise.all([
-			loadImage(profImgUrl),
+			// loadImage(profImgUrl),
+			loadImage(profImgUrl).catch(() => loadImage(fallbackImage)),
 			loadImage(fgImgUrl),
 			loadImage(bgImgUrl),
 		]).then(() => {
