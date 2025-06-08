@@ -30,6 +30,13 @@ window.addEventListener("DOMContentLoaded", () => {
     // Listen for the custom card-clicked event
     card.addEventListener("card-clicked", (e) => {
       const selectedData = e.detail;
+
+      // Set the card title above the modal card
+      const titleEl = document.getElementById("card-title");
+      if (titleEl) {
+        titleEl.textContent = `${selectedData.rarity} \"${selectedData.name}\" | quantity: ${selectedData.quantity}` || "Unnamed Card";
+      }
+
       createCard(selectedData);
       document.getElementById("card-modal").classList.remove("hidden");
     });
