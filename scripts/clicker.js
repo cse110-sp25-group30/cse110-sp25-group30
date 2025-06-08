@@ -20,24 +20,26 @@ function clicker_buttons() {
     return;
   }
 
-  const handleClick = () => {
-    update_points(1);
-
-    let user_info = fetch_user_info();
-    if (!user_info) {
-      console.error("No user info found");
-      return;
-    }
-
-    points_display.innerHTML = `Points: ${user_info.points}`;
-    clicker_comp.style.transform = "scale(0.95)";
-    if (Math.random() < 0.05) {
-      showBonusPopup();
+  const handleClick = (e) => {
+    if (e.button == 0 || e.type == "touchstart") {
+      update_points(1);
+      
+      let user_info = fetch_user_info();
+      if (!user_info) {
+        console.error("No user info found");
+        return;
+      }
+      
+      points_display.innerHTML = `Points: ${user_info.points}`;
+      clicker_comp.style.transform = "scale(0.93)";
+      if (Math.random() < 0.05) {
+        showBonusPopup();
+      }
     }
   };
   
     /**
- * @description Creates the reandom popup buttons at 5% per click and removes them after 1.5 seconds.
+ * @description Creates the random popup buttons at 5% per click. Element fades away and removes them after 1.5 seconds.
  */
   function showBonusPopup() {
     const bonus = document.createElement("div");//creates the bonus window
@@ -46,8 +48,8 @@ function clicker_buttons() {
     bonus.classList.add("bonus-popup");
 
     // Random position on screen
-    bonus.style.left = Math.random() * 80 + 10 + "%";
-    bonus.style.top = Math.random() * 60 + 20 + "%";
+    bonus.style.left = Math.random() * 80 + 10 + "vw";
+    bonus.style.top = Math.random() * 60 + 20 + "vh";
 
     document.body.appendChild(bonus);
     //actually adds 10 when clicked
@@ -59,25 +61,35 @@ function clicker_buttons() {
       bonus.remove();
     });
 
-    // Auto-remove after 1 seconds
+    // Have the element fade out while on screen
+    let duration = 1500;
+    let interval = 10;
+    let decrement = interval / duration;
+    let opacity = 1;
+    let fade = setInterval(() => {
+      opacity -= decrement;
+      if (opacity <= 0) {
+        opacity = 0;
+        clearInterval(fade);
+      }
+      bonus.style.opacity = opacity;
+    }, interval);
+
+    // Auto-remove after 1.5 seconds
     setTimeout(() => {
       if (document.body.contains(bonus)) {
         bonus.remove();
       }
-    }, 1500);
+    }, duration);
   }
 
   const resetScale = () => {
     clicker_comp.style.transform = "scale(1)";
   };
 
-  // Desktop events
-  clicker_comp.addEventListener("mousedown", handleClick);
-  clicker_comp.addEventListener("mouseup", resetScale);
-
-  // Mobile events
-  clicker_comp.addEventListener("touchstart", handleClick);
-  clicker_comp.addEventListener("touchend", resetScale);
+  // Desktop and mobile events
+  clicker_comp.addEventListener("pointerdown", handleClick);
+  clicker_comp.addEventListener("pointerup", resetScale);
 }
 
 
