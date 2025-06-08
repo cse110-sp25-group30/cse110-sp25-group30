@@ -1,5 +1,4 @@
-import { devNames } from './scripts/card-values.js';
-import { teamBios } from './scripts/card-values.js';
+import { DEV_NAMES, DEV_BIOS } from './scripts/card-values.js';
 
 /**
  * user data
@@ -244,12 +243,12 @@ async function init() {
   //show contributor cards
   const cards = document.querySelectorAll("#contributors .contributors-grid frog-card");
   cards.forEach((card, index) => {
-    const name = devNames[index];
-    console.log("Assigning to frog-card:", name, teamBios[name]);
+    const name = DEV_NAMES[index];
+    console.log("Assigning to frog-card:", name, DEV_BIOS[name]);
     if (name) {
       card.data = {
         name: name,
-        bio: teamBios[name],
+        bio: DEV_BIOS[name],
         course: "CSE 110",
         rarity: "legendary"
       };
