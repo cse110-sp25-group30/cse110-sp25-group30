@@ -2,42 +2,41 @@ import {update_points} from "../index.js"
 import {fetch_user_info} from "../index.js"
 
 window.addEventListener("DOMContentLoaded", init);
-
-
-
-
-
 /**
- * @description Adds click event to clicker page where needed
+ * Initializes click event listeners for the clicker component.
+ * 
+ * When the clicker component is pressed, increments the user's points,
+ * updates the points display, and applies a scaling effect for visual feedback.
+ * On mouse release, restores the original scale.
+ * 
+ * Assumes the existence of `update_points` and `fetch_user_info` functions,
+ * and elements with IDs "clicker-comp" and "points_display" in the DOM.
  */
 function clicker_buttons() {
-  const clicker_button = document.getElementById("clicker-button");
+
+  const clicker_comp = document.getElementById("clicker-comp");
   const points_display = document.getElementById("points_display");
+  if (!clicker_comp) {
+    return;
+  }
 
-  if (!clicker_button) return;
+  const handleClick = () => {
+    update_points(1);
 
-  clicker_button.addEventListener("mousedown", function () {
     let user_info = fetch_user_info();
     if (!user_info) {
       console.error("No user info found");
       return;
     }
-    update_points(1);
-    user_info.points += 1;//updates points
+
     points_display.innerHTML = `Points: ${user_info.points}`;
-    //  5% chance to show a bonus popup instead of earning 1 point
+    clicker_comp.style.transform = "scale(0.95)";
     if (Math.random() < 0.05) {
       showBonusPopup();
     }
-
-
-    clicker_button.style.transform = "scale(0.95)";
-  });
-
-  clicker_button.addEventListener("mouseup", function () {
-    clicker_button.style.transform = "scale(1)";
-  });
-  /**
+  };
+  
+    /**
  * @description Creates the reandom popup buttons at 5% per click and removes them after 1.5 seconds.
  */
   function showBonusPopup() {
@@ -67,6 +66,18 @@ function clicker_buttons() {
       }
     }, 1500);
   }
+
+  const resetScale = () => {
+    clicker_comp.style.transform = "scale(1)";
+  };
+
+  // Desktop events
+  clicker_comp.addEventListener("mousedown", handleClick);
+  clicker_comp.addEventListener("mouseup", resetScale);
+
+  // Mobile events
+  clicker_comp.addEventListener("touchstart", handleClick);
+  clicker_comp.addEventListener("touchend", resetScale);
 }
 
 

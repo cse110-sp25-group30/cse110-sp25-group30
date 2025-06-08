@@ -156,7 +156,7 @@ class SiteHeader extends HTMLElement {
             <span></span>
         </div>
         <div class="nav-right">
-            <a href="index.html">📁 Collection</a>
+            <a href="grid.html">📁 Collection</a>
             <a href="shop.html">🛍️ Shop</a>
             <a href="clicker.html">🟡 Clicker</a>
         </div>

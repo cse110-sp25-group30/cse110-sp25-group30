@@ -13,10 +13,27 @@
 <body>
     <site-header></site-header>
     <div style="padding: 21px; text-align: center;">
-        <a href="index.html" class="back-button">Back to Home</a>
-    </div>
+        <a href="index.html" class="back-button">Back to Homee</a>
+    </div> 
+    <!-- search bar
+    <div class = "search-wrapper">
+        <input id="search-input" type="text" placeholder="Search by name..." />
+    </div>  -->
+    <div class="search-wrapper">
+        <input id="search-input" type="text" placeholder="Search by name..." />
+        <select id="sort-select" style="margin-left: 10px; font-size: 1rem;">
+            <option value="default">Sort: Default</option>
+            <option value="first-name-az">Sort: First Name (A → Z)</option>
+            <option value="first-name-za">Sort: First Name (Z → A)</option>
+            <option value="last-name-az">Sort: Last Name (A → Z)</option>
+            <option value="last-name-za">Sort: Last Name (Z → A)</option>
+            <option value="rarity-asc">Sort: Rarity Low → High</option>
+            <option value="rarity-desc">Sort: Rarity High → Low</option>
+        </select>
+      </div>
     <div class="grid-container" id="card-grid"></div>
     <script type="module" src="./scripts/grid.js"></script>
+
     <!-- Modal -->
     <div id="card-modal" class="modal hidden">
         <div class="modal-content">
@@ -31,5 +48,6 @@
             </div>
         </div>
     </div>
+
 </body>
 </html>

@@ -1,7 +1,15 @@
 import { rarityOrder } from "/scripts/card-values.js";
 
 const CRAFT_COST = 5;
-
+const rarityRank = {
+  common: 1,
+  uncommon: 2,
+  rare: 3,
+  epic: 4,
+  legendary: 5,
+  "special-edition": 6,
+};
+let currentSort = "default";
 /**
  * @description Loads the user's saved cards from local storage.
  * @returns {Array} An array of saved card objects.
@@ -69,15 +77,16 @@ function createCard(data) {
  * @description Updates the card grid display by loading cards from local storage and creating
  * card-thumbnail elements for each card. Sets up click event listeners for each card to open
  * the card modal when clicked.
+ * @param {Array} cardData - An array of card data objects to display in the grid.
+ * @returns {void}
  */
-function updateCardGrid() {
+function updateCardGrid(cards) {
   const container = document.getElementById("card-grid");
   if (!container) return;
 
   // Clear existing cards
   container.innerHTML = "";
 
-  const cards = loadCardsFromLocal();
   cards.forEach((data, index) => {
     const card = document.createElement("card-thumbnail");
     
@@ -195,14 +204,73 @@ function setupCraftingUI(data) {
   };
 }
 
+
+/**
+ * 
+ * @param {string} filter - The search filter string to apply to the card names. 
+ * @returns {Array} An array of card objects that match the filter criteria.
+ * @description Renders the card grid based on the provided filter. It retrieves card data from local storage,
+ */
+function renderCards(filter = "") {
+  const localData = localStorage.getItem("card_data");
+  if (!localData) return;
+  const cards = JSON.parse(localData);
+  const container = document.getElementById("card-grid");
+    container.innerHTML = "";
+
+    //filter cards based on search
+    let filteredCards = cards.filter(data => {
+      const name = data.name?.toLowerCase() || "";
+      return !filter || name.includes(filter.toLowerCase());
+    });
+
+    //sort according to selected option
+    if (currentSort === "first-name-az") {
+      filteredCards.sort((a, b) => (a.name || "").localeCompare(b.name || ""));
+    } 
+    else if (currentSort === "first-name-za") {
+      filteredCards.sort((a, b) => (b.name || "").localeCompare(a.name || ""));
+    } 
+    else if (currentSort === "rarity-asc") {
+      filteredCards.sort((a, b) => {
+        return (rarityRank[a.rarity?.toLowerCase()] || 0) -
+               (rarityRank[b.rarity?.toLowerCase()] || 0);
+      });
+    } 
+    else if (currentSort === "rarity-desc") {
+      filteredCards.sort((a, b) => {
+        return (rarityRank[b.rarity?.toLowerCase()] || 0) -
+               (rarityRank[a.rarity?.toLowerCase()] || 0);
+      });
+    } 
+    else if (currentSort === "last-name-az") {
+      filteredCards.sort((a, b) => {
+        const lastA = (a.name || "").trim().split(" ").slice(-1)[0].toLowerCase();
+        const lastB = (b.name || "").trim().split(" ").slice(-1)[0].toLowerCase();
+        return lastA.localeCompare(lastB);
+      });
+    }
+    else if (currentSort === "last-name-za") {
+      filteredCards.sort((a, b) => {
+        const lastA = (a.name || "").trim().split(" ").slice(-1)[0].toLowerCase();
+        const lastB = (b.name || "").trim().split(" ").slice(-1)[0].toLowerCase();
+        return lastB.localeCompare(lastA);
+      });
+    }
+
+    return filteredCards
+}
+
 /**
  * @description Initializes the application when the DOM is fully loaded. Sets up the card grid,
  * modal close functionality, and keyboard event listeners for closing the modal with the Escape key.
  */
 window.addEventListener("DOMContentLoaded", () => {
-  updateCardGrid();
+  updateCardGrid(loadCardsFromLocal());
 
   // Modal close logic
+  const searchInput = document.getElementById("search-input");
+  const sortSelect = document.getElementById("sort-select");
   const closeBtn = document.getElementById("modal-close");
   const modal = document.getElementById("card-modal");
 
@@ -214,5 +282,19 @@ window.addEventListener("DOMContentLoaded", () => {
     if (e.key === "Escape" && modal) {
       modal.classList.add("hidden");
     }
+  });
+  
+  //search bar functionality
+  searchInput.addEventListener("input", () => {
+    const data = renderCards(searchInput.value);
+    updateCardGrid(data);
+
+  });
+
+  //sorting functionality
+  sortSelect.addEventListener("change", () => {
+    currentSort = sortSelect.value;
+    const data = renderCards(searchInput.value);
+    updateCardGrid(data);
   });
 });
