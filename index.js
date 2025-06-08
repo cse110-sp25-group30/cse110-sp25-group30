@@ -1,3 +1,6 @@
+import { devNames } from './scripts/card-values.js';
+import { teamBios } from './scripts/card-values.js';
+
 /**
  * Represents a book.
  * @constructor
@@ -187,20 +190,19 @@ export function update_points(points){
  */
 async function init() {
   const card_data_all = await fetch_data("./card-data.json");
-  //save_to_local(card_data_all, "card_data"); // TODO: remove and load from unlocked later
   const powell = card_data_all[0];
-  console.log("powell", powell);
   card_data = fetch_unlocked_cards(powell);
+
   const fetch_user_data = fetch_user_info();
-  console.log("fetch_user_data",fetch_user_data);
-  if (!fetch_user_data){
-    const user_info = new UserInfo(0,0);
-    save_to_local(user_info,"user_data");
+  if (!fetch_user_data) {
+    const user_info = new UserInfo(0, 0);
+    save_to_local(user_info, "user_data");
   }
+
   createCard(card_data[selected_card]);
   card_button_click();
 
-  // redirect to grid.html when view all button is clicked
+  // Handle view all
   const viewAllBtn = document.getElementById("view-all");
   if (viewAllBtn) {
     viewAllBtn.addEventListener("click", () => {
@@ -208,11 +210,17 @@ async function init() {
     });
   }
 
-  // TODO: redirect to clicker.html to shop
-  // const viewClickerButton = document.getElementById("view-clicker");
-  // if ("view-clicker") {
-  //   viewClickerButton.addEventListener("click", () => {
-  //     window.location.href = "clicker.html";
-  //   })
-  // }
+  const cards = document.querySelectorAll("#contributors .contributors-grid frog-card");
+  cards.forEach((card, index) => {
+    const name = devNames[index];
+    console.log("Assigning to frog-card:", name, teamBios[name]);
+    if (name) {
+      card.data = {
+        name: name,
+        bio: teamBios[name],
+        course: "CSE 110",
+        rarity: "legendary"
+      };
+    }
+  });
 }

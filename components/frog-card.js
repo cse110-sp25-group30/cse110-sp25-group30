@@ -33,8 +33,9 @@ class FrogCard extends HTMLElement {
 	}
 
 	set data(data) {
-		if (!data || !data.rarity || !data.name || !data.bio || !data.course) return;
-
+		console.log("frog-card received data:", data);
+		// if (!data || !data.rarity || !data.name || !data.bio || !data.course) return;
+		if (!data || !data.rarity || !data.name) return;
 		const profImgUrl = `./assets/prof-images/${data.name}.webp`;
 		const fallbackImage = './assets/prof-images/Thomas A. Powell.webp';
 		const fgImgUrl = `./assets/card-backings/${data.rarity}_front.webp`;
@@ -69,22 +70,21 @@ class FrogCard extends HTMLElement {
 			this.card.innerHTML = `
 				<div class="flip-card">
 					<div class="flip-card-inner">
-						<!-- FRONT -->
-						<div class="flip-card-front">
-							<img class="face" src="${profImgUrl}" alt="${data.name} image">
-							<img class="card-fg" src="${fgImgUrl}" alt="foreground layer">
-							<p class="front-name">${data.name}</p>
-						</div>
-						<!-- BACK -->
-						<div class="flip-card-back">
-							<img class="back-bg" src="${bgImgUrl}" alt="background">
-							<p class="back-name">${data.name}</p>
-							<p class="bio">${data.bio}</p>
-							<p class="course">${data.course}</p>
-						</div>
+					<div class="flip-card-front">
+						<img class="face" src="${profImgUrl}" alt="${data.name} image">
+						<img class="card-fg" src="${fgImgUrl}" alt="foreground layer">
+						<p class="front-name">${data.name}</p>
+					</div>
+					<div class="flip-card-back">
+						<img class="back-bg" src="${bgImgUrl}" alt="background">
+						<p class="back-name">${data.name}</p>
+						${data.bio ? `<p class="bio">${data.bio}</p>` : ""}
+						${data.course ? `<p class="course">${data.course}</p>` : ""}
+					</div>
 					</div>
 				</div>
 			`;
+
 		}).catch((err) => {
 			this.card.innerHTML = `<p class="loading">Failed to load card</p>`;
 			console.error("Image failed to load", err);

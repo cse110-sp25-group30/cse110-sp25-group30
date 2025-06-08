@@ -33,7 +33,7 @@ export const devNames = [
   "Jonathan Cohen-Wang",
   "Julia Wu",
   "Kevin Sun",
-  "Mei Man Teng Lam",
+  "Meiman Teng",
   "Richard Nie",
   "Terri Tai"
 ];
@@ -68,6 +68,21 @@ export const bios = {
   "Edwin Solares": "Lecturer in CSE and the Halıcıoğlu Data Science Institute. Fun fact: My research involves leveraging AI and Bioinformatics for securing a sustainable future in the face of our rapidly changing climate. Course Takeway: how computer systems execute programs, store information, and communicate.",
   "Yufei Ding": "She holds a Ph.D. in Computer Science from North Carolina State University and a B.S. in Physics from the University of Science and Technology of China. Fun Fact: Recipient of multiple awards including the NSF CAREER Award. Course Takeaway: Try to learn something about everything and everything about something",
   "Leo Porter": "Professor of Computer Science at UC San Diego interested in computer science education research and computer architecture. Fun fact: I co-founded the Computing Education Research Laboratory dedicated to better understanding how students learn computing. Course Takeaway: "
+};
+
+export const teamBios = {
+  "Aditya Dutt": "My name is Aditya Dutt. I am a junior and I love playing chess and pickleball.",
+  "Aldrin Ilagan": "Hi guys I'm Aldrin, a CS student. For fun I like to play games, hangout with friends, and go on walks outside.",
+  "Ali Farahbakhsh": "Hi guys I'm Ali, a CS student. For fun I like to play games, hangout with friends, and go on walks outside.",
+  "Cody Lee": "Hi, I am Cody Lee. I am a Math CS major. I like fishing, archery, and gaming.",
+  "George Minasyan": "I'm a 22 year old Computer Science student from Armenia. My hobbies include playing video games, listening to and making music, socializing and hanging out with friends.",
+  "Jay Gao": "I'm Jay, a third year Math & CS major. I often enjoy the outdoors and staying active with sports.",
+  "Jonathan Cohen-Wang": "Hi I'm Jonathan, a third year CS major. I like gaming, drawing, and playing tennis in my free time.",
+  "Julia Wu": "Hello, I'm Julia! I'm majoring in CS, and I'm interested in AI and UI. I also like to ski and bake.",
+  "Kevin Sun": "Hello! I'm Kevin Sun, a Junior CS Transfer.  I like cooking, cycling, and gaming.",
+  "Meiman Teng": "Proud Chinese-Mexican. Dune fan who loves all things SWE and product dev. Fun fact: I (brokenly) speak 4 languages. Favorite classes? CSE110, ENG100L, MGT121A.",
+  "Richard Nie": "Hi, I’m Richard, a first year computer science major in Seventh College. I am interested in AI, algorithms and computer systems.",
+  "Terri Tai": "Hi everyone! I'm Terri, a second year computer engineering major in Warren. I like doing magic and playing guitar."
 };
 
 export const courses = {

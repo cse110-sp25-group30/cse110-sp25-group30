@@ -81,7 +81,7 @@ function get_random_rarity(rarities) {
  * @returns {Object} A card object.
  */
 function generateRandomCard() {
-  const name = getRandomElement(cardNames);
+  const name = getRandomElement(profNames);
   const rarity = getRandomRarity(rarities);
   return {
     name,
