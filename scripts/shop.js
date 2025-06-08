@@ -1,20 +1,9 @@
-import { update_points, fetch_user_info } from "../index.js";
-import { cardNames, rarities, bios, courses } from "/scripts/card-values.js";
-
-
+import { update_points, fetch_user_info, add_or_update_card, load_cards_from_local } from "../index.js";
+import { CARD_NAMES, RARITIES, BIOS, COURSES, GUARANTEE_THRESHOLDS } from "/scripts/card-values.js";
 
 // TODO: Consider moving constants to config file
 let cover_opened = false;
 let COST = 100;
-
-
-// Guarantee thresholds for each rarity
-const GUARANTEE_THRESHOLDS = {
-  rare: 10,
-  epic: 20,
-  legendary: 50,
-  "special-edition": 100
-};
 
 window.addEventListener("DOMContentLoaded", init);
 
@@ -96,24 +85,15 @@ function get_random_rarity(rarities) {
  * @returns {Object} A card object.
  */
 function generate_random_card() {
-  const name = get_random_element(cardNames);
-  const rarity = get_random_rarity(rarities);
+  const name = get_random_element(CARD_NAMES);
+  const rarity = get_random_rarity(RARITIES);
   return {
     name,
     rarity,
     quantity: 1,
-    bio: bios[name] || "A mysterious card.",
-    course: courses[name] || "???"
+    bio: BIOS[name] || "A mysterious card.",
+    course: COURSES[name] || "???"
   };
-}
-
-/**
- * @description Loads the user's saved cards from local storage.
- * @returns {Array} An array of saved card objects.
- */
-function load_cards_from_local() {
-  const data = localStorage.getItem("card_data");
-  return data ? JSON.parse(data) : [];
 }
 
 /**
@@ -137,45 +117,6 @@ function load_pity_counters() {
  */
 function save_pity_counters(counters) {
   localStorage.setItem("pity_counters", JSON.stringify(counters));
-}
-
-/**
- * @description Saves an array of cards to local storage.
- * @param {Array} cards Array of card objects to save.
- * @returns {void}
- */
-function save_cards_to_local(cards) {
-  localStorage.setItem("card_data", JSON.stringify(cards));
-}
-
-/**
-
- * @description Adds a new card or updates the quantity if it already exists.
- * If the quantity is positive, it increments or sets the card's quantity.
- * If the quantity is negative, it decrements the quantity and removes the card if the total falls to 0 or below.
- * If the card doesn't exist and quantity is 0 or negative, it does nothing.
- *
- * @param {Object} card - The card object to add or update. Must include `name` and `rarity` properties.
- * @param {number} [quantity=1] - The number of cards to add (positive) or remove (negative).
- * @returns {Object|null} The updated card object, or `null` if the card was removed or not added.
-
- */
-function add_or_update_card(card) {
-  let cards = load_cards_from_local();
-  const index = cards.findIndex(c => c.name === card.name && c.rarity === card.rarity);
-
-  if (index !== -1) {
-    cards[index].quantity += 1;
-
-    if (cards[index].quantity <= 0) {
-      cards.splice(index, 1);
-    }
-  } else {
-    cards.push(card);
-  }
-
-  save_cards_to_local(cards);
-  return cards[index] || card;
 }
 
 /**
