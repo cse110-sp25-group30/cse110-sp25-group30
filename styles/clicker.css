@@ -24,6 +24,7 @@
 }
 
 #points_display {
+  font-size: 2rem;
   font-size: clamp(1.5rem, 5vw, 3rem);
   font-weight: bold;
   text-align: center;
