@@ -2,6 +2,7 @@ import { update_points, fetch_user_info } from "../index.js";
 import {cardNames, rarities, bios, courses} from "/scripts/card-values.js";
 
 
+
 // TODO: Consider moving constants to config file
 let cover_opened = false;
 let COST = 100;
@@ -148,9 +149,16 @@ function save_cards_to_local(cards) {
 }
 
 /**
- * @description Adds a new card or increments the quantity if it already exists.
- * @param {Object} card The card to add or update.
- * @returns {Object} The updated or newly added card object.
+
+ * @description Adds a new card or updates the quantity if it already exists.
+ * If the quantity is positive, it increments or sets the card's quantity.
+ * If the quantity is negative, it decrements the quantity and removes the card if the total falls to 0 or below.
+ * If the card doesn't exist and quantity is 0 or negative, it does nothing.
+ *
+ * @param {Object} card - The card object to add or update. Must include `name` and `rarity` properties.
+ * @param {number} [quantity=1] - The number of cards to add (positive) or remove (negative).
+ * @returns {Object|null} The updated card object, or `null` if the card was removed or not added.
+
  */
 function add_or_update_card(card) {
   let cards = load_cards_from_local();
@@ -158,6 +166,10 @@ function add_or_update_card(card) {
 
   if (index !== -1) {
     cards[index].quantity += 1;
+
+    if (cards[index].quantity <= 0) {
+      cards.splice(index, 1);
+    }
   } else {
     cards.push(card);
   }

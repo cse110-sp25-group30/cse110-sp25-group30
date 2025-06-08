@@ -1,3 +1,104 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: var(--modal-background-color);
+  color: var(--text-color);
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+card-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+card-display {
+  margin-bottom: 1rem;
+}
+
+.crafting-ui {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 1rem;
+  border-top: 1px solid #ccc;
+}
+
+#craft-slider {
+  width: 50%;
+  margin: 0.5rem 0;
+}
+
+#craft-summary {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+#craft-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.crafting-ui.hidden {
+  display: none;
+}
+
+.card-title {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
@@ -9,6 +110,14 @@
   /* row-gap: 4px;  */
   justify-items: center;
 }
+
+.grid-container card-thumbnail {
+  transform: scale(0.5);
+  transform-origin: top center;
+  height: 200px;
+  overflow: visible;
+}
+
 
 .back-button {
   display: inline-block;
@@ -33,6 +142,7 @@
     transform: translateY(0) scale(0.55);
   }
 }
+
 
 .grid-container frog-card {
   transform: scale(0.8);

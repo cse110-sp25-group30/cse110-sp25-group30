@@ -1,8 +1,8 @@
 /*
-This is the JavaScript file for the frog-card component.
+This is the JavaScript file for the card-thumbnail component.
 */
 
-class FrogCard extends HTMLElement {
+class CardThumbnail extends HTMLElement {
 	constructor() {
 		super();
 
@@ -12,7 +12,7 @@ class FrogCard extends HTMLElement {
 		this.shadow.appendChild(this.card);
 
 		this.initStyles();
-		this.addEventListener();
+		this.addCardClickListener();
 	}
 
 	initStyles() {
@@ -22,22 +22,27 @@ class FrogCard extends HTMLElement {
 		this.shadow.appendChild(link);
 	}
 
-	addEventListener() {
+	addCardClickListener() {
 		this.card.addEventListener('click', () => {
-			const audio = new Audio('assets/sound-effects/card-flip.mp3');
-			audio.volume = 0.1;
-			this.card.classList.toggle('flipped');
-			audio.currentTime = 0; // Reset if replaying
-    		audio.play();
+			if (this._data) {
+				this.dispatchEvent(
+					new CustomEvent('card-clicked', {
+					detail: this._data,
+					bubbles: true,
+					composed: true
+					})
+				);
+    		}
 		});
 	}
 
 	set data(data) {
-		if (!data || !data.rarity || !data.name || !data.bio || !data.course) return;
+		if (!data || !data.rarity || !data.name) return;
 
 		const profImgUrl = `./assets/prof-images/${data.name}.webp`;
 		const fgImgUrl = `./assets/card-backings/${data.rarity}_front.webp`;
-		const bgImgUrl = `./assets/card-backings/${data.rarity}_back.webp`;
+
+        this._data = data;
 
 		const loadImage = (src) =>
 			new Promise((resolve, reject) => {
@@ -57,7 +62,6 @@ class FrogCard extends HTMLElement {
 		Promise.all([
 			loadImage(profImgUrl),
 			loadImage(fgImgUrl),
-			loadImage(bgImgUrl),
 		]).then(() => {
 			this.style.setProperty('--text-color', '#f2a900');
 			if (data.rarity === "legendary") {
@@ -65,33 +69,21 @@ class FrogCard extends HTMLElement {
 			}
 
 			this.card.innerHTML = `
-				<div class="flip-card">
-					<div class="flip-card-inner">
-						<!-- FRONT -->
-						<div class="flip-card-front">
-							<img class="face" src="${profImgUrl}" alt="${data.name} image">
-							<img class="card-fg" src="${fgImgUrl}" alt="foreground layer">
-							<p class="front-name">${data.name}</p>
-						</div>
-						<!-- BACK -->
-						<div class="flip-card-back">
-							<img class="back-bg" src="${bgImgUrl}" alt="background">
-							<p class="back-name">${data.name}</p>
-							<p class="bio">${data.bio}</p>
-							<p class="course">${data.course}</p>
-						</div>
-					</div>
-				</div>
-			`;
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img class="face" src="${profImgUrl}" alt="${data.name} image">
+                            <img class="card-fg" src="${fgImgUrl}" alt="foreground layer">
+                            <p class="front-name">${data.name}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
 		}).catch((err) => {
 			this.card.innerHTML = `<p class="loading">Failed to load card</p>`;
 			console.error("Image failed to load", err);
 		});
 	}
-
-	click() {
-		this.card.click();
-	}
 }
 
-customElements.define('frog-card', FrogCard);
+customElements.define('card-thumbnail', CardThumbnail);
