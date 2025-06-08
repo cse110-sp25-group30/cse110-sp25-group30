@@ -3,6 +3,11 @@
     height: 400px;
     perspective: 1000px;
     cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.flip-card:hover {
+    transform: scale(1.1);
 }
 
 .flip-card-inner {

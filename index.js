@@ -2,19 +2,6 @@ import { devNames } from './scripts/card-values.js';
 import { teamBios } from './scripts/card-values.js';
 
 /**
- * Represents a book.
- * @constructor
- * @param {string} title - The title of the book.
- * @param {string} author - The author of the book.
- */
-function Card(title, author) {
-  this.title = title;
-  this.author = author;
-}
-const c1 = new Card("HEY", "Bob");
-console.log(c1.author);
-
-/**
  * user data
  * @constructor
  * @param {number} points represents # of points earned by user
@@ -29,6 +16,52 @@ let selected_card = 0;
 let card_data = [];
 
 window.addEventListener("DOMContentLoaded", init);
+
+/**
+ * @description Loads the user's saved cards from local storage.
+ * @returns {Array} An array of saved card objects.
+ */
+export function load_cards_from_local() {
+  const data = localStorage.getItem("card_data");
+  return data ? JSON.parse(data) : [];
+}
+
+/**
+ * @description Saves an array of cards to local storage.
+ * @param {Array} cards Array of card objects to save.
+ * @returns {void}
+ */
+function save_cards_to_local(cards) {
+  localStorage.setItem("card_data", JSON.stringify(cards));
+}
+
+/**
+ * @description Adds a new card or updates the quantity if it already exists.
+ * If the quantity is positive, it increments or sets the card's quantity.
+ * If the quantity is negative, it decrements the quantity and removes the card if the total falls to 0 or below.
+ * If the card doesn't exist and quantity is 0 or negative, it does nothing.
+ *
+ * @param {Object} card - The card object to add or update. Must include `name` and `rarity` properties.
+ * @param {number} [quantity=1] - The number of cards to add (positive) or remove (negative).
+ * @returns {Object|null} The updated card object, or `null` if the card was removed or not added.
+ */
+export function add_or_update_card(card, num_cards = 1) {
+  let cards = load_cards_from_local();
+  const index = cards.findIndex(c => c.name === card.name && c.rarity === card.rarity);
+
+  if (index !== -1) {
+    cards[index].quantity += num_cards;
+
+    if (cards[index].quantity <= 0) {
+      cards.splice(index, 1);
+    }
+  } else {
+    cards.push(card);
+  }
+
+  save_cards_to_local(cards);
+  return cards[index] || card;
+}
 
 /**
  * @description Fetches data from the JSON file and returns it as a Promise.
@@ -50,18 +83,14 @@ export async function fetch_data(path) {
   }
 }
 
-// TODO: Later we have to just fetch the unlocked cards, for now fetches all cards.
 /**
  * @description Fetches unlocked cards from local storage.
- * Should return at least one card. default_card is returned now.
- * @param {Object} default_card An object returned from card-data.json.
  * @returns {Array} An array of unlocked cards from local storage.
  */
-export function fetch_unlocked_cards(default_card) {
+export function fetch_unlocked_cards() {
   const data = localStorage.getItem("card_data");
   if (!data) {
-    save_to_local([default_card], "card_data")
-    return [default_card];
+    return [];
   }
   const parsed_data = JSON.parse(data);
   return parsed_data;
@@ -189,18 +218,20 @@ export function update_points(points){
  * Initializes the card deck on DOM load.
  */
 async function init() {
-  const card_data_all = await fetch_data("./card-data.json");
-  const powell = card_data_all[0];
-  card_data = fetch_unlocked_cards(powell);
-
-  const fetch_user_data = fetch_user_info();
-  if (!fetch_user_data) {
-    const user_info = new UserInfo(0, 0);
-    save_to_local(user_info, "user_data");
+  await fetch_data("./card-data.json");
+  card_data = fetch_unlocked_cards();
+  
+  // Only create and show card if we have cards
+  if (card_data.length > 0) {
+    createCard(card_data[selected_card]);
+    card_button_click();
   }
 
-  createCard(card_data[selected_card]);
-  card_button_click();
+  const fetch_user_data = fetch_user_info();
+  if (!fetch_user_data){
+    const user_info = new UserInfo(0);
+    save_to_local(user_info,"user_data");
+  }
 
   // Handle view all
   const viewAllBtn = document.getElementById("view-all");
