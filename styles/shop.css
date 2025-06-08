@@ -268,7 +268,7 @@ body {
 
 .placeholder-text {
   position: absolute;
-  bottom: -50px;
+  bottom: -100px;
   text-align: center;
   color: #333;
   font-size: 1.1rem;
@@ -722,4 +722,12 @@ pack-cover.rarity-special-edition.with-glow::before {
 /* Remove shine effect when no points */
 #generate-card.no-points::before {
   display: none;
+}
+
+#cost-img {
+  margin-left: 0.4rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  top: 6px;
 }
