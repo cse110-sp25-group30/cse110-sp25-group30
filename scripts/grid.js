@@ -77,9 +77,33 @@ function updateCardGrid(cards) {
   const container = document.getElementById("card-grid");
   if (!container) return;
 
+  // Get or create the no-cards-message element
+  let noCardsMessage = document.getElementById("no-cards-message");
+  if (!noCardsMessage) {
+    noCardsMessage = document.createElement("div");
+    noCardsMessage.id = "no-cards-message";
+    noCardsMessage.className = "no-cards-message hidden";
+    noCardsMessage.innerHTML = `
+      <h2>No Cards Found</h2>
+      <p>Start collecting cards in the shop or gain points using the clicker!</p>
+      <div class="button-group">
+        <a href="shop.html" class="shop-button">Go to Shop</a>
+        <a href="clicker.html" class="clicker-button">Open Clicker</a>
+      </div>
+    `;
+    container.appendChild(noCardsMessage);
+  }
+
   // Clear existing cards
   container.innerHTML = "";
+  container.appendChild(noCardsMessage);
 
+  if (!cards || cards.length === 0) {
+    noCardsMessage.classList.remove("hidden");
+    return;
+  }
+
+  noCardsMessage.classList.add("hidden");
   cards.forEach((data, index) => {
     const card = document.createElement("card-thumbnail");
     

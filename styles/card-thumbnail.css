@@ -119,3 +119,31 @@
         transform: rotate(360deg);
     }
 }
+
+/* Rarity-based styles for quantity text */
+.card-info {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.rarity-common { color: #FFFFFF; }
+.rarity-uncommon { color: #22C55E; }
+.rarity-rare { color: #3B82F6; }
+.rarity-epic { color: #A855F7; }
+.rarity-legendary { color: #FFD700; }
+.rarity-special-edition { 
+    background: linear-gradient(45deg, #FF006E, #FFD700, #00D9FF, #FF006E);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: specialGradient 3s linear infinite;
+}
+
+@keyframes specialGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}

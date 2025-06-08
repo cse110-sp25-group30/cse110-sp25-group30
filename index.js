@@ -1,17 +1,4 @@
 /**
- * Represents a book.
- * @constructor
- * @param {string} title - The title of the book.
- * @param {string} author - The author of the book.
- */
-function Card(title, author) {
-  this.title = title;
-  this.author = author;
-}
-const c1 = new Card("HEY", "Bob");
-console.log(c1.author);
-
-/**
  * user data
  * @constructor
  * @param {number} points represents # of points earned by user
@@ -47,18 +34,14 @@ export async function fetch_data(path) {
   }
 }
 
-// TODO: Later we have to just fetch the unlocked cards, for now fetches all cards.
 /**
  * @description Fetches unlocked cards from local storage.
- * Should return at least one card. default_card is returned now.
- * @param {Object} default_card An object returned from card-data.json.
  * @returns {Array} An array of unlocked cards from local storage.
  */
-export function fetch_unlocked_cards(default_card) {
+export function fetch_unlocked_cards() {
   const data = localStorage.getItem("card_data");
   if (!data) {
-    save_to_local([default_card], "card_data")
-    return [default_card];
+    return [];
   }
   const parsed_data = JSON.parse(data);
   return parsed_data;
@@ -187,18 +170,19 @@ export function update_points(points){
  */
 async function init() {
   const card_data_all = await fetch_data("./card-data.json");
-  //save_to_local(card_data_all, "card_data"); // TODO: remove and load from unlocked later
-  const powell = card_data_all[0];
-  console.log("powell", powell);
-  card_data = fetch_unlocked_cards(powell);
+  card_data = fetch_unlocked_cards();
+  
+  // Only create and show card if we have cards
+  if (card_data.length > 0) {
+    createCard(card_data[selected_card]);
+    card_button_click();
+  }
+
   const fetch_user_data = fetch_user_info();
-  console.log("fetch_user_data",fetch_user_data);
   if (!fetch_user_data){
-    const user_info = new UserInfo(0,0);
+    const user_info = new UserInfo(0);
     save_to_local(user_info,"user_data");
   }
-  createCard(card_data[selected_card]);
-  card_button_click();
 
   // redirect to grid.html when view all button is clicked
   const viewAllBtn = document.getElementById("view-all");

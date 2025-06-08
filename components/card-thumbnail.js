@@ -8,8 +8,11 @@ class CardThumbnail extends HTMLElement {
 
 		this.shadow = this.attachShadow({ mode: 'open' });
 		this.card = document.createElement('card');
+		this.infoContainer = document.createElement('div');
+		this.infoContainer.className = 'card-info';
 
 		this.shadow.appendChild(this.card);
+		this.shadow.appendChild(this.infoContainer);
 
 		this.initStyles();
 		this.addCardClickListener();
@@ -18,8 +21,22 @@ class CardThumbnail extends HTMLElement {
 	initStyles() {
 		const link = document.createElement('link');
 		link.setAttribute('rel', 'stylesheet');
-		link.setAttribute('href', 'styles/frog-card.css');
+		link.setAttribute('href', 'styles/card-thumbnail.css');
 		this.shadow.appendChild(link);
+
+		const style = document.createElement('style');
+		style.textContent = `
+			.card-info {
+				text-align: center;
+				margin-top: 0.5rem;
+				color: #f2a900;
+				font-size: 2rem;
+			}
+			.card-info .quantity {
+				opacity: 0.9;
+			}
+		`;
+		this.shadow.appendChild(style);
 	}
 
 	addCardClickListener() {
@@ -79,8 +96,14 @@ class CardThumbnail extends HTMLElement {
                     </div>
                 </div>
             `;
+
+			// Update card info with rarity class
+			this.infoContainer.innerHTML = `
+				<div class="quantity rarity-${data.rarity.toLowerCase()}">${data.quantity || 1} owned</div>
+			`;
 		}).catch((err) => {
 			this.card.innerHTML = `<p class="loading">Failed to load card</p>`;
+			this.infoContainer.innerHTML = '';
 			console.error("Image failed to load", err);
 		});
 	}
