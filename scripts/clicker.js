@@ -13,6 +13,7 @@ window.addEventListener("DOMContentLoaded", init);
  * and elements with IDs "clicker-comp" and "points_display" in the DOM.
  */
 function clicker_buttons() {
+
   const clicker_comp = document.getElementById("clicker-comp");
   const points_display = document.getElementById("points_display");
   if (!clicker_comp) {
@@ -21,14 +22,50 @@ function clicker_buttons() {
 
   const handleClick = () => {
     update_points(1);
+
     let user_info = fetch_user_info();
     if (!user_info) {
       console.error("No user info found");
       return;
     }
+
     points_display.innerHTML = `Points: ${user_info.points}`;
     clicker_comp.style.transform = "scale(0.95)";
+    if (Math.random() < 0.05) {
+      showBonusPopup();
+    }
   };
+  
+    /**
+ * @description Creates the reandom popup buttons at 5% per click and removes them after 1.5 seconds.
+ */
+  function showBonusPopup() {
+    const bonus = document.createElement("div");//creates the bonus window
+    bonus.id = "bonus-popup";
+    bonus.textContent = "+10!";
+    bonus.classList.add("bonus-popup");
+
+    // Random position on screen
+    bonus.style.left = Math.random() * 80 + 10 + "%";
+    bonus.style.top = Math.random() * 60 + 20 + "%";
+
+    document.body.appendChild(bonus);
+    //actually adds 10 when clicked
+    bonus.addEventListener("click", () => {
+      let user_info = fetch_user_info();
+      update_points(10);
+      user_info.points += 10;
+      points_display.innerHTML = `Points: ${user_info.points}`;
+      bonus.remove();
+    });
+
+    // Auto-remove after 1 seconds
+    setTimeout(() => {
+      if (document.body.contains(bonus)) {
+        bonus.remove();
+      }
+    }, 1500);
+  }
 
   const resetScale = () => {
     clicker_comp.style.transform = "scale(1)";
@@ -42,7 +79,6 @@ function clicker_buttons() {
   clicker_comp.addEventListener("touchstart", handleClick);
   clicker_comp.addEventListener("touchend", resetScale);
 }
-
 
 
   async function init(){

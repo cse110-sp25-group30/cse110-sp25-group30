@@ -75,26 +75,3 @@ export const courses = {
   "Yufei Ding": "CSE 141",
   "Leo Porter": "CSE 8A"
 };
-
-export const images = {
-  "Thomas A. Powell": "assets/prof-images/Thomas A. Powell.webp",
-  "Niema Moshiri": "assets/prof-images/niema.jpg",
-  "Sicun Gao": "assets/prof-images/gao.jpg",
-  "John Eldon": "assets/prof-images/eldon.jpg",
-  "Julian McAuley": "assets/prof-images/mculey.jpg",
-  "Nadia Polikarpova": "assets/prof-images/polik.jpg",
-  "Trevor Bonjour": "assets/prof-images/Trevor Bonjour.webp",
-  "Amy Ousterhout": "assets/prof-images/ouster.jpg",
-  "Russel Impagliazzo": "assets/prof-images/impag.jpg",
-  "Ben Ochoa": "assets/prof-images/ochoa.jpg",
-  "Earlence Fernandes": "assets/prof-images/fern.jpg",
-  "Bryan Chin": "assets/prof-images/chin.jpg",
-  "Ryan Kastner": "assets/prof-images/kastner.jpg",
-  "Miles Jones": "assets/prof-images/miles.jpg",
-  "Mia Minnes": "assets/prof-images/minnes.jpg",
-  "Paul Cao": "assets/prof-images/cao.jpg",
-  "Daniele Micciancio": "assets/prof-images/micc.jpg",
-  "Edwin Solares": "assets/prof-images/solares.jpg",
-  "Yufei Ding": "assets/prof-images/ding.jpg",
-  "Leo Porter": "assets/prof-images/porter.jpg"
-};
