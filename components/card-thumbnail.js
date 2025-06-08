@@ -7,7 +7,8 @@ class CardThumbnail extends HTMLElement {
 		super();
 
 		this.shadow = this.attachShadow({ mode: 'open' });
-		this.card = document.createElement('card');
+		this.card = document.createElement('div');
+		this.card.className = 'card';
 		this.infoContainer = document.createElement('div');
 		this.infoContainer.className = 'card-info';
 
@@ -86,14 +87,10 @@ class CardThumbnail extends HTMLElement {
 			}
 
 			this.card.innerHTML = `
-                <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img class="face" src="${profImgUrl}" alt="${data.name} image">
-                            <img class="card-fg" src="${fgImgUrl}" alt="foreground layer">
-                            <p class="front-name">${data.name}</p>
-                        </div>
-                    </div>
+                <div class="card-content">
+                    <img class="face" src="${profImgUrl}" alt="${data.name} image">
+                    <img class="card-fg" src="${fgImgUrl}" alt="foreground layer">
+                    <p class="front-name">${data.name}</p>
                 </div>
             `;
 
