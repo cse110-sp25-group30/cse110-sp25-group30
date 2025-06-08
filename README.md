@@ -8,7 +8,7 @@ If you want to contribute to the project with your own implementation of feature
 1. Fork the repository to your own account.
 2. Use Git Bash or Visual Studio Code to clone the repository.
 3. Once the repo has been cloned, make sure to perform "run npm install" on your terminal, to downloaded the necessary packages and look over *package.json*.
-4. After performing the install, perform the commans "npm run start" in order to start a local server on localhost:3000
+4. After performing the install, perform the command "npm run start" in order to start a local server on localhost:3000
 5. Implement your features, making sure to include documentation code (that way it gives us an idea of what the code does without having to go the extra hurdles.)
 6. Once you have tested and finished implementing working efficient code, make a Pull Request to your repo first, before doing a new PR to our branch. (Your PR will not be accepted until it passes all of the tests and a human review is done by at least one of our group members.)
 Huzzah! With all of the steps completed in order, you have successfully made our project better in the process, and we thank you for it :)
@@ -67,8 +67,8 @@ Status Video 1:
 - [Sprint 2 Retrospective](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0519-0525/052525-retrospective.md)
 - [Sprint 3 Retrospective](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0526-0601/060125-retrospective.md)
 
-### ADR's
-[ADR's Folder](https://github.com/cse110-sp25-group30/cse110-sp25-group30/tree/main/specs/adrs)
+### ADRs
+[ADRs Folder](https://github.com/cse110-sp25-group30/cse110-sp25-group30/tree/main/specs/adrs)
 - [ADR1 - Problem Solving and Meeting Decision](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/specs/adrs/051125-MVPandMeetingsDecisions.md)
 - [ADR2 - Card Grid, Collector Features and Hosting](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/specs/adrs/052225-CardGridandCollectorFeatures.md)
 - [ADR3 - Removal of Card-Deck and Implementing Consistent Presentation](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/specs/adrs/052825-CardDeckRemoval.md)
