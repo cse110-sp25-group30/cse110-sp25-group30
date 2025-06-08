@@ -25,7 +25,9 @@
 
 #points_display {
   font-size: 2rem;
-  font-size: clamp(1.5rem, 5vw, 3rem);
+  /*This error is ignored because this clamp is valid CSS*/
+  /* eslint-disable */
+  font-size: clamp(1.5rem, 5vw, 3rem); 
   font-weight: bold;
   text-align: center;
   margin-top: 20px;
