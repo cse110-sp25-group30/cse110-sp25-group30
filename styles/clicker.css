@@ -3,24 +3,27 @@
   flex-direction: column;
   align-items: center;         /* Center horizontally */
   justify-content: flex-start; /* Align to top */
-  background: #00629B;         /* Example background */
+  /* background: var(--background-color); */
+  background: linear-gradient(0deg, transparent 0%, #00629B 50%, transparent 100%);
+  /* background: #00629B;        Example background */
 }
 
 #clicker-comp {
-  border-radius: 12px;
+  border-radius: 50%;
   flex: 1 1 0;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   aspect-ratio: 1 / 1;     
-  margin-top: 40px;
+  margin-top: 100px;
   transform: scale(1);
   transform-origin: center;
   overflow: visible;
   max-width: 400px;
   max-height: 400px;
   height: auto;
+  transition: all 0.2s ease;
 }
 
 #points_display {
@@ -37,6 +40,7 @@
   word-break: break-word;
   box-sizing: border-box;
 }
+
 .tooltip-container {
   align-items: center;
   justify-self: center;
@@ -46,11 +50,28 @@
 
 .tooltip-icon {
   font-weight: bold;
-  font-size: 100%;
+  font-size: 1.2rem;
   border-radius: 50%;
-  padding: 0rem 0.3rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #8B4513 100%);
+  border: 2px solid #FFD700;
+  color: #FFD700;
+  margin-left: 1rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  /* padding: 0rem 0.3rem;
   background-color: #a1a1a1;
-  border: 0.1rem solid #ffffff;
+  border: 0.1rem solid #ffffff; */
+  transform: translateY(-150%);
+}
+
+.tooltip-icon:hover {
+  transform: translateY(-150%) scale(1.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4), 0 0 15px rgba(255,215,0,0.3);
 }
 
 .tooltip-text {
@@ -67,17 +88,14 @@
   transition: opacity 0.3s;
   white-space: nowrap;
   font-family: Tahoma, sans-serif;
+  text-align: center;
 }
 
 .tooltip-container:hover .tooltip-text {
   visibility: visible;
   opacity: 1;
 }
-@media (max-width: 350px) {
-  #clicker-button {
-    width: 85vw;
-  }
-}
+
 .bonus-popup {
   position: absolute;
   padding: 15px 25px;
