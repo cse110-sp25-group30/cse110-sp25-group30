@@ -10,52 +10,64 @@ window.addEventListener("DOMContentLoaded", init);
 /**
  * @description Adds click event to clicker page where needed
  */
-function clicker_buttons(){
-    const clicker_comp = document.getElementById("clicker-comp");
-    const points_display = document.getElementById("points_display");
-    if (!clicker_comp){
+function clicker_buttons() {
+  const clicker_button = document.getElementById("clicker-button");
+  const points_display = document.getElementById("points_display");
+
+  if (!clicker_button) return;
+
+  clicker_button.addEventListener("mousedown", function () {
+    let user_info = fetch_user_info();
+    if (!user_info) {
+      console.error("No user info found");
       return;
     }
-    clicker_comp.addEventListener("mousedown", function(){
-      /*
-      TODO: Use update_points to update the # of points. So you dont call the function
-      a ton of times, I recommend using setTimeout so
-      like every 500 ms save points with update_points function.
-      */
-      // console.log("clicked")
-      update_points(1);
+    update_points(1);
+    user_info.points += 1;//updates points
+    points_display.innerHTML = `Points: ${user_info.points}`;
+    //  5% chance to show a bonus popup instead of earning 1 point
+    if (Math.random() < 0.05) {
+      showBonusPopup();
+    }
+
+
+    clicker_button.style.transform = "scale(0.95)";
+  });
+
+  clicker_button.addEventListener("mouseup", function () {
+    clicker_button.style.transform = "scale(1)";
+  });
+  /**
+ * @description Creates the reandom popup buttons at 5% per click and removes them after 1.5 seconds.
+ */
+  function showBonusPopup() {
+    const bonus = document.createElement("div");//creates the bonus window
+    bonus.id = "bonus-popup";
+    bonus.textContent = "+10!";
+    bonus.classList.add("bonus-popup");
+
+    // Random position on screen
+    bonus.style.left = Math.random() * 80 + 10 + "%";
+    bonus.style.top = Math.random() * 60 + 20 + "%";
+
+    document.body.appendChild(bonus);
+    //actually adds 10 when clicked
+    bonus.addEventListener("click", () => {
       let user_info = fetch_user_info();
-      if (!user_info){
-        console.error("No user info found");
-        return;
-      }
-      // else{
-      //   console.log(user_info.points);
-      // }
+      update_points(10);
+      user_info.points += 10;
       points_display.innerHTML = `Points: ${user_info.points}`;
-      clicker_comp.style.transform = "scale(0.95)";
-    })
-    clicker_comp.addEventListener("mouseup", function(){
-      /*
-      TODO: Use update_points to update the # of points. So you dont call the function
-      a ton of times, I recommend using setTimeout so
-      like every 500 ms save points with update_points function.
-      */      
-     
-      clicker_comp.style.transform = "scale(1)";
-    })
-    /**
-     * Updates the user point in the backend and the UI.
-     * Calls update_points() with the new points.
-     */
-    
-    // Update the user points
-    // call update_points with the new points
-    // update the UI with the new pointsg
+      bonus.remove();
+    });
 
-
+    // Auto-remove after 1 seconds
+    setTimeout(() => {
+      if (document.body.contains(bonus)) {
+        bonus.remove();
+      }
+    }, 1500);
+  }
 }
-
 
 
   async function init(){

@@ -19,7 +19,7 @@ describe('Test Clicker Functionality', () => {
     const initialText = await page.evaluate(el => el.textContent, pointsElem);
     const initialPoints = Number(initialText.split(" ")[1]);
 
-    const clickerElem = await page.$("#clicker-comp");
+    const clickerElem = await page.$("#clicker-button");
     if (!clickerElem) throw new Error("Clicker element not found");
 
     for (let i = 0; i < 100; i++) {

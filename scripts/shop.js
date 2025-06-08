@@ -1,9 +1,11 @@
 import { update_points, fetch_user_info } from "../index.js";
 import {cardNames, rarities, bios, courses} from "/scripts/card-values.js";
 
+
 // TODO: Consider moving constants to config file
 let cover_opened = false;
 let COST = 100;
+
 
 // Guarantee thresholds for each rarity
 const GUARANTEE_THRESHOLDS = {
@@ -480,6 +482,7 @@ function init() {
     if (current_open_handler) {
       document.removeEventListener("cover-opened", current_open_handler);
       current_open_handler = null;
+
     }
     
     // Clear any existing animations
@@ -508,6 +511,7 @@ function init() {
     
     // Update container background immediately
     update_container_rarity(updated_card.rarity);
+
 
     display_card(updated_card);
     update_points(-COST);
