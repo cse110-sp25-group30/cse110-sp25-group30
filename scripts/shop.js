@@ -53,7 +53,7 @@ function generateRandomCard() {
  * @returns {Array} An array of saved card objects.
  */
 //Here we can use fetch_unlocked_cards to load cards from index.js
-export function loadCardsFromLocal() {
+function loadCardsFromLocal() {
   const data = localStorage.getItem("card_data");
   return data ? JSON.parse(data) : [];
 }
@@ -63,7 +63,7 @@ export function loadCardsFromLocal() {
  * @param {Array} cards - Array of card objects to save.
  */
 //Here we can use save_to_local to save cards fron index.js
-export function saveCardsToLocal(cards) {
+function saveCardsToLocal(cards) {
   localStorage.setItem("card_data", JSON.stringify(cards));
 }
 
@@ -77,12 +77,12 @@ export function saveCardsToLocal(cards) {
  * @param {number} [quantity=1] - The number of cards to add (positive) or remove (negative).
  * @returns {Object|null} The updated card object, or `null` if the card was removed or not added.
  */
-export function addOrUpdateCard(card, num_cards = 1) {
+function addOrUpdateCard(card) {
   let cards = loadCardsFromLocal();
   const index = cards.findIndex(c => c.name === card.name && c.rarity === card.rarity);
 
   if (index !== -1) {
-    cards[index].quantity += num_cards;
+    cards[index].quantity += 1;
 
     if (cards[index].quantity <= 0) {
       cards.splice(index, 1);
