@@ -1,5 +1,5 @@
 import { update_points, fetch_user_info } from "../index.js";
-import {cardNames, rarities, bios, courses} from "/scripts/card-values.js";
+import { cardNames, rarities, bios, courses } from "/scripts/card-values.js";
 
 
 // TODO: Consider moving constants to config file
@@ -35,7 +35,7 @@ function update_pity_counters(obtained_rarity) {
   const counters = load_pity_counters();
   const rarity_hierarchy = ["common", "uncommon", "rare", "epic", "legendary", "special-edition"];
   const obtained_index = rarity_hierarchy.indexOf(obtained_rarity);
-  
+
   // Increment counters for rarities above what we got
   for (let i = obtained_index + 1; i < rarity_hierarchy.length; i++) {
     const rarity = rarity_hierarchy[i];
@@ -43,7 +43,7 @@ function update_pity_counters(obtained_rarity) {
       counters[rarity]++;
     }
   }
-  
+
   // Reset counters at or below what we got
   for (let i = 0; i <= obtained_index; i++) {
     const rarity = rarity_hierarchy[i];
@@ -51,7 +51,7 @@ function update_pity_counters(obtained_rarity) {
       counters[rarity] = 0;
     }
   }
-  
+
   save_pity_counters(counters);
   return counters;
 }
@@ -63,7 +63,7 @@ function update_pity_counters(obtained_rarity) {
  */
 function get_random_rarity(rarities) {
   const counters = load_pity_counters();
-  
+
   // Check guarantees from highest to lowest
   if (counters["special-edition"] >= GUARANTEE_THRESHOLDS["special-edition"]) {
     return "special-edition";
@@ -77,7 +77,7 @@ function get_random_rarity(rarities) {
   if (counters.rare >= GUARANTEE_THRESHOLDS.rare) {
     return "rare";
   }
-  
+
   // Normal RNG
   const rand = Math.random() * 100;
   let sum = 0;
@@ -173,16 +173,16 @@ function add_or_update_card(card) {
  */
 function create_light_rays(rarity) {
   const container = document.getElementById("card-container");
-  
+
   // Remove any existing light rays
   const existing_rays = container.querySelector(".light-rays");
   if (existing_rays) {
     existing_rays.remove();
   }
-  
+
   const light_rays_div = document.createElement("div");
   light_rays_div.className = "light-rays";
-  
+
   const colors = {
     common: "#FFFFFF",
     uncommon: "#22C55E",
@@ -191,7 +191,7 @@ function create_light_rays(rarity) {
     legendary: "#FFD700",
     "special-edition": "linear-gradient(45deg, #FF006E, #FFD700)"
   };
-  
+
   // Create multiple light rays
   for (let i = 0; i < 12; i++) {
     const ray = document.createElement("div");
@@ -201,9 +201,9 @@ function create_light_rays(rarity) {
     ray.style.animationDelay = `${i * 0.05}s`;
     light_rays_div.appendChild(ray);
   }
-  
+
   container.appendChild(light_rays_div);
-  
+
   // Remove after animation
   setTimeout(() => light_rays_div.remove(), 2000);
 }
@@ -215,16 +215,16 @@ function create_light_rays(rarity) {
  */
 function show_congrats_animation(rarity) {
   const container = document.getElementById("gen-container");
-  
+
   // Remove any existing congratulations animation
   const existing_congrats = container.querySelector(".congrats-animation");
   if (existing_congrats) {
     existing_congrats.remove();
   }
-  
+
   const congrats_div = document.createElement("div");
   congrats_div.className = "congrats-animation";
-  
+
   const rarity_text = {
     common: "COMMON",
     uncommon: "UNCOMMON!",
@@ -233,55 +233,55 @@ function show_congrats_animation(rarity) {
     legendary: "⚡ LEGENDARY! ⚡",
     "special-edition": "🌟 SPECIAL EDITION! 🌟"
   };
-  
+
   const congrats_text = document.createElement("div");
   congrats_text.className = `congrats-text congrats-${rarity}`;
   congrats_text.textContent = rarity_text[rarity];
   congrats_div.appendChild(congrats_text);
-  
+
   // Create particle effects for rare and above
   if (['rare', 'epic', 'legendary', 'special-edition'].includes(rarity)) {
     const particles_div = document.createElement("div");
     particles_div.className = "congrats-particles";
-    
+
     const particle_colors = {
       rare: ['#3B82F6', '#60A5FA', '#2563EB'],
       epic: ['#A855F7', '#C084FC', '#9333EA'],
       legendary: ['#FFD700', '#FFC700', '#FFE700'],
       "special-edition": ['#FF006E', '#FFD700', '#00D9FF', '#FF00FF']
     };
-    
+
     const colors = particle_colors[rarity] || ['#FFD700'];
     const particle_count = rarity === 'special-edition' ? 30 : rarity === 'legendary' ? 20 : 15;
-    
+
     for (let i = 0; i < particle_count; i++) {
       const particle = document.createElement("div");
       particle.className = "particle";
       particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
       particle.style.left = "50%";
       particle.style.top = "50%";
-      
+
       const angle = (Math.PI * 2 * i) / particle_count;
       const distance = 50 + Math.random() * 50;
       const x = Math.cos(angle) * distance;
       const y = Math.sin(angle) * distance;
-      
+
       particle.style.setProperty('--x', `${x}px`);
       particle.style.setProperty('--y', `${y}px`);
       particle.style.animationDelay = `${Math.random() * 0.3}s`;
-      
+
       if (rarity === 'special-edition') {
         particle.style.boxShadow = `0 0 10px ${particle.style.backgroundColor}`;
       }
-      
+
       particles_div.appendChild(particle);
     }
-    
+
     congrats_div.appendChild(particles_div);
   }
-  
+
   container.appendChild(congrats_div);
-  
+
   // Remove after animation
   setTimeout(() => congrats_div.remove(), 2000);
 }
@@ -294,8 +294,8 @@ function show_congrats_animation(rarity) {
 function update_container_rarity(rarity) {
   const container = document.getElementById("gen-container");
   // Remove all previous rarity classes
-  container.classList.remove('rarity-common', 'rarity-uncommon', 'rarity-rare', 
-                           'rarity-epic', 'rarity-legendary', 'rarity-special-edition');
+  container.classList.remove('rarity-common', 'rarity-uncommon', 'rarity-rare',
+    'rarity-epic', 'rarity-legendary', 'rarity-special-edition');
   // Add new rarity class
   if (rarity) {
     container.classList.add(`rarity-${rarity}`);
@@ -309,10 +309,10 @@ function update_container_rarity(rarity) {
  */
 function display_placeholder(is_first_purchase = true) {
   const container = document.getElementById("card-container");
-  const placeholder_text = is_first_purchase 
-    ? "Click below to purchase your first pack!" 
+  const placeholder_text = is_first_purchase
+    ? "Click below to purchase your first pack!"
     : "Click below to purchase a pack!";
-    
+
   container.innerHTML = `
     <div class="placeholder-card">
       <div class="pack-wrapper">
@@ -341,7 +341,7 @@ function display_card(card) {
 
   container.appendChild(frog_card);
   container.appendChild(cover);
-  
+
   // Create light rays immediately for unopened pack
   setTimeout(() => create_light_rays(card.rarity), 100);
 
@@ -359,7 +359,7 @@ function update_points_display() {
   if (display) {
     display.textContent = `${points}`;
   }
-  
+
   // Update button visual state based on points
   const generate_btn = document.getElementById("generate-card");
   if (generate_btn) {
@@ -378,7 +378,12 @@ function update_points_display() {
 function update_cost() {
   const cost_display = document.getElementById("cost");
   if (cost_display) {
-    cost_display.textContent = `Cost: ${COST}`;
+    cost_display.innerHTML = `
+  Cost: 
+  <span class="cost-amount">
+    ${COST}<img id="cost-img" src="/assets/misc-images/point.webp" alt="coin" class="coin-icon">
+  </span>
+`;
   }
 }
 
@@ -409,16 +414,16 @@ function update_tooltip() {
 function update_guarantee_display() {
   const counters = load_pity_counters();
   const guarantee_display = document.getElementById("guarantee-display");
-  
+
   if (!guarantee_display) {
     return;
   }
-  
+
   // Show Special Edition progress
   const special_count = counters["special-edition"];
   const special_threshold = GUARANTEE_THRESHOLDS["special-edition"];
   const percentage = (special_count / special_threshold) * 100;
-  
+
   guarantee_display.innerHTML = `
     <div class="guarantee-text">${special_count}/${special_threshold} to guaranteed Special Edition</div>
     <div class="guarantee-bar">
@@ -455,14 +460,14 @@ function init() {
   update_cost();
   update_tooltip();
   update_guarantee_display();
-  
+
   // Check if user has any cards to determine placeholder text
   const existing_cards = load_cards_from_local();
   const is_first_purchase = existing_cards.length === 0;
-  
+
   // Always display placeholder when entering shop
   display_placeholder(is_first_purchase);
-  
+
   // Clear any previous container styling and result text
   update_container_rarity(null);
   result_display.innerHTML = "";
@@ -474,7 +479,7 @@ function init() {
   generate_btn.addEventListener("click", function () {
     const user = fetch_user_info();
     if (!user || user.points < COST) {
-       result_display.innerHTML = `
+      result_display.innerHTML = `
     <div style="font-weight: bold; color: red;">❌ NOT ENOUGH POINTS. ❌</div>
     <div style="margin-top: 0.3rem;">
       <a href="/clicker.html" style="color: #FFD700; font-weight: bold; text-decoration: none;">
@@ -482,16 +487,16 @@ function init() {
       </a>
     </div>
   `;
-  return;
+      return;
     }
-    
+
     // Remove any previous handler to prevent double-firing
     if (current_open_handler) {
       document.removeEventListener("cover-opened", current_open_handler);
       current_open_handler = null;
 
     }
-    
+
     // Clear any existing animations
     const existing_congrats = document.querySelector(".congrats-animation");
     if (existing_congrats) {
@@ -501,21 +506,21 @@ function init() {
     if (existing_rays) {
       existing_rays.remove();
     }
-    
+
     const click = new Audio('assets/sound-effects/buy.mp3');
     click.currentTime = 0.095;
     click.play();
 
     const new_card = generate_random_card();
     const updated_card = add_or_update_card(new_card);
-    
+
     // Update pity counters after card generation
     update_pity_counters(new_card.rarity);
 
     generate_btn.disabled = true;
 
     result_display.innerHTML = "click to open [O]";
-    
+
     // Update container background immediately
     update_container_rarity(updated_card.rarity);
 
@@ -527,31 +532,31 @@ function init() {
     // Create handler for this card
     current_open_handler = function handler() {
       cover_opened = true;
-      
+
       // Show congratulations animation
       show_congrats_animation(updated_card.rarity);
-      
+
       // Create another set of light rays on reveal
       create_light_rays(updated_card.rarity);
 
       if (updated_card.quantity === 1) {
-        const rarity_span = updated_card.rarity === 'special-edition' 
+        const rarity_span = updated_card.rarity === 'special-edition'
           ? `<span style="color: #FFD700; font-weight: 900; text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 0 0 20px #FF006E, 0 0 40px #00D9FF;">✨ ${updated_card.rarity.toUpperCase()} ✨</span>`
           : `<span style="color: ${get_rarity_display_color(updated_card.rarity)}; font-weight: 900; text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;">${updated_card.rarity.toUpperCase()}</span>`;
-        
+
         result_display.innerHTML =
-        `🎉 New card unlocked: You got a ${rarity_span} "${updated_card.name}"<br>click to flip [F]`;
+          `🎉 New card unlocked: You got a ${rarity_span} "${updated_card.name}"<br>click to flip [F]`;
       }
       else {
-        const rarity_span = updated_card.rarity === 'special-edition' 
+        const rarity_span = updated_card.rarity === 'special-edition'
           ? `<span style="color: #FFD700; font-weight: 900; text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 0 0 20px #FF006E, 0 0 40px #00D9FF;">✨ ${updated_card.rarity.toUpperCase()} ✨</span>`
           : `<span style="color: ${get_rarity_display_color(updated_card.rarity)}; font-weight: 900; text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;">${updated_card.rarity.toUpperCase()}</span>`;
-          
+
         result_display.innerHTML =
-        `🎉 You got a ${rarity_span} "${updated_card.name}" (Total owned: ${updated_card.quantity})<br>click to flip [F]`;
+          `🎉 You got a ${rarity_span} "${updated_card.name}" (Total owned: ${updated_card.quantity})<br>click to flip [F]`;
       }
       result_display.style.visibility = "visible";
-      
+
       if (updated_card.rarity == 'epic') {
         const audio = new Audio('assets/sound-effects/lucky-draw1.mp3');
         audio.currentTime = 0;
@@ -564,7 +569,7 @@ function init() {
       }
 
       generate_btn.disabled = false;
-      
+
       // Update guarantee display after revealing
       update_guarantee_display();
 
@@ -572,7 +577,7 @@ function init() {
       document.removeEventListener("cover-opened", current_open_handler);
       current_open_handler = null;
     };
-    
+
     // Wait for the 'cover-opened' event, then reveal result
     document.addEventListener("cover-opened", current_open_handler);
   });

@@ -723,3 +723,11 @@ pack-cover.rarity-special-edition.with-glow::before {
 #generate-card.no-points::before {
   display: none;
 }
+
+#cost-img {
+  margin-left: 0.4rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  top: 6px;
+}
