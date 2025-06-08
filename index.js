@@ -15,6 +15,52 @@ let card_data = [];
 window.addEventListener("DOMContentLoaded", init);
 
 /**
+ * @description Loads the user's saved cards from local storage.
+ * @returns {Array} An array of saved card objects.
+ */
+export function load_cards_from_local() {
+  const data = localStorage.getItem("card_data");
+  return data ? JSON.parse(data) : [];
+}
+
+/**
+ * @description Saves an array of cards to local storage.
+ * @param {Array} cards Array of card objects to save.
+ * @returns {void}
+ */
+function save_cards_to_local(cards) {
+  localStorage.setItem("card_data", JSON.stringify(cards));
+}
+
+/**
+ * @description Adds a new card or updates the quantity if it already exists.
+ * If the quantity is positive, it increments or sets the card's quantity.
+ * If the quantity is negative, it decrements the quantity and removes the card if the total falls to 0 or below.
+ * If the card doesn't exist and quantity is 0 or negative, it does nothing.
+ *
+ * @param {Object} card - The card object to add or update. Must include `name` and `rarity` properties.
+ * @param {number} [quantity=1] - The number of cards to add (positive) or remove (negative).
+ * @returns {Object|null} The updated card object, or `null` if the card was removed or not added.
+ */
+export function add_or_update_card(card, num_cards = 1) {
+  let cards = load_cards_from_local();
+  const index = cards.findIndex(c => c.name === card.name && c.rarity === card.rarity);
+
+  if (index !== -1) {
+    cards[index].quantity += num_cards;
+
+    if (cards[index].quantity <= 0) {
+      cards.splice(index, 1);
+    }
+  } else {
+    cards.push(card);
+  }
+
+  save_cards_to_local(cards);
+  return cards[index] || card;
+}
+
+/**
  * @description Fetches data from the JSON file and returns it as a Promise.
  * @param {string} path - The path to the JSON file relative to index.html.
  * @returns {Promise} A promise that resolves to the data from the JSON file.
@@ -169,7 +215,7 @@ export function update_points(points){
  * Initializes the card deck on DOM load.
  */
 async function init() {
-  const card_data_all = await fetch_data("./card-data.json");
+  await fetch_data("./card-data.json");
   card_data = fetch_unlocked_cards();
   
   // Only create and show card if we have cards

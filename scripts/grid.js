@@ -1,52 +1,9 @@
-import { rarityOrder } from "/scripts/card-values.js";
+import { RARITY_ORDER } from "/scripts/card-values.js";
+import { add_or_update_card, load_cards_from_local } from "../index.js";
 
 const CRAFT_COST = 5;
 
 let currentSort = "default";
-/**
- * @description Loads the user's saved cards from local storage.
- * @returns {Array} An array of saved card objects.
- */
-function loadCardsFromLocal() {
-  const data = localStorage.getItem("card_data");
-  return data ? JSON.parse(data) : [];
-}
-
-/**
- * @description Saves an array of cards to local storage.
- * @param {Array} cards - Array of card objects to save.
- */
-function saveCardsToLocal(cards) {
-  localStorage.setItem("card_data", JSON.stringify(cards));
-}
-
-/**
- * @description Adds a new card or updates the quantity if it already exists.
- * If the quantity is positive, it increments or sets the card's quantity.
- * If the quantity is negative, it decrements the quantity and removes the card if the total falls to 0 or below.
- * If the card doesn't exist and quantity is 0 or negative, it does nothing.
- *
- * @param {Object} card - The card object to add or update. Must include `name` and `rarity` properties.
- * @param {number} [quantity=1] - The number of cards to add (positive) or remove (negative).
- * @returns {Object|null} The updated card object, or `null` if the card was removed or not added.
- */
-function addOrUpdateCard(card, num_cards = 1) {
-  let cards = loadCardsFromLocal();
-  const index = cards.findIndex(c => c.name === card.name && c.rarity === card.rarity);
-
-  if (index !== -1) {
-    cards[index].quantity += num_cards;
-
-    if (cards[index].quantity <= 0) {
-      cards.splice(index, 1);
-    }
-  } else {
-    cards.push(card);
-  }
-
-  saveCardsToLocal(cards);
-  return cards[index] || card;
-}
 
 /**
  * @description Creates a new frog-card element and appends it inside the <card-display> element.
@@ -164,8 +121,8 @@ function setupCraftingUI(data) {
     return;
   }
 
-  const rarityIndex = rarityOrder.indexOf(data.rarity);
-  const nextRarity = rarityOrder[rarityIndex + 1];
+  const rarityIndex = RARITY_ORDER.indexOf(data.rarity);
+  const nextRarity = RARITY_ORDER[rarityIndex + 1];
   const quantity = data.quantity;
   const maxCraftable = Math.floor(quantity / CRAFT_COST);
 
@@ -217,8 +174,8 @@ function setupCraftingUI(data) {
     };
 
     // Update the cards
-    addOrUpdateCard(new_data, craftAmount);
-    addOrUpdateCard(data, -craftAmount * CRAFT_COST);
+    add_or_update_card(new_data, craftAmount);
+    add_or_update_card(data, -craftAmount * CRAFT_COST);
 
     // Update the grid to reflect changes
     const searchInput = document.getElementById("search-input");
@@ -265,12 +222,12 @@ function renderCards(filter = "") {
     } 
     else if (currentSort === "rarity-asc") {
       filteredCards.sort((a, b) => {
-        return rarityOrder.indexOf(a.rarity?.toLowerCase()) - rarityOrder.indexOf(b.rarity?.toLowerCase());
+        return RARITY_ORDER.indexOf(a.rarity?.toLowerCase()) - RARITY_ORDER.indexOf(b.rarity?.toLowerCase());
       });
     } 
     else if (currentSort === "rarity-desc") {
       filteredCards.sort((a, b) => {
-        return rarityOrder.indexOf(b.rarity?.toLowerCase()) - rarityOrder.indexOf(a.rarity?.toLowerCase());
+        return RARITY_ORDER.indexOf(b.rarity?.toLowerCase()) - RARITY_ORDER.indexOf(a.rarity?.toLowerCase());
       });
     } 
     else if (currentSort === "last-name-az") {
@@ -302,7 +259,7 @@ function renderCards(filter = "") {
  * modal close functionality, and keyboard event listeners for closing the modal with the Escape key.
  */
 window.addEventListener("DOMContentLoaded", () => {
-  updateCardGrid(loadCardsFromLocal());
+  updateCardGrid(load_cards_from_local());
 
   // Modal close logic
   const searchInput = document.getElementById("search-input");
