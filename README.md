@@ -1,5 +1,8 @@
 ﻿# CSE Card Collector (Final Project by Team 30 aka Nerdy-Thirty)
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c8e4b339faca4bbf9830e6409effe3cd)](https://app.codacy.com/gh/cse110-sp25-group30/cse110-sp25-group30?utm_source=github.com&utm_medium=referral&utm_content=cse110-sp25-group30/cse110-sp25-group30&utm_campaign=Badge_Grade)
+
+
 ## Overview:
 Welcome to Nerdy-Thirty's (aka Team 30's) Final Project for CSE 110! Our project is a card collecting app, similar to mobile TCG games, with the main theme being Computer Science Engineering (CSE) Major professors from the University of California, San Diego. The app consists of a Shop to buy a single pack of a card, a Grid View displaying all of the collected cards, as well as a "Cookie Clicker"-esque minigame, used as the main source of obtaining currency that is used in the shop! With this project we aimed for it to be entertaining and fun, while also tying it to our overall CSE major, with the cards having small bios in the back about the professors and the course they're teaching.
 
