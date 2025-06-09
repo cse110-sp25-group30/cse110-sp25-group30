@@ -1,5 +1,5 @@
 import { update_points, fetch_user_info, add_or_update_card, load_cards_from_local } from "../index.js";
-import { CARD_NAMES, RARITIES, BIOS, COURSES, GUARANTEE_THRESHOLDS } from "/scripts/card-values.js";
+import { CARD_NAMES, RARITIES, BIOS, COURSES, GUARANTEE_THRESHOLDS } from "./card-values.js";
 
 export {
   get_random_element,
