@@ -1,3 +1,5 @@
+import { DEV_NAMES, DEV_BIOS } from './scripts/card-values.js';
+
 /**
  * user data
  * @constructor
@@ -230,7 +232,7 @@ async function init() {
     save_to_local(user_info,"user_data");
   }
 
-  // redirect to grid.html when view all button is clicked
+  // Handle view all
   const viewAllBtn = document.getElementById("view-all");
   if (viewAllBtn) {
     viewAllBtn.addEventListener("click", () => {
@@ -238,11 +240,18 @@ async function init() {
     });
   }
 
-  // TODO: redirect to clicker.html to shop
-  // const viewClickerButton = document.getElementById("view-clicker");
-  // if ("view-clicker") {
-  //   viewClickerButton.addEventListener("click", () => {
-  //     window.location.href = "clicker.html";
-  //   })
-  // }
+  //show contributor cards
+  const cards = document.querySelectorAll("#contributors .contributors-grid frog-card");
+  cards.forEach((card, index) => {
+    const name = DEV_NAMES[index];
+    console.log("Assigning to frog-card:", name, DEV_BIOS[name]);
+    if (name) {
+      card.data = {
+        name: name,
+        bio: DEV_BIOS[name],
+        course: "CSE 110",
+        rarity: "legendary"
+      };
+    }
+  });
 }
