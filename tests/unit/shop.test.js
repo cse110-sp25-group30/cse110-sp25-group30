@@ -11,7 +11,6 @@ import {
   update_cost,
   update_container_rarity,
   display_placeholder,
-  init,
   create_light_rays
 } from '../../scripts/shop.js';
 
