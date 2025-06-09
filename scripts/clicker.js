@@ -3,7 +3,7 @@ import {fetch_user_info} from "../index.js"
 
 window.addEventListener("DOMContentLoaded", init);
 /**
- * Initializes click event listeners for the clicker component.
+ * @description Initializes click event listeners for the clicker component.
  * 
  * When the clicker component is pressed, increments the user's points,
  * updates the points display, and applies a scaling effect for visual feedback.
@@ -11,8 +11,9 @@ window.addEventListener("DOMContentLoaded", init);
  * 
  * Assumes the existence of `update_points` and `fetch_user_info` functions,
  * and elements with IDs "clicker-comp" and "points_display" in the DOM.
+ * @param {boolean} [frenzy_test=false] - If true, enables frenzy mode for testing purposes.
  */
-function clicker_buttons() {
+export function clicker_buttons(frenzy_test = false) {
 
   const clicker_comp = document.getElementById("clicker-comp");
   const clicker_wrap = document.getElementById("clicker-comp-wrapper");
@@ -21,7 +22,7 @@ function clicker_buttons() {
   let point_worth = 1;
   let frenzy = false;
   if (!clicker_comp) {
-    return;
+    throw new Error("Clicker component not found");
   }
 
   const handleClick = (e) => {
@@ -32,7 +33,7 @@ function clicker_buttons() {
       let user_info = fetch_user_info();
       if (!user_info) {
         console.error("No user info found");
-        return;
+        throw new Error("No user info found");
       }
       
       points_display.innerHTML = `Points: ${user_info.points}`;
@@ -44,7 +45,7 @@ function clicker_buttons() {
         showBonusPopup();
       }
       // Trigger clicker frenzy with even lower chance
-      if (Math.random() < 0.005  && !frenzy) {
+      if ((Math.random() < 0.005  && !frenzy) || frenzy_test ) {
         triggerFrenzy();
       }
     }
@@ -155,7 +156,7 @@ function clicker_buttons() {
 }
 
 
-  async function init(){
+ export async function init(){
     clicker_buttons()
     const points_display = document.getElementById("points_display");
     let user_info = JSON.parse(localStorage.getItem("user_data"));

@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-//Tests functiosn in index.js
+//tests functiosn in index.js
 import { update_points, fetch_user_info, save_to_local, UserInfo, fetch_unlocked_cards, fetch_data, add_or_update_card } from "../../index.js";
 import { jest } from '@jest/globals';
 

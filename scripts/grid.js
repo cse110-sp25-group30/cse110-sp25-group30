@@ -1,4 +1,4 @@
-import { RARITY_ORDER } from "/scripts/card-values.js";
+import { RARITY_ORDER } from "./card-values.js";
 import { add_or_update_card, load_cards_from_local } from "../index.js";
 
 const CRAFT_COST = 5;
@@ -10,7 +10,7 @@ let currentSort = "default";
  * Also sets up the crafting UI for the displayed card.
  * @param {Object} data - The card data object containing name, rarity, course, bio, and quantity properties.
  */
-function createCard(data) {
+export function createCard(data) {
   const card_display = document.querySelector("card-display");
   if (!card_display){
     return;
@@ -30,7 +30,7 @@ function createCard(data) {
  * @param {Array} cardData - An array of card data objects to display in the grid.
  * @returns {void}
  */
-function updateCardGrid(cards) {
+export function updateCardGrid(cards) {
   const container = document.getElementById("card-grid");
   if (!container) return;
 
@@ -71,11 +71,6 @@ function updateCardGrid(cards) {
   cards.forEach((data, index) => {
     const card = document.createElement("card-thumbnail");
     
-    if (!card) {
-      console.error("Failed to create card-thumbnail element");
-      return;
-    }
-    
     card.data = data;
     card.style.animationDelay = `${index * 0.1}s`;
 
@@ -104,7 +99,7 @@ function updateCardGrid(cards) {
  * and available quantity. Sets up event listeners for the slider and craft button.
  * @param {Object} data - The card data object containing name, rarity, course, bio, and quantity properties.
  */
-function setupCraftingUI(data) {
+export function setupCraftingUI(data) {
   const craftingUI = document.getElementById("crafting-ui");
   const slider = document.getElementById("craft-slider");
   const summary = document.getElementById("craft-summary");
@@ -112,7 +107,7 @@ function setupCraftingUI(data) {
 
   if (!craftingUI || !slider || !summary || !craftBtn) {
     console.error("Required crafting UI elements not found");
-    return;
+    throw new Error("Elements not found");
   }
 
   // Hide crafting UI for legendary and special-edition cards
@@ -125,12 +120,6 @@ function setupCraftingUI(data) {
   const nextRarity = RARITY_ORDER[rarityIndex + 1];
   const quantity = data.quantity;
   const maxCraftable = Math.floor(quantity / CRAFT_COST);
-
-  if (!nextRarity) {
-    // Hide the entire crafting UI if there's no next rarity
-    craftingUI.classList.add("hidden");
-    return;
-  }
 
   craftingUI.classList.remove("hidden");
 
@@ -277,7 +266,11 @@ function renderCards(filter = "") {
  * modal close functionality, and keyboard event listeners for closing the modal with the Escape key.
  */
 window.addEventListener("DOMContentLoaded", () => {
-  updateCardGrid(load_cards_from_local());
+  init()
+});
+
+export function init() {
+    updateCardGrid(load_cards_from_local());
 
   // Modal close logic
   const searchInput = document.getElementById("search-input");
@@ -308,4 +301,4 @@ window.addEventListener("DOMContentLoaded", () => {
     const data = renderCards(searchInput.value);
     updateCardGrid(data);
   });
-});
+}
