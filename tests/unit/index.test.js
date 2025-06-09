@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-//test.skips functiosn in index.js
+//tests functiosn in index.js
 import { update_points, fetch_user_info, save_to_local, UserInfo, fetch_unlocked_cards, fetch_data, add_or_update_card } from "../../index.js";
 import { jest } from '@jest/globals';
 
@@ -12,7 +12,7 @@ beforeEach(() => {
   );
 });
 
-test.skip("Update Points ", () => {
+test("Update Points ", () => {
     localStorage.clear()
     const user_info = new UserInfo(0, 0);
     save_to_local(user_info, "user_data")
@@ -32,8 +32,8 @@ test.skip("Update Points ", () => {
 })
 
 
-test.skip('resolves parsed JSON on success', async () => {
-    const path = "./test.skiping.json"
+test('resolves parsed JSON on success', async () => {
+    const path = "./testing.json"
     const data = await fetch_data(path);
     const mockData = [1,2,3,4,5]
     expect(data).toBeDefined();
@@ -41,7 +41,7 @@ test.skip('resolves parsed JSON on success', async () => {
     
 });
 
-test.skip("Fetch Unlocked Cards", () => {
+test("Fetch Unlocked Cards", () => {
     localStorage.clear()
     //When no data is stored, it should return an array with the default card. 
     const card_1 = {
@@ -76,7 +76,7 @@ test.skip("Fetch Unlocked Cards", () => {
     expect(card_data[1]).toEqual(card_2);
 })
 
-test.skip("Fetch User Info", () => {
+test("Fetch User Info", () => {
     localStorage.clear()
     //If no user info is stored, it should return undefined
     console.log(fetch_user_info());
