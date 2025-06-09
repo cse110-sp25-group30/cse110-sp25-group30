@@ -11,7 +11,8 @@ import {
   update_cost,
   update_container_rarity,
   display_placeholder,
-  create_light_rays
+  create_light_rays,
+  init
 } from '../../scripts/shop.js';
 
 import {
@@ -243,5 +244,31 @@ describe("create_light_rays", () => {
     // Check one was not appended without cleanup
     const lightRaysContainers = document.querySelectorAll(".light-rays");
     expect(lightRaysContainers.length).toBe(1);
+  });
+});
+
+describe("init", () => {
+  beforeEach(() => {
+    document.body.innerHTML = `
+      <div id="generate-card"></div>
+      <div id="result"></div>
+      <div id="points-display"></div>
+      <div id="card-container"></div>
+      <div id="gen-container"></div>
+      <div id="guarantee-display"></div>
+      <div class="tooltip-text"></div>
+    `;
+    localStorage.clear();
+    localStorage.setItem("cards", JSON.stringify([]));
+    localStorage.setItem("pity_counters", JSON.stringify({
+      rare: 0,
+      epic: 0,
+      legendary: 0,
+      "special-edition": 0
+    }));
+  });
+
+  test("sets up event listeners and UI", () => {
+    expect(() => init()).not.toThrow();
   });
 });
