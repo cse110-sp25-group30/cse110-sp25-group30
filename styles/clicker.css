@@ -1,33 +1,61 @@
-/* @keyframes shrinkGrow {
-  0% {
-    opacity: 0;
-    transform: translateY(-15px) scale(0.1);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(0.55);
-  }
-} */
-
-#clicker-comp {
+.clicker-container {
   display: flex;
-  /* align-items: center; */
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;         /* Center horizontally */
+  justify-content: flex-start; /* Align to top */
+  background: #00629B;         /* Example background */
 }
 
-#clicker-button {
+#clicker-comp {
+  border-radius: 12px;
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1 / 1;     
+  margin-top: 40px;
   transform: scale(1);
   transform-origin: center;
-  position: absolute;
-  width: 300px;
-  aspect-ratio: 1 / 1;
-  min-block-size: 1vh;
   overflow: visible;
-  margin-top: 100px;
+  max-width: 400px;
+  max-height: 400px;
+  height: auto;
+}
+
+#points_display {
+  font-size: 2rem;
+  /*This error is ignored because this clamp is valid CSS*/
+  /* eslint-disable */
+  font-size: clamp(1.5rem, 5vw, 3rem); 
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  width: 90vw;
+  max-width: 400px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  box-sizing: border-box;
+}
+.tooltip-container {
+  align-items: center;
+  justify-self: center;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.tooltip-icon {
+  font-weight: bold;
+  font-size: 100%;
   border-radius: 50%;
   
 }
 
+@media (max-width: 350px) {
+  #clicker-button {
+    width: 85vw;
+  }
+}
 .bonus-popup {
   position: absolute;
   padding: 15px 25px;

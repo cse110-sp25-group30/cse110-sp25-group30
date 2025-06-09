@@ -1,3 +1,5 @@
+export const rarityOrder = ["common", "uncommon", "rare", "epic", "legendary"];
+
 export const cardNames = [
   "Thomas A. Powell",
   "Niema Moshiri",
@@ -22,9 +24,9 @@ export const cardNames = [
 ];
 
 export const rarities = [
-  { type: "common", chance: 55 },
-  { type: "uncommon", chance: 25 },
-  { type: "rare", chance: 15 },
+  { type: "common", chance: 50 },
+  { type: "uncommon", chance: 28 },
+  { type: "rare", chance: 17 },
   { type: "epic", chance: 4 },
   { type: "legendary", chance: 0.9 },
   { type: "special-edition", chance: 0.1 }
@@ -74,27 +76,4 @@ export const courses = {
   "Edwin Solares": "CSE 29",
   "Yufei Ding": "CSE 141",
   "Leo Porter": "CSE 8A"
-};
-
-export const images = {
-  "Thomas A. Powell": "assets/prof-images/Thomas A. Powell.webp",
-  "Niema Moshiri": "assets/prof-images/niema.jpg",
-  "Sicun Gao": "assets/prof-images/gao.jpg",
-  "John Eldon": "assets/prof-images/eldon.jpg",
-  "Julian McAuley": "assets/prof-images/mculey.jpg",
-  "Nadia Polikarpova": "assets/prof-images/polik.jpg",
-  "Trevor Bonjour": "assets/prof-images/Trevor Bonjour.webp",
-  "Amy Ousterhout": "assets/prof-images/ouster.jpg",
-  "Russel Impagliazzo": "assets/prof-images/impag.jpg",
-  "Ben Ochoa": "assets/prof-images/ochoa.jpg",
-  "Earlence Fernandes": "assets/prof-images/fern.jpg",
-  "Bryan Chin": "assets/prof-images/chin.jpg",
-  "Ryan Kastner": "assets/prof-images/kastner.jpg",
-  "Miles Jones": "assets/prof-images/miles.jpg",
-  "Mia Minnes": "assets/prof-images/minnes.jpg",
-  "Paul Cao": "assets/prof-images/cao.jpg",
-  "Daniele Micciancio": "assets/prof-images/micc.jpg",
-  "Edwin Solares": "assets/prof-images/solares.jpg",
-  "Yufei Ding": "assets/prof-images/ding.jpg",
-  "Leo Porter": "assets/prof-images/porter.jpg"
 };

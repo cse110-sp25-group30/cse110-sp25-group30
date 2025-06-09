@@ -1,23 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="/styles/main.css">
-     <script type="module" src="/components/site-header.js"></script>
-     <script type="module" src="/components/frog-card.js"></script>
-     <link rel="stylesheet" href="/styles/shop.css">
-     <script type="module" src="/components/pack-cover.js"></script>
-     <script type="module" src="/scripts/shop.js"></script>
+    <link rel="stylesheet" href="/styles/main.css">
+    <script type="module" src="/components/site-header.js"></script>
+    <script type="module" src="/components/frog-card.js"></script>
+    <link rel="stylesheet" href="/styles/shop.css">
+    <script type="module" src="/components/pack-cover.js"></script>
+    <script type="module" src="/scripts/shop.js"></script>
     <title>Nerdy Thirty Shop</title>
     <script src="index.js" type="module"></script>
 </head>
-<body style="background-color: var(--secondary-background-color); color: white;">
-    <site-header></site-header> 
+
+<body>
+    <site-header></site-header>
     <div id="top-bar">
-        <div id="points">
+        <!-- <div id="points">
             <p id="points-display">0</p>
             <img id="points-img" src="/assets/misc-images/point.webp" alt="points">
+        </div> -->
+        <div class="tooltip-container">
+            <p class="tooltip-icon">%</p>
+            <p class="tooltip-text">
+                Drop Rates:<br>
+                <span class="rarity-common">Common: 55%</span><br>
+                <span class="rarity-uncommon">Uncommon: 25%</span><br>
+                <span class="rarity-rare">Rare: 15% (G:10)</span><br>
+                <span class="rarity-epic">Epic: 4% (G:20)</span><br>
+                <span class="rarity-legendary">Legendary: 0.9% (G:50)</span><br>
+                <span class="rarity-special-edition">Special-Edition: 0.1% (G:100)</span><br>
+                <span
+                    style="font-size: 0.85rem; color: #ccc; margin-top: 0.5rem; display: block; border-top: 1px solid #555; padding-top: 0.5rem;">G
+                    = Guaranteed after X buys</span>
+            </p>
         </div>
         <h1 id="shoptitle">Card Shop</h1>
     </div>
@@ -26,20 +43,27 @@
         <div id="result" style="margin-top: 1rem; font-size: 1.2rem;"></div>
     </div>
     <div id="buttoncont">
-        <div class="tooltip-container">
-            <p class="tooltip-icon">❔</p>
+        <!-- <div class="tooltip-container">
+            <p class="tooltip-icon">%</p>
             <p class="tooltip-text">
                 Drop Rates:<br>
-                Common: 55%<br>
-                Uncommon: 25%<br>
-                Rare: 15%<br>
-                Epic: 4%<br>
-                Legendary: 0.9%<br>
-                Special-Edition: 0.1%
+                <span class="rarity-common">Common: 55%</span><br>
+                <span class="rarity-uncommon">Uncommon: 25%</span><br>
+                <span class="rarity-rare">Rare: 15% (G:10)</span><br>
+                <span class="rarity-epic">Epic: 4% (G:20)</span><br>
+                <span class="rarity-legendary">Legendary: 0.9% (G:50)</span><br>
+                <span class="rarity-special-edition">Special-Edition: 0.1% (G:100)</span><br>
+                <span style="font-size: 0.85rem; color: #ccc; margin-top: 0.5rem; display: block; border-top: 1px solid #555; padding-top: 0.5rem;">G = Guaranteed after X buys</span>
             </p>
+        </div> -->
+        <div id="points">
+            <p id="points-display">0</p>
+            <img id="points-img" src="/assets/misc-images/point.webp" alt="points">
         </div>
-        <button id="generate-card" style="margin: 1rem 0; padding: 1rem;">Buy Random Card [B]</button> <!-- temporary button name-->
+        <button id="generate-card">Buy Random Card [B]</button>
         <p id="cost">Cost: </p>
     </div>
+    <div id="guarantee-display"></div>
 </body>
+
 </html>

@@ -7,14 +7,47 @@
     <link rel="stylesheet" href="./styles/main.css" />
     <link rel="stylesheet" href="./styles/grid.css" />
     <script type="module" src="./components/site-header.js"></script>
+    <script type="module" src="./components/card-thumbnail.js"></script>
     <script type="module" src="./components/frog-card.js"></script>
 </head>
 <body>
     <site-header></site-header>
     <div style="padding: 21px; text-align: center;">
-        <a href="index.html" class="back-button">Back to Home</a>
-    </div>
+        <a href="index.html" class="back-button">Back to Homee</a>
+    </div> 
+    <!-- search bar
+    <div class = "search-wrapper">
+        <input id="search-input" type="text" placeholder="Search by name..." />
+    </div>  -->
+    <div class="search-wrapper">
+        <input id="search-input" type="text" placeholder="Search by name..." />
+        <select id="sort-select" style="margin-left: 10px; font-size: 1rem;">
+            <option value="default">Sort: Default</option>
+            <option value="first-name-az">Sort: First Name (A → Z)</option>
+            <option value="first-name-za">Sort: First Name (Z → A)</option>
+            <option value="last-name-az">Sort: Last Name (A → Z)</option>
+            <option value="last-name-za">Sort: Last Name (Z → A)</option>
+            <option value="rarity-asc">Sort: Rarity Low → High</option>
+            <option value="rarity-desc">Sort: Rarity High → Low</option>
+        </select>
+      </div>
     <div class="grid-container" id="card-grid"></div>
     <script type="module" src="./scripts/grid.js"></script>
+
+    <!-- Modal -->
+    <div id="card-modal" class="modal hidden">
+        <div class="modal-content">
+            <span id="modal-close" class="close-button">&times;</span>
+            <h2 id="card-title" class="card-title"></h2>
+            <card-display></card-display>
+            <div id="crafting-ui" class="crafting-ui hidden">
+                <label for="craft-slider">Merge multiple cards into one of higher rarity</label>
+                <input type="range" id="craft-slider" min="1" value="1" step="1" />
+                <div id="craft-summary"></div>
+                <button id="craft-button">Craft</button>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

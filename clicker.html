@@ -11,10 +11,20 @@
     <script src="index.js" type="module"></script>
 </head>
 <body>
-    <site-header></site-header>
-    <div id="clicker-comp">
+
+    <site-header></site-header> 
+    <div class="clicker-container">
+        <img id="clicker-comp" src="/assets/misc-images/point.webp" alt="clicker img">
         <h1 id="points_display">Points: </h1>
-        <img id="clicker-button" draggable="false" src="/assets/misc-images/point.webp" alt="clicker img">
+
+        <div class="tooltip-container">
+            <p class="tooltip-icon">❔</p>
+            <p class="tooltip-text">
+                Click the Coin to obtain points<br>
+                Click the Popups for an extra 10 points
+            </p>
+        </div>
+
     </div>
 </body>
 </html>
