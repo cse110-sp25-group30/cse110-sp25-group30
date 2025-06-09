@@ -44,7 +44,7 @@ function clicker_buttons() {
         showBonusPopup();
       }
       // Trigger clicker frenzy with even lower chance
-      if (Math.random() < 0.1 && !frenzy) {
+      if (Math.random() < 0.01 && !frenzy) {
         triggerFrenzy();
       }
     }
