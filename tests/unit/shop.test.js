@@ -131,8 +131,8 @@ test('add_or_update_card increments existing card', () => {
 test('add_or_update_card removes card if quantity <= 0', () => {
   const existing = { name: 'Dana', rarity: 'legendary', quantity: 1 };
   localStorage.setItem('card_data', JSON.stringify([existing]));
-  const removal = { name: 'Dana', rarity: 'legendary', quantity: -2 };
-  const result = add_or_update_card(removal);
+  const removal = { name: 'Dana', rarity: 'legendary', quantity: 1 };
+  const result = add_or_update_card(removal, -2);
   expect(result).toBe(null);
   expect(load_cards_from_local()).toEqual([]);
 });
