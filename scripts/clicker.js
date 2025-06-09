@@ -17,6 +17,9 @@ function clicker_buttons() {
   const clicker_comp = document.getElementById("clicker-comp");
   const clicker_wrap = document.getElementById("clicker-comp-wrapper");
   const points_display = document.getElementById("points_display");
+  const clicker_container = document.getElementById("clicker-container");
+  let point_worth = 1;
+  let frenzy = false;
   if (!clicker_comp) {
     return;
   }
@@ -33,17 +36,23 @@ function clicker_buttons() {
       }
       
       points_display.innerHTML = `Points: ${user_info.points}`;
-      // clicker_comp.style.transform = "scale(0.93)";
       clicker_wrap.style.transform = "scale(0.93)";
-      if (Math.random() < 0.05) {
+
+      // Generate a popup with low probability
+      const popup_prob = 0.05;
+      if (Math.random() < popup_prob) {
         showBonusPopup();
+      }
+      // Trigger clicker frenzy with even lower chance
+      if (Math.random() < 0.0) {
+        triggerFrenzy();
       }
     }
   };
   
-    /**
- * @description Creates the random popup buttons at 5% per click. Element fades away and removes them after 1.5 seconds.
- */
+  /**
+  * @description Creates the random popup buttons at 5% per click. Element fades away and removes them after 1.5 seconds.
+  */
   function showBonusPopup() {
     const bonus = document.createElement("div");//creates the bonus window
     bonus.id = "bonus-popup";
@@ -87,9 +96,24 @@ function clicker_buttons() {
     }, duration);
   }
 
+  /**
+   * @description Restores the clicker back to normal size
+   */
   const resetScale = () => {
     clicker_wrap.style.transform = "scale(1)";
   };
+
+  /**
+   * @description Triggers a clicker frenzy, increasing the number of points per click
+   */
+  function triggerFrenzy() {
+    const duration = 10000;
+    setTimeout(() => {
+      clicker_container.style.background = "linear-gradient(0deg, transparent 0%, #00629B 50%, transparent 100%)"
+    }, duration);
+    // Change background
+    clicker_container.style.background = "linear-gradient(0deg, transparent 0%,rgb(224, 153, 1) 50%, transparent 100%)"
+  }
 
   // Desktop and mobile events
   clicker_comp.addEventListener("pointerdown", handleClick);
