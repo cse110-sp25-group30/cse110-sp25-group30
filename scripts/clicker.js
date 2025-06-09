@@ -39,7 +39,7 @@ function clicker_buttons() {
       clicker_wrap.style.transform = "scale(0.93)";
 
       // Generate a popup with low probability
-      const popup_prob = 0.9;
+      const popup_prob = 0.05;
       if (Math.random() < popup_prob) {
         showBonusPopup();
       }
