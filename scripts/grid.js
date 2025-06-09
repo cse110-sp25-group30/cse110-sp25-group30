@@ -182,14 +182,32 @@ function setupCraftingUI(data) {
     const filteredData = renderCards(searchInput.value);
     updateCardGrid(filteredData);
 
+
+    //creates the popup message at the end of crafting
+    const popup = document.getElementById("craft-popup");
+    const amountSpan = document.getElementById("crafted-amount");
+    if (popup && amountSpan) {
+      amountSpan.textContent = `${craftAmount} ${nextRarity} "${data.name}"`;
+      popup.classList.remove("hidden");
+      popup.classList.add("show");
+
+      //remove the popup after 3 seconds
+      setTimeout(() => {
+        popup.classList.remove("show");
+        setTimeout(() => popup.classList.add("hidden"), 500);
+      }, 3000);
+    }
+
     // Close the modal
     const modal = document.getElementById("card-modal");
     if (modal) {
       modal.classList.add("hidden");
     }
 
+
     // Show success message (optional)
     console.log(`Crafted ${craftAmount} ${nextRarity} "${data.name}"`);
+    //alert(`🎉 Congratulations! You crafted ${craftAmount} ${nextRarity} "${data.name}" card(s)!`);
   };
 }
 
