@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 import { jest } from '@jest/globals';
 import {
   get_random_element,
