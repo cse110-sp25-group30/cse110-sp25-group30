@@ -30,7 +30,7 @@ export function load_cards_from_local() {
  * @param {Array} cards Array of card objects to save.
  * @returns {void}
  */
-function save_cards_to_local(cards) {
+export function save_cards_to_local(cards) {
   localStorage.setItem("card_data", JSON.stringify(cards));
 }
 
