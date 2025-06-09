@@ -28,8 +28,13 @@
     justify-content: flex-start;
 }
 
+.flip-card-front {
+    z-index: 2;
+}
+
 .flip-card-back {
     transform: rotateY(180deg);
+    z-index: 1;
 }
 
 .face {
