@@ -26,7 +26,7 @@ function clicker_buttons() {
 
   const handleClick = (e) => {
     e.preventDefault();
-    if (e.button == 0 || e.type == "touchstart") {
+    if (Number(e.button) === 0 || e.type == "touchstart") {
       update_points(point_worth);
       
       let user_info = fetch_user_info();
