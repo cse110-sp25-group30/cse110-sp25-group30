@@ -53,6 +53,8 @@ export function add_or_update_card(card, num_cards = 1) {
 
     if (cards[index].quantity <= 0) {
       cards.splice(index, 1);
+      save_cards_to_local(cards);
+      return null;
     }
   } else {
     cards.push(card);
