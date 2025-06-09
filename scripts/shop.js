@@ -17,7 +17,7 @@ export {
   show_congrats_animation,
   update_tooltip,
   update_guarantee_display,
-  update_points_display
+  update_points_display,
 
 };
 
