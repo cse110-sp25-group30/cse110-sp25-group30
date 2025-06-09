@@ -33,7 +33,7 @@
   font-size: 1.5rem;
 }
 
-.craft-popup {
+#craft-popup {
   position: fixed;
   top: 10%;
   left: 50%;
@@ -45,13 +45,19 @@
   font-size: 1.25rem;
   z-index: 9999;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
   text-align: center;
   max-width: 90%;
 }
 
 #craft-popup.show {
   opacity: 1;
+  visibility: visible;
+}
+
+#craft-popup.hidden {
+  display: none;
 }
 
 .hidden {
