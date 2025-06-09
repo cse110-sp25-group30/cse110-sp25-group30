@@ -7,6 +7,18 @@ export {
   get_random_rarity,
   generate_random_card,
   load_pity_counters,
+  save_pity_counters,
+  get_rarity_display_color,
+  update_cost,
+  update_container_rarity,
+  display_placeholder,
+  init,
+  create_light_rays,
+  show_congrats_animation,
+  update_tooltip,
+  update_guarantee_display,
+  update_points_display
+
 };
 
 // TODO: Consider moving constants to config file
