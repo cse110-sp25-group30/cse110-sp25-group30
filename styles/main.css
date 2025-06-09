@@ -74,6 +74,60 @@ button[disabled] {
     display: flex;
 }
 
+frog-card, .flip-card, .flip-card-inner {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+  
+.flip-card {
+    width: 100%;
+    height: 100%;
+    max-width: 180px;
+    max-height: 260px;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.flip-card-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+  
+img.face, img.card-fg {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.contributors-grid-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+  
+.contributors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px 32px;
+    justify-items: center;
+    align-items: start;
+}
+
+.contributors-grid > frog-card {
+    transform: scale(0.6); /* Adjust scale */
+    transform-origin: top center;
+    transition: transform 0.3s ease;
+}
+
+.contributors-grid > frog-card:hover {
+    transform: scale(0.65);
+}
+  
 @media (max-width: 768px) {
     #card_buttons{
         flex-direction: row; 
@@ -98,6 +152,9 @@ button[disabled] {
       display: block;
       cursor: pointer;
       font-size: 1.5rem;
+    }
+    .contributors-grid {
+        grid-template-columns: 1fr;
     }
 }
 

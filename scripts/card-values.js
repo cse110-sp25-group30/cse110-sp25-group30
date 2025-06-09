@@ -1,6 +1,13 @@
-export const rarityOrder = ["common", "uncommon", "rare", "epic", "legendary", "special-edition"];
+export const RARITY_ORDER = ["common", "uncommon", "rare", "epic", "legendary", "special-edition"];
 
-export const cardNames = [
+export const GUARANTEE_THRESHOLDS = {
+  rare: 10,
+  epic: 20,
+  legendary: 50,
+  "special-edition": 100
+};
+
+export const CARD_NAMES = [
   "Thomas A. Powell",
   "Niema Moshiri",
   "Sicun Gao",
@@ -23,7 +30,22 @@ export const cardNames = [
   "Leo Porter"
 ];
 
-export const rarities = [
+export const DEV_NAMES = [
+  "Aditya Dutt",
+  "Aldrin Ilagan",
+  "Ali Farahbakhsh", 
+  "Cody Lee",
+  "George Minasyan", 
+  "Jay Gao",
+  "Jonathan Cohen-Wang",
+  "Julia Wu",
+  "Kevin Sun",
+  "Meiman Teng",
+  "Richard Nie",
+  "Terri Tai"
+];
+
+export const RARITIES = [
   { type: "common", chance: 55 },
   { type: "uncommon", chance: 25 },
   { type: "rare", chance: 15 },
@@ -32,7 +54,7 @@ export const rarities = [
   { type: "special-edition", chance: 0.1 }
 ];
 
-export const bios = {
+export const BIOS = {
   "Thomas A. Powell": "Long time internet and web focused software engineer. Collector of retro games, Star Wars nerd, soccer fan, occasional joker. Fun Fact: Early Internet Semi-Famous and met Hollywood Stars. Course Takeaway: Guiding students in becoming more well rounded software engineers equipped with the technical skills as well as soft skills.",
   "Niema Moshiri": "I grew up in Chula Vista and have a Bioengineering degree. Fun fact: I have 2000+ games on steam. Course Takeaway: we want you to be able to consider different data structures critically to choose the most efficient ones for the problem you're trying to solve ",
   "Sicun Gao": "Planned to be a physicist, and then philosopher, and then mathematician, and then ended up here. Fun fact: I'm a small language model. Course Takeaway: Exponential space: the final frontier.",
@@ -55,7 +77,22 @@ export const bios = {
   "Leo Porter": "Professor of Computer Science at UC San Diego interested in computer science education research and computer architecture. Fun fact: I co-founded the Computing Education Research Laboratory dedicated to better understanding how students learn computing. Course Takeaway: "
 };
 
-export const courses = {
+export const DEV_BIOS = {
+  "Aditya Dutt": "My name is Aditya Dutt. I am a junior and I love playing chess and pickleball.",
+  "Aldrin Ilagan": "Hi guys I'm Aldrin, a CS student. For fun I like to play games, hangout with friends, and go on walks outside.",
+  "Ali Farahbakhsh": "Hi guys I'm Ali, a CS student. For fun I like to play games, hangout with friends, and go on walks outside.",
+  "Cody Lee": "Hi, I am Cody Lee. I am a Math CS major. I like fishing, archery, and gaming.",
+  "George Minasyan": "I'm a 22 year old Computer Science student from Armenia. My hobbies include playing video games, listening to and making music, socializing and hanging out with friends.",
+  "Jay Gao": "I'm Jay, a third year Math & CS major. I often enjoy the outdoors and staying active with sports.",
+  "Jonathan Cohen-Wang": "Hi I'm Jonathan, a third year CS major. I like gaming, drawing, and playing tennis in my free time.",
+  "Julia Wu": "Hello, I'm Julia! I'm majoring in CS, and I'm interested in AI and UI. I also like to ski and bake.",
+  "Kevin Sun": "Hello! I'm Kevin Sun, a Junior CS Transfer.  I like cooking, cycling, and gaming.",
+  "Meiman Teng": "Proud Chinese-Mexican. Dune fan who loves all things SWE and product dev. Fun fact: I (brokenly) speak 4 languages. Favorite classes? CSE110, ENG100L, MGT121A.",
+  "Richard Nie": "Hi, I’m Richard, a first year computer science major in Seventh College. I am interested in AI, algorithms and computer systems.",
+  "Terri Tai": "Hi everyone! I'm Terri, a second year computer engineering major in Warren. I like doing magic and playing guitar."
+};
+
+export const COURSES = {
   "Thomas A. Powell": "CSE 110",
   "Niema Moshiri": "CSE 100",
   "Sicun Gao": "CSE 150B",

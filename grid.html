@@ -15,13 +15,8 @@
       JavaScript is disabled in your browser. Please enable JavaScript to use this site.
     </noscript>
     <site-header></site-header>
-    <div style="padding: 21px; text-align: center;">
-        <a href="index.html" class="back-button">Back to Homee</a>
-    </div> 
-    <!-- search bar
-    <div class = "search-wrapper">
-        <input id="search-input" type="text" placeholder="Search by name..." />
-    </div>  -->
+    <h1 id="collectiontitle">Your Collection</h1>
+    <p id="total-cards" class="total-cards">Total Filtered Cards: 0</p>
     <div class="search-wrapper">
         <input id="search-input" type="text" placeholder="Search by name..." />
         <select id="sort-select" style="margin-left: 10px; font-size: 1rem;">
@@ -32,11 +27,24 @@
             <option value="last-name-za">Sort: Last Name (Z → A)</option>
             <option value="rarity-asc">Sort: Rarity Low → High</option>
             <option value="rarity-desc">Sort: Rarity High → Low</option>
+            <option value="quantity-asc">Sort: Quantity Low → High</option>
+            <option value="quantity-desc">Sort: Quantity High → Low</option>
         </select>
-      </div>
-    <div class="grid-container" id="card-grid"></div>
+    </div>
+    <div class="grid-container" id="card-grid">
+        <div id="no-cards-message" class="no-cards-message hidden">
+            <h2>No Cards Found</h2>
+            <p>Start collecting cards in the shop or gain points using the clicker!</p>
+            <div class="button-group">
+                <a href="shop.html" class="shop-button">Go to Shop</a>
+                <a href="clicker.html" class="clicker-button">Open Clicker</a>
+            </div>
+        </div>
+    </div>
     <script type="module" src="./scripts/grid.js"></script>
-
+    <div id="craft-popup" class="hidden">
+    You crafted <span id="crafted-amount"></span> new card(s)!
+    </div>
     <!-- Modal -->
     <div id="card-modal" class="modal hidden">
         <div class="modal-content">
