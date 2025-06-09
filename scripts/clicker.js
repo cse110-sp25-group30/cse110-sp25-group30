@@ -27,7 +27,7 @@ function clicker_buttons() {
   const handleClick = (e) => {
     e.preventDefault();
     if (e.button == 0 || e.type == "touchstart") {
-      update_points(1);
+      update_points(point_worth);
       
       let user_info = fetch_user_info();
       if (!user_info) {
@@ -44,7 +44,7 @@ function clicker_buttons() {
         showBonusPopup();
       }
       // Trigger clicker frenzy with even lower chance
-      if (Math.random() < 0.0) {
+      if (Math.random() < 0.1 && !frenzy) {
         triggerFrenzy();
       }
     }
@@ -56,7 +56,7 @@ function clicker_buttons() {
   function showBonusPopup() {
     const bonus = document.createElement("div");//creates the bonus window
     bonus.id = "bonus-popup";
-    bonus.textContent = "+10!";
+    bonus.textContent = `+${10 * point_worth}+!`;
     bonus.classList.add("bonus-popup");
 
     // Random position on screen
@@ -68,8 +68,8 @@ function clicker_buttons() {
     bonus.addEventListener("click", (e) => {
       e.preventDefault();
       let user_info = fetch_user_info();
-      update_points(10);
-      user_info.points += 10;
+      update_points(10 * point_worth);
+      user_info.points += 10 * point_worth;
       points_display.innerHTML = `Points: ${user_info.points}`;
       bonus.remove();
     });
@@ -108,8 +108,12 @@ function clicker_buttons() {
    */
   function triggerFrenzy() {
     const duration = 10000;
+    point_worth = 2;
+    frenzy = true;
     setTimeout(() => {
       clicker_container.style.background = "linear-gradient(0deg, transparent 0%, #00629B 50%, transparent 100%)"
+      frenzy = false;
+      point_worth = 1;
     }, duration);
     // Change background
     clicker_container.style.background = "linear-gradient(0deg, transparent 0%,rgb(224, 153, 1) 50%, transparent 100%)"
