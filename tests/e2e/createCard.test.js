@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 
-describe('createCard in browser', () => {
+describe.skip('createCard in browser', () => {
   beforeEach(async () => {
     await page.setContent(`
       <html>

@@ -277,7 +277,11 @@ function renderCards(filter = "") {
  * modal close functionality, and keyboard event listeners for closing the modal with the Escape key.
  */
 window.addEventListener("DOMContentLoaded", () => {
-  updateCardGrid(load_cards_from_local());
+  init()
+});
+
+export function init() {
+    updateCardGrid(load_cards_from_local());
 
   // Modal close logic
   const searchInput = document.getElementById("search-input");
@@ -308,4 +312,4 @@ window.addEventListener("DOMContentLoaded", () => {
     const data = renderCards(searchInput.value);
     updateCardGrid(data);
   });
-});
+}
