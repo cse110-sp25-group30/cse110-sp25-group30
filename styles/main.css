@@ -58,6 +58,14 @@ button{
     display: flex; 
     flex-direction: column; 
     align-items: center;
+    gap: 20px;
+}
+
+#next-prev {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    gap: 20px;
 }
 
 #card_shuffler{
@@ -76,8 +84,21 @@ button[disabled] {
 
 @media (max-width: 768px) {
     #card_buttons{
-        flex-direction: row; 
+        flex-direction: column; 
         justify-content: center;
+        margin-bottom: 0.5rem;
+        gap: 10px;
+    }
+    #next-prev {
+        gap: 5px;
+        margin-top: 30px;
+        flex-direction: row;
+    }
+    #next {
+        padding: 10px 35px;
+    }
+    #prev {
+        padding: 10px 20px;
     }
     #card_shuffler{
         flex-direction: column; 
