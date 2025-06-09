@@ -1,6 +1,6 @@
 
 /* eslint-disable no-undef */
-describe.skip('Test Shop Functionality', () => {
+describe('Test Shop Functionality', () => {
   beforeAll(async () => {
         await page.evaluateOnNewDocument(() => {
       localStorage.setItem('user_data', JSON.stringify({ points: 100000 }));

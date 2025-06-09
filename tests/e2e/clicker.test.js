@@ -1,7 +1,7 @@
 //After menu is done, add ability to navigate around from home page than verify
 /* eslint-disable no-undef */
 
-describe.skip('Test Clicker Functionality', () => {
+describe('Test Clicker Functionality', () => {
   let startingPts = 0;
   beforeAll(async () => {
     await page.evaluateOnNewDocument(() => {
