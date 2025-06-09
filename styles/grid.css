@@ -33,6 +33,31 @@
   font-size: 1.5rem;
 }
 
+.craft-popup {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #2B405B;
+  color: #FFD700;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  text-align: center;
+  max-width: 90%;
+}
+
+#craft-popup.show {
+  opacity: 1;
+}
+
+.hidden {
+  display: none;
+}
+
 card-display {
   display: flex;
   flex-direction: column;

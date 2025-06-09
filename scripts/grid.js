@@ -1,7 +1,7 @@
 import { RARITY_ORDER } from "/scripts/card-values.js";
 import { add_or_update_card, load_cards_from_local } from "../index.js";
 
-const CRAFT_COST = 5;
+const CRAFT_COST = 1;
 
 let currentSort = "default";
 
@@ -182,14 +182,32 @@ function setupCraftingUI(data) {
     const filteredData = renderCards(searchInput.value);
     updateCardGrid(filteredData);
 
+
+    //creates the popup message at the end of crafting
+    const popup = document.getElementById("craft-popup");
+    const amountSpan = document.getElementById("crafted-amount");
+    if (popup && amountSpan) {
+      amountSpan.textContent = `${craftAmount} ${nextRarity} "${data.name}"`;
+      popup.classList.remove("hidden");
+      popup.classList.add("show");
+
+      //remove the popup after 3 seconds
+      setTimeout(() => {
+        popup.classList.remove("show");
+        setTimeout(() => popup.classList.add("hidden"), 500);
+      }, 3000);
+    }
+
     // Close the modal
     const modal = document.getElementById("card-modal");
     if (modal) {
       modal.classList.add("hidden");
     }
 
+
     // Show success message (optional)
     console.log(`Crafted ${craftAmount} ${nextRarity} "${data.name}"`);
+    //alert(`🎉 Congratulations! You crafted ${craftAmount} ${nextRarity} "${data.name}" card(s)!`);
   };
 }
 
