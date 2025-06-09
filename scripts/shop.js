@@ -1,5 +1,16 @@
 import { update_points, fetch_user_info } from "../index.js";
-import { cardNames, rarities, bios, courses } from "/scripts/card-values.js";
+import { cardNames, rarities, bios, courses } from "./card-values.js";
+
+export {
+  get_random_element,
+  update_pity_counters,
+  get_random_rarity,
+  generate_random_card,
+  load_pity_counters,
+  add_or_update_card,
+  load_cards_from_local, 
+  save_cards_to_local
+};
 
 
 
