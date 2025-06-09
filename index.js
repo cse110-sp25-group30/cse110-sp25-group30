@@ -125,54 +125,6 @@ export function save_to_local(data, key) {
 }
 
 /**
- * @description Adds a click event listener to the next and prev buttons.
- * When clicked, it updates the selected_card index and creates a new card.
- * @returns {void}
- */
-function card_button_click() {
-  const next_button = document.getElementById("next");
-  const prev_button = document.getElementById("prev");
-  if (!next_button || !prev_button){
-    return
-  }
-  next_button.addEventListener("click", function () {
-    if (selected_card + 1 > card_data.length - 1) {
-      console.log("No more cards to show");
-      next_button.disabled = true;
-      return;
-    }
-    selected_card++;
-    next_button.disabled = selected_card + 1 > card_data.length - 1;
-    prev_button.disabled = false;
-
-    if (selected_card >= 0 && selected_card < card_data.length) {
-      createCard(card_data[selected_card]);
-    }
-  });
-
-  prev_button.addEventListener("click", function () {
-    if (selected_card - 1 < 0) {
-      console.log("No more cards to show");
-      prev_button.disabled = true;
-      return;
-    }
-    selected_card--;
-    prev_button.disabled = selected_card - 1 < 0;
-    next_button.disabled = false;
-
-    createCard(card_data[selected_card]);
-  });
-
-  // Initial button state
-  next_button.disabled = selected_card + 1 > card_data.length - 1;
-  prev_button.disabled = selected_card - 1 < 0;
-}
-
-
-
-
-
-/**
  * @description Creates a new frog-card element and appends it inside the <card-deck>.
  * @param {Object} data - The data to set on the frog-card element. Matches card-data.json format.
  * @returns {HTMLElement} The created frog-card element.
