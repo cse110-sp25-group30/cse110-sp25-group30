@@ -3,8 +3,15 @@
     height: 400px;
     perspective: 1000px;
     cursor: pointer;
+
     -webkit-user-select: none; /* Disable text selection */
     user-select: none;
+
+    transition: transform 0.3s ease;
+}
+
+.flip-card:hover {
+    transform: scale(1.1);
 }
 
 .flip-card-inner {
