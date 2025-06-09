@@ -101,7 +101,8 @@
   align-items: center;
   justify-self: center;
   cursor: pointer;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
 }
 
 .tooltip-icon {
@@ -116,13 +117,11 @@
   background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #8B4513 100%);
   border: 2px solid #FFD700;
   color: #FFD700;
-  margin-left: 1rem;
+  margin-left: .5rem;
   box-shadow: 0 3px 10px rgba(0,0,0,0.3);
   transition: all 0.3s ease;
-  /* padding: 0rem 0.3rem;
-  background-color: #a1a1a1;
-  border: 0.1rem solid #ffffff; */
   transform: translateY(-150%);
+  margin-bottom: 0;
 }
 
 .tooltip-icon:hover {
@@ -140,11 +139,12 @@
   padding: 1rem 1rem;
   position: absolute;
   z-index: 1;
-  transform: translateX(-45%);
+  transform: translateX(-42%);
   transition: opacity 0.3s;
   white-space: nowrap;
   font-family: Tahoma, sans-serif;
   text-align: center;
+  margin: 0;
 }
 
 .tooltip-container:hover .tooltip-text {
@@ -167,6 +167,26 @@
   animation: popup-fadein 0.2s ease-out;
 }
 
+.frenzy-popup {
+  position: fixed;
+  left: 50%;
+  top:  20vh;
+  transform: translateX(-50%) !important;
+  padding: 15px 25px;
+  background-color: gold;
+  color: black;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: 2px solid orange;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 200, 0, 0.8);
+  z-index: 1000;
+  opacity: 0;
+  animation: popup-fadein 0.2s ease-out forwards;
+  text-align: center;
+}
+
 @keyframes popup-fadein {
   from {
     transform: scale(0.5);
@@ -175,6 +195,13 @@
   to {
     transform: scale(1);
     opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .frenzy-popup {
+    top:  10vh;
+
   }
 }
 

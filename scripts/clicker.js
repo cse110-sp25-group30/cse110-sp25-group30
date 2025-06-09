@@ -39,12 +39,12 @@ function clicker_buttons() {
       clicker_wrap.style.transform = "scale(0.93)";
 
       // Generate a popup with low probability
-      const popup_prob = 0.05;
+      const popup_prob = 0.9;
       if (Math.random() < popup_prob) {
         showBonusPopup();
       }
       // Trigger clicker frenzy with even lower chance
-      if (Math.random() < 0.01 && !frenzy) {
+      if (Math.random() < 0.005  && !frenzy) {
         triggerFrenzy();
       }
     }
@@ -56,12 +56,17 @@ function clicker_buttons() {
   function showBonusPopup() {
     const bonus = document.createElement("div");//creates the bonus window
     bonus.id = "bonus-popup";
-    bonus.textContent = `+${10 * point_worth}+!`;
+    bonus.textContent = `+${10 * point_worth}! `;
     bonus.classList.add("bonus-popup");
 
-    // Random position on screen
-    bonus.style.left = Math.random() * 80 + 10 + "vw";
-    bonus.style.top = Math.random() * 60 + 20 + "vh";
+    const mq = window.matchMedia("(max-width: 768px)");
+    if (mq.matches) {
+      bonus.style.left = Math.random() * 60 + 10 + "vw";
+      bonus.style.top = Math.random() * 60 + 20 + "vh";
+    } else {
+      bonus.style.left = Math.random() * 80 + 10 + "vw";
+      bonus.style.top = Math.random() * 60 + 20 + "vh";
+    }
 
     document.body.appendChild(bonus);
     //actually adds 10 when clicked
@@ -107,14 +112,39 @@ function clicker_buttons() {
    * @description Triggers a clicker frenzy, increasing the number of points per click
    */
   function triggerFrenzy() {
+    const frenz = document.createElement("div");
+    frenz.id = "frenzy-popup";
+    frenz.classList.add("frenzy-popup");
+
+    document.body.appendChild(frenz);
+
     const duration = 10000;
+    let count = 10;
     point_worth = 2;
     frenzy = true;
+
+    frenz.textContent = `Frenzy! X2 Multiplier for ${count} seconds!`;
+
+    const ticker = setInterval(() => {
+      count--;
+      if(count >= 0) {
+        frenz.textContent = `Frenzy! X2 Multiplier for ${count} seconds!`;
+      }
+      else {
+        clearInterval(ticker);
+      }
+
+    }, 1000);
+
     setTimeout(() => {
       clicker_container.style.background = "linear-gradient(0deg, transparent 0%, #00629B 50%, transparent 100%)"
       frenzy = false;
       point_worth = 1;
+      if (document.body.contains(frenz)) {
+        frenz.remove();
+      }
     }, duration);
+
     // Change background
     clicker_container.style.background = "linear-gradient(0deg, transparent 0%,rgb(224, 153, 1) 50%, transparent 100%)"
   }
