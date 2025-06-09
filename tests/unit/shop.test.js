@@ -104,5 +104,37 @@ test('load_pity_counters returns stored counters when they exist', () => {
 });
 
 
+test('save and load cards to/from local storage', () => {
+  const testCards = [{ name: 'Alice', rarity: 'rare', quantity: 1 }];
+  save_cards_to_local(testCards);
+  const result = load_cards_from_local();
+  expect(result).toEqual(testCards);
+});
+
+test('add_or_update_card adds new card', () => {
+  const card = { name: 'Bob', rarity: 'epic', quantity: 1 };
+  localStorage.setItem('card_data', JSON.stringify([]));
+  const result = add_or_update_card(card);
+  expect(result).toEqual(card);
+});
+
+test('add_or_update_card increments existing card', () => {
+  const existing = { name: 'Charlie', rarity: 'rare', quantity: 2 };
+  localStorage.setItem('card_data', JSON.stringify([existing]));
+  const newCard = { name: 'Charlie', rarity: 'rare', quantity: 1 };
+  const result = add_or_update_card(newCard);
+  expect(result.quantity).toBe(3);
+});
+
+test('add_or_update_card removes card if quantity <= 0', () => {
+  const existing = { name: 'Dana', rarity: 'legendary', quantity: 1 };
+  localStorage.setItem('card_data', JSON.stringify([existing]));
+  const removal = { name: 'Dana', rarity: 'legendary', quantity: -2 };
+  const result = add_or_update_card(removal);
+  expect(result).toBe(null);
+  expect(load_cards_from_local()).toEqual([]);
+});
+
+
 
 

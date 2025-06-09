@@ -171,23 +171,32 @@ function save_cards_to_local(cards) {
  * @returns {Object|null} The updated card object, or `null` if the card was removed or not added.
 
  */
+
 function add_or_update_card(card) {
   let cards = load_cards_from_local();
   const index = cards.findIndex(c => c.name === card.name && c.rarity === card.rarity);
 
   if (index !== -1) {
-    cards[index].quantity += 1;
+    cards[index].quantity += card.quantity ?? 1;
 
     if (cards[index].quantity <= 0) {
       cards.splice(index, 1);
+      save_cards_to_local(cards);
+      return null;
     }
   } else {
-    cards.push(card);
+    if (card.quantity > 0) {
+      cards.push(card);
+    } else {
+      save_cards_to_local(cards);
+      return null;
+    }
   }
 
   save_cards_to_local(cards);
   return cards[index] || card;
 }
+
 
 /**
  * @description Creates light ray effects for card reveal.
