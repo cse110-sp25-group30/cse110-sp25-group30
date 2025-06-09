@@ -133,3 +133,15 @@
         transform: rotate(360deg);
     }
 }
+
+/* Responsive sizing for mobile phones */
+@media screen and (max-width: 480px) {
+    .flip-card {
+        transform: scale(0.85);
+        transform-origin: center center;
+    }
+
+    .flip-card:hover {
+        transform: scale(0.9);
+    }
+}
