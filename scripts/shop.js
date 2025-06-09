@@ -127,6 +127,7 @@ function save_pity_counters(counters) {
   localStorage.setItem("pity_counters", JSON.stringify(counters));
 }
 
+/**
  * @description Creates light ray effects for card reveal.
  * @param {string} rarity The rarity of the card.
  * @returns {void}
@@ -432,6 +433,8 @@ function init() {
   update_container_rarity(null);
   result_display.innerHTML = "";
   result_display.style.visibility = "visible";
+  result_display.style.position = "relative";
+  result_display.style.zIndex = "1";
 
   // Store handler reference to prevent double-firing
   let current_open_handler = null;

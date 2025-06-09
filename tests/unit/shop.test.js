@@ -6,11 +6,14 @@ import {
   update_pity_counters,
   get_random_rarity,
   generate_random_card,
-  load_pity_counters,
+  load_pity_counters
+} from '../../scripts/shop.js';
+
+import {
   add_or_update_card,
   save_cards_to_local,
   load_cards_from_local
-} from '../../scripts/shop.js';
+} from '../../index.js';
 
 beforeEach(() => {
   localStorage.clear();
