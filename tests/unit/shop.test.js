@@ -12,7 +12,9 @@ import {
   update_container_rarity,
   display_placeholder,
   create_light_rays,
-  init
+  init,
+  show_congrats_animation,
+
 } from '../../scripts/shop.js';
 
 import {
@@ -270,5 +272,58 @@ describe("init", () => {
 
   test("sets up event listeners and UI", () => {
     expect(() => init()).not.toThrow();
+  });
+});
+
+describe("show_congrats_animation", () => {
+  beforeEach(() => {
+    document.body.innerHTML = `<div id="gen-container"></div>`;
+  });
+
+  test("adds congrats animation text for a common card", () => {
+    show_congrats_animation("common");
+    const animation = document.querySelector(".congrats-animation");
+    expect(animation).not.toBeNull();
+
+    const text = animation.querySelector(".congrats-text");
+    expect(text.textContent).toContain("COMMON");
+  });
+
+  test("adds particles for rare or higher rarities", () => {
+    show_congrats_animation("epic");
+    const particles = document.querySelectorAll(".congrats-particles .particle");
+    expect(particles.length).toBeGreaterThan(0);
+  });
+});
+
+describe("update_container_rarity", () => {
+  beforeEach(() => {
+    document.body.innerHTML = `<div id="gen-container" class="rarity-common rarity-epic"></div>`;
+  });
+
+  test("removes all previous rarity classes", () => {
+    update_container_rarity(null);
+    const container = document.getElementById("gen-container");
+    const classList = container.classList;
+    expect([...classList].some(cls => cls.startsWith("rarity-"))).toBe(false);
+  });
+
+  test("adds new rarity class", () => {
+    update_container_rarity("legendary");
+    const container = document.getElementById("gen-container");
+    expect(container.classList.contains("rarity-legendary")).toBe(true);
+  });
+});
+
+describe("update_cost", () => {
+  beforeEach(() => {
+    document.body.innerHTML = `<div id="cost"></div>`;
+  });
+
+  test("displays correct cost and image", () => {
+    update_cost();
+    const costElement = document.getElementById("cost");
+    expect(costElement.innerHTML).toContain("100");
+    expect(costElement.innerHTML).toContain("point.webp");
   });
 });
