@@ -12,9 +12,6 @@ import {
   load_cards_from_local
 } from '../../scripts/shop.js';
 
-import * as ShopModule from '../../scripts/shop.js'; // only for mocks
-
-
 beforeEach(() => {
   localStorage.clear();
   jest.restoreAllMocks(); // clear mocks between tests
