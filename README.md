@@ -61,17 +61,20 @@ Status Video 1:
 - [Sprint 1 Review](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0512-0518/051225meeting.md)
 - [Sprint 2 Review](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0519-0525/052525-sprint2-review.md)
 - [Sprint 3 Review](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0526-0601/060125-sprint3-review.md)
+- [Sprint 4 Review](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0602-0608/060825-sprint4-review.md)
 
 ### Retrospectives
 - [Sprint 1 Retrospective](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0512-0518/051825-retrospective.md)
 - [Sprint 2 Retrospective](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0519-0525/052525-retrospective.md)
 - [Sprint 3 Retrospective](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0526-0601/060125-retrospective.md)
+- [Sprint 4 Retrospective](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0602-0608/060825-retrospective.md)
 
 ### ADRs
 [ADRs Folder](https://github.com/cse110-sp25-group30/cse110-sp25-group30/tree/main/specs/adrs)
 - [ADR1 - Problem Solving and Meeting Decision](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/specs/adrs/051125-MVPandMeetingsDecisions.md)
 - [ADR2 - Card Grid, Collector Features and Hosting](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/specs/adrs/052225-CardGridandCollectorFeatures.md)
 - [ADR3 - Removal of Card-Deck and Implementing Consistent Presentation](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/specs/adrs/052825-CardDeckRemoval.md)
+- [ADR4 - Flash Card Removal and Tutorial](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/specs/adrs/060625-FlashCardsRemovalandToolTip.md)
 
 ### CD/CI Pipeline
 [Link to CD Pipeline Folder](https://github.com/cse110-sp25-group30/cse110-sp25-group30/tree/main/admin/cipipeline)
