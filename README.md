@@ -52,7 +52,7 @@ Status Video 1:
 [Meetings Folder](https://github.com/cse110-sp25-group30/cse110-sp25-group30/tree/main/admin/meetings)
 
 ### Sprint Start Meetings
-- [Meeting 1 - May 12th, 2025](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0512-0519/051225meeting.md)
+- [Meeting 1 - May 12th, 2025](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0512-0518/051225meeting.md)
 - [Meeting 2 - May 19th, 2025](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0519-0525/051925-meeting2.md)
 - [Meeting 3 - May 26th, 2025](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0526-0601/052625-meeting3.md)
 - [Meeting 4 - June 3rd, 2025](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0602-0608/060225-meeting4.md)
