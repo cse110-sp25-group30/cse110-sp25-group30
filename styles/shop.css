@@ -731,3 +731,10 @@ pack-cover.rarity-special-edition.with-glow::before {
   position: relative;
   top: 6px;
 }
+
+@media screen and (max-width: 480px) {
+  .placeholder-card {
+    height: 357px;
+    width: 357px;
+  }
+}
