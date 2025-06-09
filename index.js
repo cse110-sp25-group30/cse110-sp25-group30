@@ -30,7 +30,7 @@ export function load_cards_from_local() {
  * @param {Array} cards Array of card objects to save.
  * @returns {void}
  */
-function save_cards_to_local(cards) {
+export function save_cards_to_local(cards) {
   localStorage.setItem("card_data", JSON.stringify(cards));
 }
 
@@ -53,6 +53,8 @@ export function add_or_update_card(card, num_cards = 1) {
 
     if (cards[index].quantity <= 0) {
       cards.splice(index, 1);
+      save_cards_to_local(cards);
+      return null;
     }
   } else {
     cards.push(card);

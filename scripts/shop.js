@@ -1,5 +1,13 @@
 import { update_points, fetch_user_info, add_or_update_card, load_cards_from_local } from "../index.js";
-import { CARD_NAMES, RARITIES, BIOS, COURSES, GUARANTEE_THRESHOLDS } from "/scripts/card-values.js";
+import { CARD_NAMES, RARITIES, BIOS, COURSES, GUARANTEE_THRESHOLDS } from "./card-values.js";
+
+export {
+  get_random_element,
+  update_pity_counters,
+  get_random_rarity,
+  generate_random_card,
+  load_pity_counters,
+};
 
 // TODO: Consider moving constants to config file
 let cover_opened = false;
@@ -425,6 +433,8 @@ function init() {
   update_container_rarity(null);
   result_display.innerHTML = "";
   result_display.style.visibility = "visible";
+  result_display.style.position = "relative";
+  result_display.style.zIndex = "1";
 
   // Store handler reference to prevent double-firing
   let current_open_handler = null;
