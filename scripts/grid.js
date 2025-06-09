@@ -1,7 +1,7 @@
 import { RARITY_ORDER } from "/scripts/card-values.js";
 import { add_or_update_card, load_cards_from_local } from "../index.js";
 
-const CRAFT_COST = 1;
+const CRAFT_COST = 5;
 
 let currentSort = "default";
 
