@@ -1,12 +1,16 @@
 /* eslint-disable no-undef */
 
-import { jest } from '@jest/globals';
 import {
   get_random_element,
   update_pity_counters,
   get_random_rarity,
   generate_random_card,
-  load_pity_counters
+  load_pity_counters,
+  get_rarity_display_color,
+  save_pity_counters,
+  update_cost,
+  update_container_rarity,
+  display_placeholder
 } from '../../scripts/shop.js';
 
 import {
@@ -15,19 +19,29 @@ import {
   load_cards_from_local
 } from '../../index.js';
 
-beforeEach(() => {
-  localStorage.clear();
-  jest.restoreAllMocks(); // clear mocks between tests
+describe("display_placeholder", () => {
+  beforeEach(() => {
+    document.body.innerHTML = `<div id="card-container"></div>`;
+  });
+
+  test('shows first purchase message', () => {
+    display_placeholder(true);
+    expect(document.querySelector(".placeholder-text").textContent)
+      .toContain("Click below to purchase your first pack!");
+  });
+
+  test('shows regular message', () => {
+    display_placeholder(false);
+    expect(document.querySelector(".placeholder-text").textContent)
+      .toContain("purchase a pack");
+  });
 });
-
-
 
 test('get_random_element returns a valid element from the array', () => {
   const arr = ['apple', 'banana', 'cherry'];
   const result = get_random_element(arr);
   expect(arr).toContain(result);
 });
-
 
 test('update_pity_counters resets lower rarities and increments higher', () => {
   localStorage.setItem('pity_counters', JSON.stringify({
@@ -39,12 +53,11 @@ test('update_pity_counters resets lower rarities and increments higher', () => {
 
   const result = update_pity_counters('rare');
 
-  expect(result.rare).toBe(0); // reset
-  expect(result.epic).toBe(5); // incremented
-  expect(result.legendary).toBe(4); // incremented
-  expect(result['special-edition']).toBe(3); // incremented
+  expect(result.rare).toBe(0);
+  expect(result.epic).toBe(5);
+  expect(result.legendary).toBe(4);
+  expect(result['special-edition']).toBe(3);
 });
-
 
 test('get_random_rarity returns guaranteed rarity if threshold met', () => {
   localStorage.setItem('pity_counters', JSON.stringify({
@@ -68,22 +81,17 @@ test('get_random_rarity returns guaranteed rarity if threshold met', () => {
 
 test('generate_random_card returns a valid card object', () => {
   const card = generate_random_card();
-
   expect(card).toBeDefined();
-  expect(typeof card).toBe('object');
-
   expect(card).toHaveProperty('name');
   expect(card).toHaveProperty('rarity');
-  expect(card).toHaveProperty('quantity', 1); // always 1
+  expect(card).toHaveProperty('quantity', 1);
   expect(card).toHaveProperty('bio');
   expect(card).toHaveProperty('course');
-
 });
 
 test('load_pity_counters returns default counters when localStorage is empty', () => {
   localStorage.removeItem("pity_counters");
   const counters = load_pity_counters();
-
   expect(counters).toEqual({
     rare: 0,
     epic: 0,
@@ -100,11 +108,21 @@ test('load_pity_counters returns stored counters when they exist', () => {
     "special-edition": 0
   };
   localStorage.setItem("pity_counters", JSON.stringify(stored));
-
   const counters = load_pity_counters();
   expect(counters).toEqual(stored);
 });
 
+test('save_pity_counters stores the counters in localStorage', () => {
+  const testCounters = {
+    rare: 2,
+    epic: 1,
+    legendary: 0,
+    "special-edition": 5
+  };
+  save_pity_counters(testCounters);
+  const stored = JSON.parse(localStorage.getItem("pity_counters"));
+  expect(stored).toEqual(testCounters);
+});
 
 test('save and load cards to/from local storage', () => {
   const testCards = [{ name: 'Alice', rarity: 'rare', quantity: 1 }];
@@ -137,6 +155,28 @@ test('add_or_update_card removes card if quantity <= 0', () => {
   expect(load_cards_from_local()).toEqual([]);
 });
 
+test('get_rarity_display_color returns correct color for known rarity', () => {
+  expect(get_rarity_display_color('rare')).toBe('#60A5FA');
+  expect(get_rarity_display_color('legendary')).toBe('#FFD700');
+  expect(get_rarity_display_color('special-edition')).toBe('#FFD700');
+});
 
+test('get_rarity_display_color returns default color for unknown rarity', () => {
+  expect(get_rarity_display_color('mythical')).toBe('#FFFFFF');
+});
 
+test('update_cost populates cost display with correct HTML', () => {
+  document.body.innerHTML = `<div id="cost"></div>`;
+  update_cost();
+  const costDiv = document.getElementById("cost");
+  expect(costDiv.innerHTML).toContain("Cost:");
+  expect(costDiv.innerHTML).toContain('<img');
+});
 
+test('update_container_rarity applies the correct class', () => {
+  document.body.innerHTML = `<div id="gen-container" class="rarity-common"></div>`;
+  update_container_rarity('epic');
+  const container = document.getElementById("gen-container");
+  expect(container.classList.contains('rarity-epic')).toBe(true);
+  expect(container.classList.contains('rarity-common')).toBe(false);
+});
