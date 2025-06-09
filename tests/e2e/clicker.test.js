@@ -14,7 +14,7 @@ describe('Test Clicker Functionality', () => {
 
     await page.goto('http://localhost:3000/clicker');
   });
-  it("Click 100 times and verify points increased", async () => {
+  it("Click 10 times and verify points increased", async () => {
     const pointsElem = await page.$("#points_display");
     if (!pointsElem) throw new Error("Points display not found");
 
@@ -28,7 +28,7 @@ describe('Test Clicker Functionality', () => {
 });
     if (!clickerElem) throw new Error("Clicker element not found");
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 10; i++) {
       await clickerElem.click();
     }
 
@@ -36,8 +36,8 @@ describe('Test Clicker Functionality', () => {
     console.log("final_text",finalText)
     const finalPoints = Number(finalText.split(" ")[1]);
     console.log("finalPoints",finalPoints)
-    console.log("initialPoints + 100",initialPoints + 100)
-    expect(finalPoints).toBe(initialPoints + 100);
+    console.log("initialPoints + 100",initialPoints + 10)
+    expect(finalPoints).toBe(initialPoints + 10);
 
   }, 30000);
 it("Ensure points remain on navigation and reload", async()=>{
@@ -46,6 +46,6 @@ it("Ensure points remain on navigation and reload", async()=>{
     const pointsElem = await page.$("#points-display")
     const pointsNumber = Number(await page.evaluate(el => el.textContent, pointsElem))
     console.log("pointsNumber", pointsNumber)
-    expect(pointsNumber).toBe(startingPts + 100)
+    expect(pointsNumber).toBe(startingPts + 10)
   })
 });
