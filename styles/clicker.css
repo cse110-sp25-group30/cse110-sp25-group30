@@ -5,35 +5,40 @@
   justify-content: flex-start; /* Align to top */
   /* background: var(--background-color); */
   background: linear-gradient(0deg, transparent 0%, #00629B 50%, transparent 100%);
-  /* background: #00629B;        Example background */
 }
 
 #clicker-comp {
   border-radius: 50%;
-  flex: 1 1 0;
   display: flex;
+  flex: 1 1 0;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 35vh;
   aspect-ratio: 1 / 1;     
   margin-top: 100px;
   transform: scale(1);
   transform-origin: center;
   overflow: visible;
   max-width: 400px;
-  max-height: 400px;
+  min-width: 10vh;
   height: auto;
-  transition: all 0.2s ease;
+  -webkit-user-select: none; /* Disable text selection */
+  user-select: none;
 }
 
 #clicker-comp-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 400px;
-  max-height: 400px;
-  margin-top: 100px;
   border-radius: 50%;
+  position: relative;
+  width: 35vh;
+  aspect-ratio: 1 / 1;
+  margin-top: 100px;
+  transform: scale(1);
+  max-width: 400px;
+  min-width: 10vh;
   overflow: hidden;
+  transition: transform 0.2s ease;
+  -webkit-user-select: none; /* Disable text selection */
+  user-select: none;
 }
 
 #clicker-comp-wrapper #clicker-comp {
