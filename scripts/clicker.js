@@ -15,12 +15,14 @@ window.addEventListener("DOMContentLoaded", init);
 function clicker_buttons() {
 
   const clicker_comp = document.getElementById("clicker-comp");
+  const clicker_wrap = document.getElementById("clicker-comp-wrapper");
   const points_display = document.getElementById("points_display");
   if (!clicker_comp) {
     return;
   }
 
   const handleClick = (e) => {
+    e.preventDefault();
     if (e.button == 0 || e.type == "touchstart") {
       update_points(1);
       
@@ -31,7 +33,8 @@ function clicker_buttons() {
       }
       
       points_display.innerHTML = `Points: ${user_info.points}`;
-      clicker_comp.style.transform = "scale(0.93)";
+      // clicker_comp.style.transform = "scale(0.93)";
+      clicker_wrap.style.transform = "scale(0.93)";
       if (Math.random() < 0.05) {
         showBonusPopup();
       }
@@ -53,7 +56,8 @@ function clicker_buttons() {
 
     document.body.appendChild(bonus);
     //actually adds 10 when clicked
-    bonus.addEventListener("click", () => {
+    bonus.addEventListener("click", (e) => {
+      e.preventDefault();
       let user_info = fetch_user_info();
       update_points(10);
       user_info.points += 10;
@@ -84,7 +88,7 @@ function clicker_buttons() {
   }
 
   const resetScale = () => {
-    clicker_comp.style.transform = "scale(1)";
+    clicker_wrap.style.transform = "scale(1)";
   };
 
   // Desktop and mobile events

@@ -3,6 +3,8 @@
     height: 400px;
     perspective: 1000px;
     cursor: pointer;
+    -webkit-user-select: none; /* Disable text selection */
+    user-select: none;
 }
 
 .flip-card-inner {
