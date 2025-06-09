@@ -1,35 +1,22 @@
-.flip-card {
+.card {
     width: 400px;
     height: 400px;
-    perspective: 1000px;
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-.flip-card-inner {
+.card:hover {
+    transform: scale(1.1);
+}
+
+.card-content {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-}
-
-.flipped .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-}
-
-.flip-card-back {
-    transform: rotateY(180deg);
 }
 
 .face {
@@ -117,5 +104,45 @@
 @keyframes spin {
     to {
         transform: rotate(360deg);
+    }
+}
+
+/* Rarity-based styles for quantity text */
+.card-info {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.rarity-common { color: #FFFFFF; }
+.rarity-uncommon { color: #22C55E; }
+.rarity-rare { color: #3B82F6; }
+.rarity-epic { color: #A855F7; }
+.rarity-legendary { color: #FFD700; }
+.rarity-special-edition { 
+    background: linear-gradient(45deg, #FF006E, #FFD700, #00D9FF, #FF006E);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: specialGradient 3s linear infinite;
+}
+
+@keyframes specialGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Responsive sizing for mobile phones */
+@media screen and (max-width: 480px) {
+    .flip-card {
+        transform: scale(0.85);
+        transform-origin: center center;
+    }
+
+    .flip-card:hover {
+        transform: scale(0.9);
     }
 }

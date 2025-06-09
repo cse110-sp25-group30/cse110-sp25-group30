@@ -26,7 +26,12 @@ class PackCover extends HTMLElement {
 			align-items: center;
 			justify-content: flex-start;
             cursor: pointer;
+            transition: transform 0.3s ease;
 		}
+
+        .cover:hover {
+            transform: scale(1.1);
+        }
 
 		.left, .right {
 			width: 100%;
@@ -77,6 +82,17 @@ class PackCover extends HTMLElement {
 		.right.slide-out {
 		animation: dramaticSlideRight 0.9s ease-in-out forwards;
 		}
+
+        @media screen and (max-width: 480px) {
+            .cover {
+                transform: scale(0.85);
+                transform-origin: center center;
+            }
+
+            .cover:hover {
+                transform: scale(0.9);
+            }
+        }
 		`;
 		this.shadow.appendChild(style);
 	}

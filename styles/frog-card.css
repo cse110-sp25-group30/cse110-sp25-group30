@@ -3,6 +3,15 @@
     height: 400px;
     perspective: 1000px;
     cursor: pointer;
+
+    -webkit-user-select: none; /* Disable text selection */
+    user-select: none;
+
+    transition: transform 0.3s ease;
+}
+
+.flip-card:hover {
+    transform: scale(1.1);
 }
 
 .flip-card-inner {
@@ -28,8 +37,13 @@
     justify-content: flex-start;
 }
 
+.flip-card-front {
+    z-index: 2;
+}
+
 .flip-card-back {
     transform: rotateY(180deg);
+    z-index: 1;
 }
 
 .face {
@@ -117,5 +131,17 @@
 @keyframes spin {
     to {
         transform: rotate(360deg);
+    }
+}
+
+/* Responsive sizing for mobile phones */
+@media screen and (max-width: 480px) {
+    .flip-card {
+        transform: scale(0.85);
+        transform-origin: center center;
+    }
+
+    .flip-card:hover {
+        transform: scale(0.9);
     }
 }

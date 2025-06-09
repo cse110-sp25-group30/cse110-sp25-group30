@@ -54,7 +54,6 @@ body {
   justify-content: center;
   gap: 1.5rem;
   margin-top: 1rem;
-  margin-left: 2rem;
 }
 
 /* Redesigned button with card game aesthetic */
@@ -142,6 +141,7 @@ body {
 }
 
 #gen-container {
+  margin: 0 auto;
   justify-self: center;
   border-radius: 5px;
   border: 1px solid white;
@@ -730,4 +730,11 @@ pack-cover.rarity-special-edition.with-glow::before {
   height: 1.5rem;
   position: relative;
   top: 6px;
+}
+
+@media screen and (max-width: 480px) {
+  .placeholder-card {
+    height: 357px;
+    width: 357px;
+  }
 }
