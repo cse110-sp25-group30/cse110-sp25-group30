@@ -6,7 +6,7 @@
 }
 :root {
   /* Primary Theme Colors */
-  --background-color: #1c1c1c;            /* Deep castle stone */
+  --background-color: #182B49;            /* Deep castle stone */
   --card-background-color:rgb(34, 35, 80);      /* Darker stone for cards */
   --secondary-background-color: #2a2a2a;  /* Slightly lighter for sections/cards */
   --modal-background-color: #2e2e2e;      /* For modals or popups */

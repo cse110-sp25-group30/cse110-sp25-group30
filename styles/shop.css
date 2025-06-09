@@ -202,7 +202,7 @@ body {
   word-wrap: break-word;
   max-width: 90%;
   overflow-wrap: break-word;
-  z-index: 10;
+  z-index: 5;
   font-size: 1.25rem;
   font-weight: 700;
   color: #000;

@@ -17,7 +17,7 @@ class SiteHeader extends HTMLElement {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #182B49;
+            background-color: #101d31;
             color: #FFCD00;
             padding: 10px 40px;
             font-family: 'Wizard World';
@@ -148,7 +148,7 @@ class SiteHeader extends HTMLElement {
         <nav>
         <a class="nav-left" href="index.html">
             <img src="/admin/branding/cse_110_logo.jpg" alt="Nerdy Thirty Logo" style="height: 30px;">
-            Nerdy Thirty
+            CSE Card Collector
         </a>
         <div class="hamburger">
             <span></span>
