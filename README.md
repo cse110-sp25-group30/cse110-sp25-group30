@@ -19,12 +19,22 @@ Huzzah! With all of the steps completed in order, you have successfully made our
 The app has been optimized to be properly implemented and working on most types of mobile devices. These optimizations include:
 - The header being edited to work as a side drawer on mobile devices, in order to improve screen readability and reducing clutter on small screens.
 - Having functioning screen touches and taps working on devices, ensuring the app can still work as intended without a mouse of keyboard.
+- Used responsive sizes for images and fonts to ensure they look good on all types of devices.
 
 ### Accessibility
 The app includes some sense of accessibility by having keyboard binds that can be used instead of mouse clicking. These can be seen in the clicker page being able to play the clicker game with a button press, as well as the shop page, being able to buy packs, open them, and flip the card all with the press of keyboard buttons.
 
-## Performance
+### Performance
 The app has been tested on slow-working networks, using network throttling on 3g. While the core functionality of the app still works as intended, the site was not visually responsive, affecting the program's intended RAIL (Response, Animation, Idle, Load) values.
+
+### Testability
+Testing has been implemented for every page in the app, with a total of 48 individual tests, alongside several e2e tests (The codacy coverage shows only the unit tests, and not the e2e tests.)
+
+### Compatability
+The app has been checked for compatability in as many major browsers as possible like Chrome, Microsoft Edge, Firefox, and Safari to be as optimized as we can make it possible. 
+
+### Coverage (Codacy)
+Our coverage encompasses all of our js files that have functions/code in them, ensuring that as much of our code as possible is being tested and covered through the unit tests and e2e tests implemented.
 
 ## Important Pages:
 [Team File](admin/team.md)
@@ -50,9 +60,10 @@ Status Video 1:
 
 ## Meetings
 [Meetings Folder](https://github.com/cse110-sp25-group30/cse110-sp25-group30/tree/main/admin/meetings)
+(The meeting notes alongside the sprint reviews and retrospectives have all been split into folders named after the weeks the sprint was partaking during in a mmdd format, ex. Spring 1 was through May 12th to May 18th, making 0512-0518 the folder for all Sprint 1 associated meetings.)
 
 ### Sprint Start Meetings
-- [Meeting 1 - May 12th, 2025](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0512-0519/051225meeting.md)
+- [Meeting 1 - May 12th, 2025](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0512-0518/051225meeting.md)
 - [Meeting 2 - May 19th, 2025](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0519-0525/051925-meeting2.md)
 - [Meeting 3 - May 26th, 2025](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0526-0601/052625-meeting3.md)
 - [Meeting 4 - June 3rd, 2025](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/meetings/0602-0608/060225-meeting4.md)

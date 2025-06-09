@@ -1,4 +1,4 @@
-# ADR3: Removal of Card-Deck and Implementing Consistent Presentation.
+# ADR4: Flash Card Removal and Tutorial Buttons
 
 ## Date: June 6th, 2025. 
 
