@@ -23,6 +23,8 @@
   max-width: 600px;
   width: 90%;
   position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .close-button {
@@ -31,6 +33,30 @@
   top: 1rem;
   cursor: pointer;
   font-size: 1.5rem;
+  background: var(--modal-background-color);
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 1.5rem;
+    width: 100%;
+    margin: 0.2rem;
+  }
+
+  .close-button {
+    right: 0.5rem;
+    top: 0.5rem;
+    font-size: 1.25rem;
+    width: 1.75rem;
+    height: 1.75rem;
+  }
 }
 
 #craft-popup {
