@@ -177,7 +177,6 @@ async function init() {
   // Only create and show card if we have cards
   if (card_data.length > 0) {
     createCard(card_data[selected_card]);
-    card_button_click();
   }
 
   const fetch_user_data = fetch_user_info();
