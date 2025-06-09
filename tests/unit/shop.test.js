@@ -10,7 +10,9 @@ import {
   save_pity_counters,
   update_cost,
   update_container_rarity,
-  display_placeholder
+  display_placeholder,
+  init,
+  create_light_rays
 } from '../../scripts/shop.js';
 
 import {
@@ -179,4 +181,68 @@ test('update_container_rarity applies the correct class', () => {
   const container = document.getElementById("gen-container");
   expect(container.classList.contains('rarity-epic')).toBe(true);
   expect(container.classList.contains('rarity-common')).toBe(false);
+});
+
+describe("display_placeholder", () => {
+  beforeEach(() => {
+    document.body.innerHTML = `<div id="card-container"></div>`;
+  });
+
+  test('shows first purchase message', () => {
+    display_placeholder(true);
+    expect(document.querySelector(".placeholder-text").textContent)
+      .toContain("Click below to purchase your first pack!");
+  });
+
+  test('shows regular message', () => {
+    display_placeholder(false);
+    expect(document.querySelector(".placeholder-text").textContent)
+      .toContain("purchase a pack");
+  });
+});
+
+create_light_rays
+
+describe("create_light_rays", () => {
+  beforeEach(() => {
+    document.body.innerHTML = `<div id="card-container"></div>`;
+  });
+
+  test("creates 12 light rays with correct background color", () => {
+    const rarity = "rare";
+    create_light_rays(rarity);
+
+    const rays = document.querySelectorAll(".light-ray");
+    expect(rays.length).toBe(12);
+
+    rays.forEach((ray, index) => {
+      // Check rotation is applied via style
+      const rotation = ray.style.getPropertyValue("--rotation");
+      expect(rotation).toBe(`${index * 30}deg`);
+
+      // Check background color matches rarity
+      expect(getComputedStyle(ray).backgroundColor).toBe("rgb(59, 130, 246)");
+
+    });
+
+    // Check that the light-rays container was added
+    const lightRayContainer = document.querySelector(".light-rays");
+    expect(lightRayContainer).not.toBeNull();
+    expect(lightRayContainer.children.length).toBe(12);
+  });
+
+  test("removes existing light rays before adding new ones", () => {
+    // First call adds rays
+    create_light_rays("epic");
+    expect(document.querySelectorAll(".light-ray").length).toBe(12);
+
+    // Second call replaces them
+    create_light_rays("legendary");
+    const rays = document.querySelectorAll(".light-ray");
+    expect(rays.length).toBe(12);
+
+    // Check one was not appended without cleanup
+    const lightRaysContainers = document.querySelectorAll(".light-rays");
+    expect(lightRaysContainers.length).toBe(1);
+  });
 });
