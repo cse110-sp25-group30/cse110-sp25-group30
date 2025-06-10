@@ -7,7 +7,7 @@ Welcome to Nerdy-Thirty's (aka Team 30's) Final Project for CSE 110! Our project
 If you want to contribute to the project with your own implementation of features, you may do so by following these steps:
 1. Fork the repository to your own account.
 2. Use Git Bash or Visual Studio Code to clone the repository.
-3. Once the repo has been cloned, make sure to perform "run npm install" on your terminal, to downloaded the necessary packages and look over *package.json*.
+3. Once the repo has been cloned, make sure to run "npm install" on your terminal, to downloaded the necessary packages and look over *package.json*.
 4. After performing the install, perform the command "npm run start" in order to start a local server on localhost:3000
 5. Implement your features, making sure to include documentation code (that way it gives us an idea of what the code does without having to go the extra hurdles.)
 6. Once you have tested and finished implementing working efficient code, make a Pull Request to your repo first, before doing a new PR to our branch. (Your PR will not be accepted until it passes all of the tests and a human review is done by at least one of our group members.)
