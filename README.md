@@ -25,7 +25,8 @@ The app has been optimized to be properly implemented and working on most types 
 The app includes some sense of accessibility by having keyboard binds that can be used instead of mouse clicking. These can be seen in the clicker page being able to play the clicker game with a button press, as well as the shop page, being able to buy packs, open them, and flip the card all with the press of keyboard buttons.
 
 ### Performance
-The app has been tested on slow-working networks, using network throttling on 3g. While the core functionality of the app still works as intended, the site was not visually responsive, affecting the program's intended RAIL (Response, Animation, Idle, Load) values.
+The app has been tested on slow-working networks, using network throttling on 3g. While the core functionality of the app still works as intended, the site was not visually responsive, affecting the program's intended RAIL (Response, Animation, Idle, Load) values. However, the app was found to run well at slow 4g connection, running at an acceptable level with some images taking a bit longer than usual to load, which was not an issue for fast 4g.
+We also switched the images from png to webp format, reducing their size greatly for faster loading times and improving the performance.
 
 ### Testability
 Testing has been implemented for every page in the app, with a total of 48 individual tests, alongside several e2e tests (The codacy coverage shows only the unit tests, and not the e2e tests.)
@@ -48,7 +49,7 @@ Status Video 1:
 - [Repo Link](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/videos/statusvideo1.mp4)
 
 ### Codacy
-[Codacy Link](https://app.codacy.com/gh/cse110-sp25-group30/cse110-sp25-group30/dashboard)
+[Codacy Dashboard](https://app.codacy.com/gh/cse110-sp25-group30/cse110-sp25-group30/dashboard)
 
 ## Documentation
 ### JSDocs
