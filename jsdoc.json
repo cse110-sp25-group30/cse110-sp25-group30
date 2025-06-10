@@ -1,6 +1,6 @@
 {
   "source": {
-    "include": ["components","index.js"],
+    "include": ["components","index.js","scripts"],
     "includePattern": ".+\\.(js|jsx|ts|tsx)$"
   },
   "opts": {
