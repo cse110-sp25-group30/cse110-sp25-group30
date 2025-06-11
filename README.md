@@ -44,6 +44,12 @@ Our coverage encompasses all of our js files that have functions/code in them, e
 [Heroku Hosted Link](https://nerdity-thirty-c404d15cf7fe.herokuapp.com/)
 
 ### Videos
+Final Project Video Public 
+- [Youtube Link](https://youtu.be/M6opFgkmq4Y)
+
+Final Project Video Private
+- [Youtube Link](https://youtu.be/0g59zMxAVuw)
+
 Status Video 1:
 - [Youtube Link](https://youtu.be/UU8ilUeQxk4)
 - [Repo Link](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/videos/statusvideo1.mp4)
