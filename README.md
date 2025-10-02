@@ -41,7 +41,7 @@ Our coverage encompasses all of our js files that have functions/code in them, e
 [Team File](admin/team.md)
 
 ## Final Project
-[Heroku Hosted Link](https://nerdity-thirty-c404d15cf7fe.herokuapp.com/)
+[Netlify Hosted Link](https://lovely-centaur-c8e753.netlify.app/clicker.html)
 
 ### Videos
 Final Project Video Public 
@@ -105,3 +105,4 @@ Status Video 1:
 - [Template Image](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/cipipeline/phase2/phase2.png)
 - [Markdown file](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/cipipeline/phase2/phase2.md)
 - [Phase 2 Video](https://github.com/cse110-sp25-group30/cse110-sp25-group30/blob/main/admin/cipipeline/phase2/phase2.mp4)
+
