@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: scripts/grid.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: scripts/grid.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { RARITY_ORDER } from "./card-values.js";
+import { add_or_update_card, load_cards_from_local } from "../index.js";
+
+const CRAFT_COST = 5;
+
+let currentSort = "default";
+
+/**
+ * @description Creates a new frog-card element and appends it inside the &lt;card-display> element.
+ * Also sets up the crafting UI for the displayed card.
+ * @param {Object} data - The card data object containing name, rarity, course, bio, and quantity properties.
+ */
+export function createCard(data) {
+  const card_display = document.querySelector("card-display");
+  if (!card_display){
+    return;
+  }
+  card_display.innerHTML = ""; // Clear previous card
+  const card = document.createElement("frog-card");
+  card.data = data;
+  card_display.appendChild(card);
+
+  setupCraftingUI(data);
+}
+
+/**
+ * @description Updates the card grid display by loading cards from local storage and creating
+ * card-thumbnail elements for each card. Sets up click event listeners for each card to open
+ * the card modal when clicked.
+ * @param {Array} cardData - An array of card data objects to display in the grid.
+ * @returns {void}
+ */
+export function updateCardGrid(cards) {
+  const container = document.getElementById("card-grid");
+  if (!container) return;
+
+  // Get the no-cards-message element
+  let noCardsMessage = document.getElementById("no-cards-message");
+  if (!noCardsMessage) {
+    noCardsMessage = document.createElement("div");
+    noCardsMessage.id = "no-cards-message";
+    noCardsMessage.className = "no-cards-message hidden";
+    noCardsMessage.innerHTML = `
+      &lt;h2>No Cards Found&lt;/h2>
+      &lt;p>Start collecting cards in the shop or gain points using the clicker!&lt;/p>
+      &lt;div class="button-group">
+        &lt;a href="shop.html" class="shop-button">Go to Shop&lt;/a>
+        &lt;a href="clicker.html" class="clicker-button">Open Clicker&lt;/a>
+      &lt;/div>
+    `;
+    container.appendChild(noCardsMessage);
+  }
+
+  // Update total cards count
+  const totalCardsElement = document.getElementById("total-cards");
+  if (totalCardsElement) {
+    const totalCards = cards ? cards.reduce((sum, card) => sum + (card.quantity || 1), 0) : 0;
+    totalCardsElement.textContent = `Total Filtered Cards: ${totalCards}`;
+  }
+
+  // Clear existing cards
+  container.innerHTML = "";
+  container.appendChild(noCardsMessage);
+
+  if (!cards || cards.length === 0) {
+    noCardsMessage.classList.remove("hidden");
+    return;
+  }
+
+  noCardsMessage.classList.add("hidden");
+  cards.forEach((data, index) => {
+    const card = document.createElement("card-thumbnail");
+    
+    card.data = data;
+    card.style.animationDelay = `${index * 0.1}s`;
+
+    // Listen for the custom card-clicked event
+    card.addEventListener("card-clicked", (e) => {
+      const selectedData = e.detail;
+
+      // Set the card title above the modal card
+      const titleEl = document.getElementById("card-title");
+      titleEl.textContent = `${selectedData.rarity} "${selectedData.name}" | quantity: ${selectedData.quantity}`;
+
+      createCard(selectedData);
+      const modal = document.getElementById("card-modal");
+      if (modal) {
+        modal.classList.remove("hidden");
+      }
+    });
+
+    container.appendChild(card);
+  });
+}
+
+/**
+ * @description Sets up the crafting UI for a given card, including the slider, summary text,
+ * and craft button. Handles the logic for determining if crafting is possible based on rarity
+ * and available quantity. Sets up event listeners for the slider and craft button.
+ * @param {Object} data - The card data object containing name, rarity, course, bio, and quantity properties.
+ */
+export function setupCraftingUI(data) {
+  const craftingUI = document.getElementById("crafting-ui");
+  const slider = document.getElementById("craft-slider");
+  const summary = document.getElementById("craft-summary");
+  const craftBtn = document.getElementById("craft-button");
+
+  if (!craftingUI || !slider || !summary || !craftBtn) {
+    console.error("Required crafting UI elements not found");
+    throw new Error("Elements not found");
+  }
+
+  // Hide crafting UI for legendary and special-edition cards
+  if (data.rarity === "legendary" || data.rarity === "special-edition") {
+    craftingUI.classList.add("hidden");
+    return;
+  }
+
+  const rarityIndex = RARITY_ORDER.indexOf(data.rarity);
+  const nextRarity = RARITY_ORDER[rarityIndex + 1];
+  const quantity = data.quantity;
+  const maxCraftable = Math.floor(quantity / CRAFT_COST);
+
+  craftingUI.classList.remove("hidden");
+
+  if (maxCraftable &lt; 1) {
+    craftBtn.disabled = true;
+    slider.disabled = true;
+    summary.textContent = "Not enough cards to merge";
+    slider.value = 0;
+    slider.max = 0;
+  } else {
+    slider.disabled = false;
+    slider.max = maxCraftable;
+    slider.min = 0;
+    slider.value = 0; // Start at 0
+
+    const updateSummary = () => {
+      if (slider.value == 0) {
+        summary.textContent = "Slide to increase the number of cards to craft";
+        craftBtn.disabled = true;
+      } else {
+        summary.textContent = `Use ${slider.value * CRAFT_COST} ${data.rarity} "${data.name}" cards to craft ${slider.value} ${nextRarity} "${data.name}" card(s)`;
+        craftBtn.disabled = false;
+      }
+    };
+
+    slider.oninput = updateSummary;
+    updateSummary(); // Initialize the summary
+  }
+
+  craftBtn.onclick = () => {
+    if (craftBtn.disabled) return;
+
+    const craftAmount = parseInt(slider.value);
+
+    const new_data = {
+      name: data.name,
+      course: data.course,
+      bio: data.bio,
+      quantity: 1,
+      rarity: nextRarity
+    };
+
+    // Update the cards
+    add_or_update_card(new_data, craftAmount);
+    add_or_update_card(data, -craftAmount * CRAFT_COST);
+
+    // Update the grid to reflect changes
+    const searchInput = document.getElementById("search-input");
+    const filteredData = renderCards(searchInput.value);
+    updateCardGrid(filteredData);
+
+
+    //creates the popup message at the end of crafting
+    const popup = document.getElementById("craft-popup");
+    const amountSpan = document.getElementById("crafted-amount");
+    if (popup &amp;&amp; amountSpan) {
+      amountSpan.textContent = `${craftAmount} ${nextRarity} "${data.name}"`;
+      popup.classList.remove("hidden");
+      popup.classList.add("show");
+
+      //remove the popup after 3 seconds
+      setTimeout(() => {
+        popup.classList.remove("show");
+        setTimeout(() => popup.classList.add("hidden"), 500);
+      }, 3000);
+    }
+
+    // Close the modal
+    const modal = document.getElementById("card-modal");
+    if (modal) {
+      modal.classList.add("hidden");
+    }
+
+
+    // Show success message (optional)
+    console.log(`Crafted ${craftAmount} ${nextRarity} "${data.name}"`);
+    //alert(`🎉 Congratulations! You crafted ${craftAmount} ${nextRarity} "${data.name}" card(s)!`);
+  };
+}
+
+
+/**
+ * 
+ * @param {string} filter - The search filter string to apply to the card names. 
+ * @returns {Array} An array of card objects that match the filter criteria.
+ * @description Renders the card grid based on the provided filter. It retrieves card data from local storage,
+ */
+function renderCards(filter = "") {
+  const localData = localStorage.getItem("card_data");
+  if (!localData) return;
+  const cards = JSON.parse(localData);
+  const container = document.getElementById("card-grid");
+    container.innerHTML = "";
+
+    //filter cards based on search
+    let filteredCards = cards.filter(data => {
+      const name = data.name?.toLowerCase() || "";
+      return !filter || name.includes(filter.toLowerCase());
+    });
+
+    //sort according to selected option
+    if (currentSort === "first-name-az") {
+      filteredCards.sort((a, b) => (a.name || "").localeCompare(b.name || ""));
+    } 
+    else if (currentSort === "first-name-za") {
+      filteredCards.sort((a, b) => (b.name || "").localeCompare(a.name || ""));
+    } 
+    else if (currentSort === "rarity-asc") {
+      filteredCards.sort((a, b) => {
+        return RARITY_ORDER.indexOf(a.rarity?.toLowerCase()) - RARITY_ORDER.indexOf(b.rarity?.toLowerCase());
+      });
+    } 
+    else if (currentSort === "rarity-desc") {
+      filteredCards.sort((a, b) => {
+        return RARITY_ORDER.indexOf(b.rarity?.toLowerCase()) - RARITY_ORDER.indexOf(a.rarity?.toLowerCase());
+      });
+    } 
+    else if (currentSort === "last-name-az") {
+      filteredCards.sort((a, b) => {
+        const lastA = (a.name || "").trim().split(" ").slice(-1)[0].toLowerCase();
+        const lastB = (b.name || "").trim().split(" ").slice(-1)[0].toLowerCase();
+        return lastA.localeCompare(lastB);
+      });
+    }
+    else if (currentSort === "last-name-za") {
+      filteredCards.sort((a, b) => {
+        const lastA = (a.name || "").trim().split(" ").slice(-1)[0].toLowerCase();
+        const lastB = (b.name || "").trim().split(" ").slice(-1)[0].toLowerCase();
+        return lastB.localeCompare(lastA);
+      });
+    }
+    else if (currentSort === "quantity-asc") {
+      filteredCards.sort((a, b) => a.quantity - b.quantity);
+    }
+    else if (currentSort === "quantity-desc") {
+      filteredCards.sort((a, b) => b.quantity - a.quantity);
+    }
+
+    return filteredCards
+}
+
+/**
+ * @description Initializes the application when the DOM is fully loaded. Sets up the card grid,
+ * modal close functionality, and keyboard event listeners for closing the modal with the Escape key.
+ */
+window.addEventListener("DOMContentLoaded", () => {
+  init()
+});
+
+export function init() {
+    updateCardGrid(load_cards_from_local());
+
+  // Modal close logic
+  const searchInput = document.getElementById("search-input");
+  const sortSelect = document.getElementById("sort-select");
+  const closeBtn = document.getElementById("modal-close");
+  const modal = document.getElementById("card-modal");
+
+  if (closeBtn &amp;&amp; modal) {
+    closeBtn.addEventListener("click", () => modal.classList.add("hidden"));
+  }
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" &amp;&amp; modal) {
+      modal.classList.add("hidden");
+    }
+  });
+  
+  //search bar functionality
+  searchInput.addEventListener("input", () => {
+    const data = renderCards(searchInput.value);
+    updateCardGrid(data);
+
+  });
+
+  //sorting functionality
+  sortSelect.addEventListener("change", () => {
+    currentSort = sortSelect.value;
+    const data = renderCards(searchInput.value);
+    updateCardGrid(data);
+  });
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="UserInfo.html">UserInfo</a></li></ul><h3>Global</h3><ul><li><a href="global.html#add_or_update_card">add_or_update_card</a></li><li><a href="global.html#clicker_buttons">clicker_buttons</a></li><li><a href="global.html#createCard">createCard</a></li><li><a href="global.html#create_light_rays">create_light_rays</a></li><li><a href="global.html#display_card">display_card</a></li><li><a href="global.html#display_placeholder">display_placeholder</a></li><li><a href="global.html#fetch_data">fetch_data</a></li><li><a href="global.html#fetch_unlocked_cards">fetch_unlocked_cards</a></li><li><a href="global.html#fetch_user_info">fetch_user_info</a></li><li><a href="global.html#generate_random_card">generate_random_card</a></li><li><a href="global.html#get_random_element">get_random_element</a></li><li><a href="global.html#get_random_rarity">get_random_rarity</a></li><li><a href="global.html#get_rarity_display_color">get_rarity_display_color</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#load_cards_from_local">load_cards_from_local</a></li><li><a href="global.html#load_pity_counters">load_pity_counters</a></li><li><a href="global.html#renderCards">renderCards</a></li><li><a href="global.html#save_cards_to_local">save_cards_to_local</a></li><li><a href="global.html#save_pity_counters">save_pity_counters</a></li><li><a href="global.html#save_to_local">save_to_local</a></li><li><a href="global.html#setupCraftingUI">setupCraftingUI</a></li><li><a href="global.html#show_congrats_animation">show_congrats_animation</a></li><li><a href="global.html#updateCardGrid">updateCardGrid</a></li><li><a href="global.html#update_container_rarity">update_container_rarity</a></li><li><a href="global.html#update_cost">update_cost</a></li><li><a href="global.html#update_guarantee_display">update_guarantee_display</a></li><li><a href="global.html#update_pity_counters">update_pity_counters</a></li><li><a href="global.html#update_points">update_points</a></li><li><a href="global.html#update_points_display">update_points_display</a></li><li><a href="global.html#update_tooltip">update_tooltip</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Fri Oct 03 2025 04:27:17 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

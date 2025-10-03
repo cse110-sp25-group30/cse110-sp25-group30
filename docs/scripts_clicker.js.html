@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: scripts/clicker.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: scripts/clicker.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {update_points} from "../index.js"
+import {fetch_user_info} from "../index.js"
+
+window.addEventListener("DOMContentLoaded", init);
+/**
+ * @description Initializes click event listeners for the clicker component.
+ * 
+ * When the clicker component is pressed, increments the user's points,
+ * updates the points display, and applies a scaling effect for visual feedback.
+ * On mouse release, restores the original scale.
+ * 
+ * Assumes the existence of `update_points` and `fetch_user_info` functions,
+ * and elements with IDs "clicker-comp" and "points_display" in the DOM.
+ * @param {boolean} [frenzy_test=false] - If true, enables frenzy mode for testing purposes.
+ */
+export function clicker_buttons(frenzy_test = false) {
+
+  const clicker_comp = document.getElementById("clicker-comp");
+  const clicker_wrap = document.getElementById("clicker-comp-wrapper");
+  const points_display = document.getElementById("points_display");
+  const clicker_container = document.getElementById("clicker-container");
+  let point_worth = 1;
+  let frenzy = false;
+  if (!clicker_comp) {
+    throw new Error("Clicker component not found");
+  }
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (Number(e.button) === 0 || e.type == "touchstart") {
+      update_points(point_worth);
+      
+      let user_info = fetch_user_info();
+      if (!user_info) {
+        console.error("No user info found");
+        throw new Error("No user info found");
+      }
+      
+      points_display.innerHTML = `Points: ${user_info.points}`;
+      clicker_wrap.style.transform = "scale(0.93)";
+
+      // Generate a popup with low probability
+      const popup_prob = 0.05;
+      if (Math.random() &lt; popup_prob) {
+        showBonusPopup();
+      }
+      // Trigger clicker frenzy with even lower chance
+      if ((Math.random() &lt; 0.005  &amp;&amp; !frenzy) || frenzy_test ) {
+        triggerFrenzy();
+      }
+    }
+  };
+  
+  /**
+  * @description Creates the random popup buttons at 5% per click. Element fades away and removes them after 1.5 seconds.
+  */
+  function showBonusPopup() {
+    const bonus = document.createElement("div");//creates the bonus window
+    bonus.id = "bonus-popup";
+    bonus.textContent = `+${10 * point_worth}! `;
+    bonus.classList.add("bonus-popup");
+
+    const mq = window.matchMedia("(max-width: 768px)");
+    if (mq.matches) {
+      bonus.style.left = Math.random() * 60 + 10 + "vw";
+      bonus.style.top = Math.random() * 60 + 20 + "vh";
+    } else {
+      bonus.style.left = Math.random() * 80 + 10 + "vw";
+      bonus.style.top = Math.random() * 60 + 20 + "vh";
+    }
+
+    document.body.appendChild(bonus);
+    //actually adds 10 when clicked
+    bonus.addEventListener("click", (e) => {
+      e.preventDefault();
+      let user_info = fetch_user_info();
+      update_points(10 * point_worth);
+      user_info.points += 10 * point_worth;
+      points_display.innerHTML = `Points: ${user_info.points}`;
+      bonus.remove();
+    });
+
+    // Have the element fade out while on screen
+    let duration = 1500;
+    let interval = 10;
+    let decrement = interval / duration;
+    let opacity = 1;
+    let fade = setInterval(() => {
+      opacity -= decrement;
+      if (opacity &lt;= 0) {
+        opacity = 0;
+        clearInterval(fade);
+      }
+      bonus.style.opacity = opacity;
+    }, interval);
+
+    // Auto-remove after 1.5 seconds
+    setTimeout(() => {
+      if (document.body.contains(bonus)) {
+        bonus.remove();
+      }
+    }, duration);
+  }
+
+  /**
+   * @description Restores the clicker back to normal size
+   */
+  const resetScale = () => {
+    clicker_wrap.style.transform = "scale(1)";
+  };
+
+  /**
+   * @description Triggers a clicker frenzy, increasing the number of points per click
+   */
+  function triggerFrenzy() {
+    const frenz = document.createElement("div");
+    frenz.id = "frenzy-popup";
+    frenz.classList.add("frenzy-popup");
+
+    document.body.appendChild(frenz);
+
+    const duration = 10000;
+    let count = 10;
+    point_worth = 2;
+    frenzy = true;
+
+    frenz.textContent = `Frenzy! X2 Multiplier for ${count} seconds!`;
+
+    const ticker = setInterval(() => {
+      count--;
+      if(count >= 0) {
+        frenz.textContent = `Frenzy! X2 Multiplier for ${count} seconds!`;
+      }
+      else {
+        clearInterval(ticker);
+      }
+
+    }, 1000);
+
+    setTimeout(() => {
+      clicker_container.style.background = "linear-gradient(0deg, transparent 0%, #00629B 50%, transparent 100%)"
+      frenzy = false;
+      point_worth = 1;
+      if (document.body.contains(frenz)) {
+        frenz.remove();
+      }
+    }, duration);
+
+    // Change background
+    clicker_container.style.background = "linear-gradient(0deg, transparent 0%,rgb(224, 153, 1) 50%, transparent 100%)"
+  }
+
+  // Desktop and mobile events
+  clicker_comp.addEventListener("pointerdown", handleClick);
+  clicker_comp.addEventListener("pointerup", resetScale);
+}
+
+
+ export async function init(){
+    clicker_buttons()
+    const points_display = document.getElementById("points_display");
+    let user_info = JSON.parse(localStorage.getItem("user_data"));
+    points_display.innerHTML =`Points: ${user_info.points}`;
+  }</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="UserInfo.html">UserInfo</a></li></ul><h3>Global</h3><ul><li><a href="global.html#add_or_update_card">add_or_update_card</a></li><li><a href="global.html#clicker_buttons">clicker_buttons</a></li><li><a href="global.html#createCard">createCard</a></li><li><a href="global.html#create_light_rays">create_light_rays</a></li><li><a href="global.html#display_card">display_card</a></li><li><a href="global.html#display_placeholder">display_placeholder</a></li><li><a href="global.html#fetch_data">fetch_data</a></li><li><a href="global.html#fetch_unlocked_cards">fetch_unlocked_cards</a></li><li><a href="global.html#fetch_user_info">fetch_user_info</a></li><li><a href="global.html#generate_random_card">generate_random_card</a></li><li><a href="global.html#get_random_element">get_random_element</a></li><li><a href="global.html#get_random_rarity">get_random_rarity</a></li><li><a href="global.html#get_rarity_display_color">get_rarity_display_color</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#load_cards_from_local">load_cards_from_local</a></li><li><a href="global.html#load_pity_counters">load_pity_counters</a></li><li><a href="global.html#renderCards">renderCards</a></li><li><a href="global.html#save_cards_to_local">save_cards_to_local</a></li><li><a href="global.html#save_pity_counters">save_pity_counters</a></li><li><a href="global.html#save_to_local">save_to_local</a></li><li><a href="global.html#setupCraftingUI">setupCraftingUI</a></li><li><a href="global.html#show_congrats_animation">show_congrats_animation</a></li><li><a href="global.html#updateCardGrid">updateCardGrid</a></li><li><a href="global.html#update_container_rarity">update_container_rarity</a></li><li><a href="global.html#update_cost">update_cost</a></li><li><a href="global.html#update_guarantee_display">update_guarantee_display</a></li><li><a href="global.html#update_pity_counters">update_pity_counters</a></li><li><a href="global.html#update_points">update_points</a></li><li><a href="global.html#update_points_display">update_points_display</a></li><li><a href="global.html#update_tooltip">update_tooltip</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Fri Oct 03 2025 04:27:17 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
